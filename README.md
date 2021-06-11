@@ -1,5 +1,5 @@
 ## spec
-== Azure
+- Azure
 - Ubuntu 18.04
 - Kubernetes v1.21.1
 - jenkins v2.297

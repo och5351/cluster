@@ -1,6 +1,6 @@
 # spec
 ## 1. cloud
--- Azure
+- Azure
 
 # cluster
 kubernetes, docker, jenkins, etc ... 

@@ -1,13 +1,11 @@
 <h2> kubernetes 마스터 구성 요소 </h2>
 
-<li>
-    <ol> etcd </ol>
-    <ol> kube-apiserver </ol>
-    <ol> kube-scheduler </ol>
-    <ol> kube-controller-manager </ol>
-    <ol> cloud-controller-manager </ol>
-    <ol> ... </ol>
-</li>
+- etcd 
+- kube-apiserver
+- ube-scheduler
+- kube-controller-manager
+- cloud-controller-manager 
+- ...
 
 <h3> etcd </h3><hr>
 
@@ -20,13 +18,20 @@
 <table>
     <thead>
         <tr>
-            <th colspan="2">The table header</th>
+            <th colspan="2">이름</th>
+            <th colspan="2">타입</th>
+            <th colspan="2">기본값</th>
+            <th colspan="2">설명</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>The table body</td>
-            <td>with two columns</td>
+            <td>--admission-control</td>
+            <td>stringSlice</td>
+            <td>[Alwaysadmit]</td>
+            <td>
+Admission Controller는 쿠버네티스의 API를 호출했을 때, 해당 요청의 내용을 변형하거나 검증하는 플러그인의 집합이다. 예를 들어, 어떤 사용자가 쿠버네티스 API를 통해 포드의 생성을 요청했을 때 해당 포드의 설정이 적절한지 검증함으로써 포드 템플릿을 변경할 수도 있고, 부적절하다고 판단되면 아예 포드 생성 요청을 거부할 수도 있다. Admission Controller를 사용해 본 적이 없더라도, 쿠버네티스를 사용하면 의외로 알게 모르게 많이 쓰게 된다. 
+            </td>
         </tr>
     </tbody>
 </table>

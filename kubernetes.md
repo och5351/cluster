@@ -1,7 +1,7 @@
 <h2> kubernetes 마스터 구성 요소 </h2>
 
 <li>
-    <ol> ss
+    <ol> ss </ol>
 </li>
 
 <h3> etcd </h3><hr>

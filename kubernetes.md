@@ -277,7 +277,7 @@ Cluster의 다른 멤버들이 apiserver에 접근하기 위한 ip 주소. 이 �
 <br>
 
 
-### kube-scheduler <a id="kube-scheduler"></a>
+kube-scheduler <a id="kube-scheduler"></a>
 ---
 
 kuber-scheduler는 이름에서 알 수 있듯이 새로운 포드들이 만들어질때 현재 클러스터내에서 자원할당이 가능한 노드들 중에서 알맞은 노드를 선택해서 그곳에 포드를 띄우는 역할을. Pod는 처음 실행될때 여러가지 조건을 지정해서 실행하는데, kube-scheduler가 그 조건에 맞는 노드를 찾아주는 역할. 필요한 하드웨어 요구사항이라던가, 어피니티/안티어피니티(affinity/anti-affinity) 조건을 만족하는지, 특정 데이터가 있는 노드에 할당한다던가 하는 다양한 설정을 할 수 있음.
@@ -289,7 +289,7 @@ kuber-scheduler는 이름에서 알 수 있듯이 새로운 포드들이 만들�
 </div>
 <br>
 
-### kube-controller-manager <a id="kube-contoroller-manager"></a>
+kube-controller-manager <a id="kube-contoroller-manager"></a>
 ---
 
 Kubernetes는 각각의 컨트롤러(controller)들이 Pod들을 관리하는 역할. kube-controller-manager는 이런 각각의 컨트롤러들을 실행하는 역할. 각 컨트롤러들은 논리적으로는 개별 프로세스이지만 복잡도를 줄이기 위해서 하나의 바이너리 파일로 컴파일되어 있고, 하나의 단일 프로세스로 실행. Kubernetes는 golang언어로 개발되어 있는데, 클러스터내에서 새로운 컨트롤러가 사용될때는 그 컨트롤러에 해당하는 구조체가 만들어진 다음에 그걸 kube-controller-manager가 관리하는 큐에 넣어서 실행하는 방식으로 작동.
@@ -301,7 +301,7 @@ Kubernetes는 각각의 컨트롤러(controller)들이 Pod들을 관리하는 �
 </div>
 <br>
 
-### cloud-controller-manager <a id="cloud-controller-manager"></a>
+cloud-controller-manager <a id="cloud-controller-manager"></a>
 ---
 
 cloud-controller-manager 는 클라우드 서비스를 제공해 주는 곳들에서 쿠버네티스의 컨트롤러들을 자신들의 서비스와 연계해서 사용하기 위해서 사용. 관련된 코드는 각 클라우드 서비스 제공사들에서 직접 관리함. 다음 4가지 컨트롤러들이 관련있는 컨트롤러이 있음.

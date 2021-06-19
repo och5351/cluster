@@ -1,5 +1,12 @@
+<h2> kubernetes 마스터 구성 요소 </h2>
+
+<h3> etcd </h3>
+
+
 <h3> Kubeadm </h3>
+
 #### kubeadm 이란, kubernetes에서 제공하는 기본적인 도구, kubernetes 클러스터를 빠르게 구축하기 위한 다양한 기능을 제공
+
 - kubeadm init : Kubernetes 컨트롤 플레인 노드를 초기화한다.(마스터 초기화)
 - kubeadm join : Kubernetes 워커 노드를 초기화하고 클러스터에 연결한다.
 - kubeadm upgrade : kubernetes 업그레이드
@@ -11,4 +18,5 @@
 
 <br>
 <h3>kubelet</h3>
+
 #### kubelet 이란? 클러스터내의 모든 모드에서 실행되는 에이전트. 포드내의 컨테이너들이 실행되는 걸 직접적으로 관리하는 역할을 합니다. kubelet은 PodSpecs 라는 설정을 받아서 그 조건에 맞게 컨테이너를 실행하고 컨테이너가 정상적으로 실행되고 있는지 상태 체크를 진행합니다. 노드안에 있는 컨테이너라고 하더라도 쿠버네티스가 만들지 않은 컨테이너는 관리하지 않습니다.

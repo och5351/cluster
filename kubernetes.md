@@ -269,7 +269,7 @@ Cluster의 다른 멤버들이 apiserver에 접근하기 위한 ip 주소. 이 �
 
 
 kube-scheduler <a id="kube-scheduler"></a>
-===
+___
 
 <hr>
 

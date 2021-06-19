@@ -294,7 +294,9 @@ kube-controller-manager <a id="kube-contoroller-manager"></a>
 Kubernetes는 각각의 컨트롤러(controller)들이 Pod들을 관리하는 역할. kube-controller-manager는 이런 각각의 컨트롤러들을 실행하는 역할. 각 컨트롤러들은 논리적으로는 개별 프로세스이지만 복잡도를 줄이기 위해서 하나의 바이너리 파일로 컴파일되어 있고, 하나의 단일 프로세스로 실행. Kubernetes는 golang언어로 개발되어 있는데, 클러스터내에서 새로운 컨트롤러가 사용될때는 그 컨트롤러에 해당하는 구조체가 만들어진 다음에 그걸 kube-controller-manager가 관리하는 큐에 넣어서 실행하는 방식으로 작동.
 <br>
 
-<p align="right"> [목차로](#home1) </p>
+<div align="right"> 
+[목차로](#home1) 
+</div>
 
 <br>
 

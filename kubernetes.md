@@ -43,12 +43,210 @@ A변경에 관한 플러그인들이 실행되고나서 유효성 검사에 대�
             </td>
         </tr>
         <tr>
-            <td>--admission-control-config-file</td>
-            <td>string</td>
+            <td>--advertise-address</td>
+            <td>ip</td>
             <td>없음</td>
             <td>
-어드미션 컨트롤에 대한 설정 파일
+Cluster의 다른 멤버들이 apiserver에 접근하기 위한 ip 주소. 이 값을 명시하지 않으면 --bind-address에 설정된 값이 사용. --bind-address도 설정 되어 있지 않으면 호스트의 기본 ip 주소가 사용.
             </td>
+        </tr>
+        <tr>
+            <td>--allow-privileged</td>
+            <td></td>
+            <td>false</td>
+            <td>컨테이너가 privileged 모드로 실행될 수 있게 함</td>
+        </tr>
+        <tr>
+            <td>--anonymous-auth</td>
+            <td></td>
+            <td>true</td>
+            <td>apiserver의 보안 포트에 사용자 명시 없이 익명으로 요청이 가능하게 한다.들어온 요청은 익명 요청으로 처리되고 사용자명은 system:anonymous, 그룹명은 system:unauthenticated 을 사용하게 된다.</td>
+        </tr>
+        <tr>
+            <td>--apiserver-count</td>
+            <td>int</td>
+            <td>1</td>
+            <td>클러스터내에서 실행되는 apiserver의 개수.</td>
+        </tr>
+        <tr>
+            <td>--audit-log-format</td>
+            <td>string</td>
+            <td>json</td>
+            <td>Cluster내에서 어떤일이 일어났는지 기록해두는 audit값을 어떤 형식으로 기록해 둘지 지정. json이 기본값이고, legacy로 설정하면 별다른 포맷없이 1줄의 로그 형식으로 기록.</td>
+        </tr>
+        <tr>
+            <td>--audit-log-maxage</td>
+            <td>int</td>
+            <td></td>
+            <td>audit 로그를 최대 며칠까지 유지하고 있을지 설정</td>
+        </tr>
+        <tr>
+            <td>--audit-log-maxbackup</td>
+            <td>int</td>
+            <td></td>
+            <td>오래된 audit 로그 파일을 최대 몇개까지 보관하고 있을지 설정</td>
+        </tr>
+        <tr>
+            <td>--audit-log-path</td>
+            <td>string</td>
+            <td></td>
+            <td>apiserver로 들어오는 모든 요청을 설정된 파일에 저장합니다. "-" 로 두면 표준출력으로 내보냄.</td>
+        </tr>
+        <tr>
+            <td>--audit-policy-file</td>
+            <td>string</td>
+            <td></td>
+            <td>audit 정책을 설정해둔 파일. </td>
+        </tr>
+        <tr>
+            <td>--audit-webhook-batch-buffer-size</td>
+            <td>int</td>
+            <td>10000</td>
+            <td>이벤트를 배치로 웹훅으로 보내기전에 보관해둘 버퍼의 크기. 배치모드에서만 사용됨.</td>
+        </tr>
+        <tr>
+            <td>--audit-webhook-batch-initial-backoff</td>
+            <td>duration</td>
+            <td>10s</td>
+            <td>요청이 실패하면 지정한 시간뒤에 재시도. 배치모드에서만 사용</td>
+        </tr>
+        <tr>
+            <td>--audit-webhook-batch-max-size</td>
+            <td>int</td>
+            <td>400</td>
+            <td>웹훅으로 보내는 배치의 최대 크기. 배치 모드에서만 사용.</td>
+        </tr>
+        <tr>
+            <td>--audit-webhook-batch-max-wait</td>
+            <td>duration</td>
+            <td>30s</td>
+            <td>배치가 최대크기 만큼이 안 됐어도 지정된 시간이 되면 보냄. 배치모드에서만 사용.</td>
+        </tr>
+        <tr>
+            <td>--audit-webhook-barch-throttle-burst</td>
+            <td>int</td>
+            <td>15</td>
+            <td>ThrottleQPS가 사용되지 않았을 때 동시에 보낼 수 있는 요청의 최대 개수. 배치모드에서만 사용</td>
+        </tr>
+        <tr>
+            <td>--audit-webhook-batch-throttle-qps</td>
+            <td>float332</td>
+            <td>10</td>
+            <td>요청을 초당 최대 얼마나 보낼 수 있는지 설정하는 값. 배치 모드에서만 사용.</td>
+        </tr>
+        <tr>
+            <td>--audit-webhook-config-file</td>
+            <td>string</td>
+            <td></td>
+            <td>audit 웹 훅 설정을 kubeconfig 형식으로 저장해 둔 파일의 위치.</td>
+        </tr>
+        <tr>
+            <td>--audit-webhook-mode</td>
+            <td>string</td>
+            <td>batch</td>
+            <td>audit 이벤트를 어떻게 처리할지에 대한 값. batch는 이벤트를 모았다가 한번에 보내는 비동기 처리를 함. Blocking은 이벤트를 보낼 때 서버 응답을 막도록 함.</td>
+        </tr>
+        <tr>
+            <td>--authentication-token-webhook-cache-ttl</td>
+            <td>duration</td>
+            <td>2m0s</td>
+            <td>웹 훅 토큰 인증기의 응답을 캐시하는 시간</td>
+        </tr>
+        <tr>
+            <td>--authentication-token-webhook-config-file</td>
+            <td>string</td>
+            <td></td>
+            <td>
+            토큰 인증에 대한 설정을 kubeconfig 형식으로 가지고 있는 파일. apiserver가 여기 설정된 외부 서비스에 토큰의 인증 여부를 문의.
+            </td>
+        </tr>
+        <tr>
+            <td>--authorization-mode</td>
+            <td>string</td>
+            <td>AllwaysAllow</td>
+            <td>
+            인증에 사용할 플러그인들을 순서대로 입력합니다. 사용가능한 값 : AlwaysAllow, AlwaysDeny, ABAC, Webhook, RBAC, Node
+            </td>
+        </tr>
+        <tr>
+            <td>--authorization-policy-file</td>
+            <td>string</td>
+            <td></td>
+            <td>인증 정책을 csv 형식으로 가지고 있는 파일.</td>
+        </tr>
+        <tr>
+            <td>--authorization-webhook-cache-authorized-ttl</td>
+            <td>duration</td>
+            <td>5m0s</td>
+            <td>
+            웹훅 인증 서비스로부터 받은 "인증되었다"는 응답을 얼마나 캐시하고 있을지에 대한 값.
+            </td>
+        </tr>
+        <tr>
+            <td>--authorization-webhook-cache-unauthorized-ttl</td>
+            <td>duration</td>
+            <td>30s</td>
+            <td>웹훅 인증 서비스로부터 받은 "인증불가"라는 응답을 얼마나 캐시하고 있을지에 대한 값.</td>
+        </tr>
+        <tr>
+            <td>--authorization-webhook-config-file</td>
+            <td>string</td>
+            <td></td>
+            <td>--authorization-mode=Webhook 옵션을 사용했을때 웹훅 설정을 kubeconfig 형식으로 가지고 있는 파일.</td>
+        </tr>
+        <tr>
+            <td>--azure-container-registry-config</td>
+            <td>string</td>
+            <td></td>
+            <td>애저(Azure) 컨테이너 저장소의 설정을 가지고 있는 파일.</td>
+        </tr>
+        <tr>
+            <td>--basic-auth-file</td>
+            <td>string</td>
+            <td></td>
+            <td>이 옵션이 설정되면 apiserver의 보안포트로 들어온 요청들에 대해서 http 기본인증을 하는데 사용됨.</td>
+        </tr>
+        <tr>
+            <td>--bind-address</td>
+            <td>ip</td>
+            <td>0.0.0.0</td>
+            <td>--secure-port port로 설정된 포트로 들어오는 요청을 받을 ip 주소. 클러스터의 다른 멤버들이나 kubectl같은 클라이언트가 접근가능한 주소여야 함.</td>
+        </tr>
+        <tr>
+            <td>--cert-dir</td>
+            <td>string</td>
+            <td>/var/run.kubernetes</td>
+            <td>TLS인증서들이 있는 경로. --tls-cert-file이나 --tls-private-key-file 옵션이 제공되면 이 옵션은 무시.</td>
+        </tr>
+        <tr>
+            <td>--client-ca-file</td>
+            <td>string</td>
+            <td></td>
+            <td>이 파일에 있는 클라이언트 인증서를 사용하는 요청은 클라이언트 인증서에 명시된 CommonName에 있는 값으로 인증.</td>
+        </tr>
+        <tr>
+            <td>--cloud-config</td>
+            <td>string</td>
+            <td></td>
+            <td>클라우드 제공자의 설정파일</td>
+        </tr>
+        <tr>
+            <td>--cloud-provider</td>
+            <td>string</td>
+            <td></td>
+            <td>클라우드 서비스 제공자</td>
+        </tr>
+        <tr>
+            <td>--contention-profiling</td>
+            <td></td>
+            <td></td>
+            <td>프로파일링이 활성화 되어 있을경우 락(lock) 경합에 대한 프로파일링을 활성화</td>
+        <tr>
+        <tr>
+            <td>--cors-allowed-origins</td>
+            <td>stringSlice</td>
+            <td></td>
+            <td>CORS를 허용하는 목록입니다. 하위 도메인을 표현하기 위해 정규표현식을 사용할수 있음. 이 옵션이 없는 경우 CORS를 사용할 수 없음.</td>
         </tr>
     </tbody>
 </table>

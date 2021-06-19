@@ -305,12 +305,23 @@ cloud-controller-manager 는 클라우드 서비스를 제공해 주는 곳들�
 [목차로](#home1) 
 </div><br>
 
-## kubernetes 설치 구성 요소
+<a id="home2"></a>
+# kubernetes 구성 요소
 
-### Kubeadm 
-<hr>
+- [Kubeadm](#kubeadm)
+- [kubelete](#kubelet)
+- [kube-proxy](#kube-proxy)
+- [컨테이너 런타임(Container Runtime)](#Container_Runtime)
+- [애드온(Addons)](#Addons)
+- [네트워킹 애드온](#networkingAddon)
+- [DNS Addon](#dnsAddons)
+- [DashBoard Addon](#dashboardAddon)
 
-#### kubeadm 이란, kubernetes에서 제공하는 기본적인 도구, kubernetes 클러스터를 빠르게 구축하기 위한 다양한 기능을 제공
+<a id="kubeadm"></a>
+
+Kubeadm
+--- 
+kubeadm 이란, kubernetes에서 제공하는 기본적인 도구, kubernetes 클러스터를 빠르게 구축하기 위한 다양한 기능을 제공
 
 - kubeadm init : Kubernetes 컨트롤 플레인 노드를 초기화한다.(마스터 초기화)
 - kubeadm join : Kubernetes 워커 노드를 초기화하고 클러스터에 연결한다.
@@ -321,6 +332,84 @@ cloud-controller-manager 는 클라우드 서비스를 제공해 주는 곳들�
 - kubeadm version : kubeadm 버전을 보여준다.
 - kubeadm alpha : 정식으로 배포된 기능은 아니지만 kubernetes 측에서 사용자 피드백을 얻기 위해 인증서 갱신, 인증서 만료 확인, 사용자 생성, kubelet 설정 등 다양항 기능을 제공하고 있다.
 
-<br><h3>kubelet</h3><hr>
+<div align="right"> 
 
-#### kubelet 이란? 클러스터내의 모든 모드에서 실행되는 에이전트. 포드내의 컨테이너들이 실행되는 걸 직접적으로 관리하는 역할. kubelet은 PodSpecs 라는 설정을 받아서 그 조건에 맞게 컨테이너를 실행하고 컨테이너가 정상적으로 실행되고 있는지 상태 체크를 진행. 노드안에 있는 컨테이너라고 하더라도 쿠버네티스가 만들지 않은 컨테이너는 관리하지 않읍.
+[목차로](#home2) 
+</div><br>
+
+<a id="kubelet"></a>
+
+kubelet
+---
+kubelet 이란? 클러스터내의 모든 모드에서 실행되는 에이전트. 포드내의 컨테이너들이 실행되는 걸 직접적으로 관리하는 역할. kubelet은 PodSpecs 라는 설정을 받아서 그 조건에 맞게 컨테이너를 실행하고 컨테이너가 정상적으로 실행되고 있는지 상태 체크를 진행. 노드안에 있는 컨테이너라고 하더라도 쿠버네티스가 만들지 않은 컨테이너는 관리하지 않음.
+
+<div align="right"> 
+
+[목차로](#home2) 
+</div><br>
+
+<a id="kube-proxy"></a>
+
+kube-proxy
+---
+쿠버네티스는 클러스터 내부에 별도의 가상 네트워크를 설정하고 관리. kube-proxy는 이런 가상 네트워크가 동작할 수 있게 하는 실질적인 역할을 하는 프로세스. 호스트의 네트워크 규칙을 관리하거나 커넥션 포워딩을 함.
+
+<div align="right"> 
+
+[목차로](#home2) 
+</div><br>
+
+<a id="Container_Runtime"></a>
+
+컨테이너 런타임(Container Runtime)
+---
+컨테이너 런타임은 실제로 컨테이너를 실행시키는 역할을 합니다. 가장 많이 알려진 런타임으로는 도커(Docner)가 있고, 그외 rkt, runc같은 런타임도 지원합니다. 그외에도 컨테이너에 관한 표준을 제정하는 역할을 하는 OCI(Open Container Initiative, https://www.opencontainers.org/)의 런타임 규격(runtime-spec)을 구현하고 있는 컨테이너 런타임이라면 쿠버네티스에서 사용할 수 있습니다.
+
+<div align="right"> 
+
+[목차로](#home2) 
+</div><br>
+
+<a id="Addons"></a>
+
+애드온(Addons)
+---
+애드온은 클러스터 내부에서 필요한 기능들을 위해 실행되는 포드들. 애드온에 사용되는 포드들은 디플로이먼트, 리플리케이션컨트롤러 등에 의해 관리. 애드온이 사용하는 네임스페이스는 kube-system. 애드온에는 몇가지 종류들이 있음.
+
+<div align="right"> 
+
+[목차로](#home2) 
+</div><br>
+
+<a id="networkingAddon"></a>
+
+네트워킹 애드온
+---
+쿠버네티스는 클러스터 내부에 가상네트워크를 구성해서 사용하는데, 이때 kuby-proxy이외에 네트워킹 관련한 애드온을 사용합니다. AWS, 애저, 구글클라우드같은 클라우드 서비스에서 제공하는 쿠버네티스를 사용한다면 별도의 네트워킹 애드온을 사용하지 않더라도 각 클라우드 벤더에서 구현하고 있으니 신경쓰지 않아도 됩니다. 하지만 쿠버네티스를 직접 보유중인 서버들에 설치해서 구성을 하려고 하려면 네트워킹 관련 애드온을 설치해서 사용해야합니다. 이 부분이 쿠버네티스를 직접 설치할때 가장 까다로운 부분이기도 합니다. 네트워킹 애드온의 종류는 10개가 넘을 정도로 다양하게 있습니다. ACI, Calico, Canal, Cilium, CNI-Genie, Contiv, Falannel, Multus, NSX-T, Nuage, Romana, Weave Net등이 있고, OCI의 CNI(Container Network, Interface) 를 구현하고 있다면 다른 애드온들도 사용할 수 있습니다.
+
+<div align="right"> 
+
+[목차로](#home2) 
+</div><br>
+
+<a id="dnsAddons"></a>
+
+DNS 애드온
+---
+DNS 애드온의 경우 실제로 클러스터 내에서 작동하는 DNS 서버입니다. 쿠버네티스 서비스들에 DNS 레코드를 제공하는 역할을 합니다. 쿠버네티스 내부에서 실행된 컨테이너들은 자동으로 DNS서버에 등록됩니다. dns 서비스로는 kube-dns와 core-dns가 있습니다.
+
+<div align="right"> 
+
+[목차로](#home2) 
+</div><br>
+
+<a id="dashboardAddon"></a>
+
+대시보드 애드온
+---
+쿠버네티스를 소개할때 대부분의 경우 kubectl이라는 CLI(Command Line Interface)를 많이 사용합니다. 하지만 웹 UI가 필요한 경우가 있을수도 있는데, 이런경우에 사용할수 있는 대시보드가 있습니다. 보이는 것 처럼 클러스터 현황을 한눈에 쉽게 파악할 수 있습니다.
+
+<div align="right"> 
+
+[목차로](#home2) 
+</div><br>

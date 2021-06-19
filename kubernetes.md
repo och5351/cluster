@@ -30,7 +30,16 @@
             <td>stringSlice</td>
             <td>[Alwaysadmit]</td>
             <td>
-Admission Controller는 쿠버네티스의 API를 호출했을 때, 해당 요청의 내용을 변형하거나 검증하는 플러그인의 집합이다. 예를 들어, 어떤 사용자가 쿠버네티스 API를 통해 포드의 생성을 요청했을 때 해당 포드의 설정이 적절한지 검증함으로써 포드 템플릿을 변경할 수도 있고, 부적절하다고 판단되면 아예 포드 생성 요청을 거부할 수도 있다. Admission Controller를 사용해 본 적이 없더라도, 쿠버네티스를 사용하면 의외로 알게 모르게 많이 쓰게 된다. 
+A변경에 관한 플러그인들이 실행되고나서 유효성 검사에 대한 플러그인들이 실행<br>
+- 사용 가능한 값 : AlwaysAdmit, AlwaysDeny, AlwaysPullImages, DefaultStorageClass, DefaultTolerationSeconds, DenyEscalatingExec, DenyExecOnPrivileged, EventRateLimit, ExtendedResourceToleration, ImagePolicyWebhook, InitialResources, Initializers, LimitPodHardAntiAffinityTopology, LimitRanger, MutatingAdmissionWebhook, NamespaceAutoProvision, NamespaceExists, NamespaceLifecycle, NodeRestriction, OwnerReferencesPermissionEnforcement, PVCProtection, PersistentVolumeClaimResize, PersistentVolumeLabel, PodNodeSelector, PodPreset, PodSecurityPolicy, PodTolerationRestriction, Priority, ResourceQuota, SecurityContextDeny, ServiceAccount, ValidatingAdmissionWebhook
+            </td>
+        </tr>
+        <tr>
+            <td>--admission-control-config-file</td>
+            <td>string</td>
+            <td>없음</td>
+            <td>
+어드미션 컨트롤에 대한 설정 파일
             </td>
         </tr>
     </tbody>

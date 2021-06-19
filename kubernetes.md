@@ -1,7 +1,12 @@
 <h2> kubernetes 마스터 구성 요소 </h2>
 
 <li>
-    <ol> ss </ol>
+    <ol> etcd </ol>
+    <ol> kube-apiserver </ol>
+    <ol> kube-scheduler </ol>
+    <ol> kube-controller-manager </ol>
+    <ol> cloud-controller-manager </ol>
+    <ol> ... </ol>
 </li>
 
 <h3> etcd </h3><hr>

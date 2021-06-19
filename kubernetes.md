@@ -8,19 +8,20 @@
 - ...
 <br>
 
-### etcd <a id="etcd"></a> 
-<hr>
+<a id="etcd"></a> 
 
+etcd
+---
 etcd 는 고가용성을 제공하는 key - value 저장소. kubernetes에서 필요한 모든 데이터를 저장하는 실질적인 데이터 베이스. 원래 kubernetes는 처음에 구글 내부의 borg라는 컨테이너 오케스트레이션 도구의 오픈 소스화 도중 나온 것. borg 는 chubby라는 분산 저장 솔루션을 사용. kubernetes를 오픈 소스화 할 때 etcd를 사용하게 되었다고 함. etcd는 프로세스 1개만으로 사용 가능하지만 데이터의 안정성을 위해서는 여러개의 장비에 분산해서 etcd 자체를 클러스터링을 구성해서 동작시키는게 일반적 방법. 안정적으로 운영하려면 etcd에 있는 데이터를 주기적으로 백업해 줘야 한다. 
 
 <br><div align="right"> 
 
 [목차로](#home1) 
 </div><br>
+<a id="kube-apiserver"></a>
 
-### kube-apiserver <a id="kube-apiserver"></a>
-<hr>
-
+kube-apiserver 
+---
 kubernetes는 MSA 구조로 되어 있음. 그래서 여러 개의 분리된 프로세스로 구성 되어 있으며, 그 중에서 kube-apiserver 는 kubernetes cluster의 api 를 사용할 수 있게 해주는 프로세스. cluster로 요청이 왔을 때 그 요청이 유효한지 검증하는 역할을 함. kubernetes로의 모든 요청은 kube-apiserver는 수평적으로 확장이 가능하게 설계가 되어 있어서, 여러대의 장비에 여러개를 띄워놓고 사용할 수 있음.
 
 <br><div align="right"> 
@@ -270,28 +271,28 @@ Cluster의 다른 멤버들이 apiserver에 접근하기 위한 ip 주소. 이 �
 
 [목차로](#home1) 
 </div><br>
+<a id="kube-scheduler"></a>
 
-kube-scheduler <a id="kube-scheduler"></a>
+kube-scheduler 
 ---
-
 kuber-scheduler는 이름에서 알 수 있듯이 새로운 포드들이 만들어질때 현재 클러스터내에서 자원할당이 가능한 노드들 중에서 알맞은 노드를 선택해서 그곳에 포드를 띄우는 역할을. Pod는 처음 실행될때 여러가지 조건을 지정해서 실행하는데, kube-scheduler가 그 조건에 맞는 노드를 찾아주는 역할. 필요한 하드웨어 요구사항이라던가, 어피니티/안티어피니티(affinity/anti-affinity) 조건을 만족하는지, 특정 데이터가 있는 노드에 할당한다던가 하는 다양한 설정을 할 수 있음.
 <br><div align="right"> 
 
 [목차로](#home1) 
 </div><br>
+<a id="kube-contoroller-manager"></a>
 
-kube-controller-manager <a id="kube-contoroller-manager"></a>
+kube-controller-manager 
 ---
-
 Kubernetes는 각각의 컨트롤러(controller)들이 Pod들을 관리하는 역할. kube-controller-manager는 이런 각각의 컨트롤러들을 실행하는 역할. 각 컨트롤러들은 논리적으로는 개별 프로세스이지만 복잡도를 줄이기 위해서 하나의 바이너리 파일로 컴파일되어 있고, 하나의 단일 프로세스로 실행. Kubernetes는 golang언어로 개발되어 있는데, 클러스터내에서 새로운 컨트롤러가 사용될때는 그 컨트롤러에 해당하는 구조체가 만들어진 다음에 그걸 kube-controller-manager가 관리하는 큐에 넣어서 실행하는 방식으로 작동.
 <br><div align="right"> 
 
 [목차로](#home1) 
 </div><br>
+<a id="cloud-controller-manager"></a>
 
-cloud-controller-manager <a id="cloud-controller-manager"></a>
+cloud-controller-manager 
 ---
-
 cloud-controller-manager 는 클라우드 서비스를 제공해 주는 곳들에서 쿠버네티스의 컨트롤러들을 자신들의 서비스와 연계해서 사용하기 위해서 사용. 관련된 코드는 각 클라우드 서비스 제공사들에서 직접 관리함. 다음 4가지 컨트롤러들이 관련있는 컨트롤러이 있음.
 노드 컨트롤러(Node Controller) : 클라우드 서비스 내에서 노드를 관리하기 위해서 사용.
 라우트 컨트롤러(Route Controller) : 각 클라우드 인프라내에서의 네트워크 라우팅을 관리하는데 사용.

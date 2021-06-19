@@ -18,10 +18,10 @@
 <table>
     <thead>
         <tr>
-            <th colspan="2">이름</th>
-            <th colspan="2">타입</th>
-            <th colspan="2">기본값</th>
-            <th colspan="2">설명</th>
+            <th colspan="1">이름</th>
+            <th colspan="1">타입</th>
+            <th colspan="1">기본값</th>
+            <th colspan="1">설명</th>
         </tr>
     </thead>
     <tbody>
@@ -32,6 +32,14 @@
             <td>
 A변경에 관한 플러그인들이 실행되고나서 유효성 검사에 대한 플러그인들이 실행<br>
 - 사용 가능한 값 : AlwaysAdmit, AlwaysDeny, AlwaysPullImages, DefaultStorageClass, DefaultTolerationSeconds, DenyEscalatingExec, DenyExecOnPrivileged, EventRateLimit, ExtendedResourceToleration, ImagePolicyWebhook, InitialResources, Initializers, LimitPodHardAntiAffinityTopology, LimitRanger, MutatingAdmissionWebhook, NamespaceAutoProvision, NamespaceExists, NamespaceLifecycle, NodeRestriction, OwnerReferencesPermissionEnforcement, PVCProtection, PersistentVolumeClaimResize, PersistentVolumeLabel, PodNodeSelector, PodPreset, PodSecurityPolicy, PodTolerationRestriction, Priority, ResourceQuota, SecurityContextDeny, ServiceAccount, ValidatingAdmissionWebhook
+            </td>
+        </tr>
+        <tr>
+            <td>--admission-control-config-file</td>
+            <td>string</td>
+            <td>없음</td>
+            <td>
+어드미션 컨트롤에 대한 설정 파일
             </td>
         </tr>
         <tr>

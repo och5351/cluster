@@ -1,4 +1,4 @@
-## [kubernetes 마스터 구성 요소](#home1)
+## kubernetes 마스터 구성 요소[](#home1)
 
 - [etcd](#etcd)
 - kube-apiserver
@@ -8,11 +8,13 @@
 - ...
 <br>
 
-### etcd(#etcd)
+### etcd[](#etcd)
 <hr>
 
 etcd 는 고가용성을 제공하는 key - value 저장소. kubernetes에서 필요한 모든 데이터를 저장하는 실질적인 데이터 베이스. 원래 kubernetes는 처음에 구글 내부의 borg라는 컨테이너 오케스트레이션 도구의 오픈 소스화 도중 나온 것. borg 는 chubby라는 분산 저장 솔루션을 사용. kubernetes를 오픈 소스화 할 때 etcd를 사용하게 되었다고 함. etcd는 프로세스 1개만으로 사용 가능하지만 데이터의 안정성을 위해서는 여러개의 장비에 분산해서 etcd 자체를 클러스터링을 구성해서 동작시키는게 일반적 방법. 안정적으로 운영하려면 etcd에 있는 데이터를 주기적으로 백업해 줘야 한다. 
+
 <br>
+
 [목차로](#home1)
 <br>
 

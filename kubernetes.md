@@ -1,5 +1,5 @@
 <h3> Kubeadm </h3>
-#### kubeadm이란, kubernetes에서 제공하는 기본적인 도구, kubernetes 클러스터를 빠르게 구축하 위한 다양한 기능을 제공
+#### kubeadm이란, kubernetes에서 제공하는 기본적인 도구, kubernetes 클러스터를 빠르게 구축하기 위한 다양한 기능을 제공
 - kubeadm init : Kubernetes 컨트롤 플레인 노드를 초기화한다.(마스터 초기화)
 - kubeadm join : Kubernetes 워커 노드를 초기화하고 클러스터에 연결한다.
 - kubeadm upgrade : kubernetes 업그레이드

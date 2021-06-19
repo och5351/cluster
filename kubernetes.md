@@ -283,10 +283,7 @@ kube-scheduler <a id="kube-scheduler"></a>
 kuber-scheduler는 이름에서 알 수 있듯이 새로운 포드들이 만들어질때 현재 클러스터내에서 자원할당이 가능한 노드들 중에서 알맞은 노드를 선택해서 그곳에 포드를 띄우는 역할을. Pod는 처음 실행될때 여러가지 조건을 지정해서 실행하는데, kube-scheduler가 그 조건에 맞는 노드를 찾아주는 역할. 필요한 하드웨어 요구사항이라던가, 어피니티/안티어피니티(affinity/anti-affinity) 조건을 만족하는지, 특정 데이터가 있는 노드에 할당한다던가 하는 다양한 설정을 할 수 있음.
 <br>
 
-<div style="text-align: right"> 
-
-[목차로](#home1) 
-</div>
+<div style="text-align: right">[목차로](#home1)</div>
 <br>
 
 kube-controller-manager <a id="kube-contoroller-manager"></a>

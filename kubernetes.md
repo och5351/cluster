@@ -267,7 +267,7 @@ Cluster의 다른 멤버들이 apiserver에 접근하기 위한 ip 주소. 이 �
 [목차로](#home1)
 <br>
 
-===
+---
 
 ### kube-scheduler <a id="kube-scheduler"></a>
 <hr>

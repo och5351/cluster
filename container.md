@@ -4,7 +4,7 @@
 
 
 # 컨테이너와 가상 서버의 차이점
-
+<div align="center">
 <table>
     <thead>
         <tr>
@@ -37,8 +37,8 @@
     </table>
 </thead>
 
-<div align="center">
-    <img src="https://user-images.githubusercontent.com/45858414/128109064-84d5312a-7640-4d85-9e60-9d674785ba56.png" width="70%" height="70%"/>
+
+<img src="https://user-images.githubusercontent.com/45858414/128109064-84d5312a-7640-4d85-9e60-9d674785ba56.png" width="70%" height="70%"/>
 </div>
 
 <span>Windows나 Mac에서 컨테이너를 돌리려면 리눅스 커널을 위해 가상 서버 필요(Hyper-V[windows10], HyperKit[Mac] 위에서 LinuxKit 기동).</span>

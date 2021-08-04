@@ -240,8 +240,8 @@ Kubernetes는 Master와 Node로 구성 된다.
 * 컨테이너의 동작을 확인하는 프로브 실행
 * 내장된 cAdvisor를 통해 메트릭 수집 및 공개           
             
-            </td>
-        </tr>
+</td>
+</tr>
     </table>
 </thead>
 </div>

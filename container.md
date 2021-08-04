@@ -11,8 +11,9 @@
 - [컨테이너와 가상 서버의 차이점](#1)
 - [컨테이너의 장점](#2)
 - [도커 아키텍처](#3)
-- [kube-controller-manager](#kube-contoroller-manager)
-- [cloud-controller-manager](#cloud-controller-manager)
+- [도커 데몬](#4)
+- [도커 클라이언트](#5)
+- [이미지](#6)
 
 
 <br><br>
@@ -53,20 +54,21 @@
         </tr>
     </table>
 </thead>
-
+<br><br>
 
 <img src="https://user-images.githubusercontent.com/45858414/128109064-84d5312a-7640-4d85-9e60-9d674785ba56.png" width="70%" height="70%"/>
-
-<br>
+</div>
+<br><br>
 
 * Windows나 Mac에서 컨테이너를 돌리려면 리눅스 커널을 위해 가상 서버 필요(Hyper-V[windows10], HyperKit[Mac] 위에서 LinuxKit 기동).
 * LinuxKit 은 컨테이너를 실행하기 위한 경량의 리눅스 서브 시스템으로 도커(Docker), IBM, 리눅스 파운데이션(Linux Foundation), 마이크로소프트(Microsoft), ARM, 휴렛 패커드(Hewlett Packard), 인텔(Intel)과 같은 회사가 만듬
 * 컨테이너는 하이버바이저상의 가상 서버에서도 사용할 수 있어 퍼블릭 클라우드의 '가상 서버'나 온프레미스의 Openstack 위에서 많이 활용 됨
 <br><br>
+<div align="center">
 <img src="https://user-images.githubusercontent.com/45858414/128111801-372e29b2-5b3d-4ac5-8800-7528aa0580cb.png" width="70%" height="70%"/>
 
 </div>
-
+<br>
 
 <div align="right"> 
 
@@ -118,18 +120,21 @@
 
 <div align="center">
 <img src="https://user-images.githubusercontent.com/45858414/128115987-5ddec64e-f51c-49a4-8099-a1c33eacd93d.png" width="70%" height="70%"/>
-
+</div>
+<br><br>
 
 * 리눅스 커널이 제공하는 기능을 활용하면 자체적 컨테이너를 만드는 것이 가능하나, 재사용이나 공유가 어렵다.
 * 도커는 Build(작성), Ship(이동), Run(실행) 기능 지원
 * 도커는 도커 데몬 서버와 클라이언트인 도커 커맨드, 이미지 보관소인 레지스트리로 구성
 
 
-</div>
+
 <div align="right"> 
 
 [목차로](#home1) 
 </div><br><br>
+
+<a id="4"></a>
 
 # 도커 데몬
 
@@ -143,6 +148,47 @@
 [목차로](#home1) 
 </div><br><br>
 
+<a id="5"></a>
+
+# 도커 클라이언트
+
+도커 커맨드는 컨테이너를 조작하는 커맨드 라인 유저 인터페이스로 도커 데몬의 클라이언트다.
+도커 커맨드는 도커 API를 사용하여 도커 데몬에 요청을 보낸다.
+
+```
+    1. docker build : 베이서 이미지에 기능을 추가하여 새로운 이미지를 만들 때 사용
+    2. docker pull : 레지스트리에서 이미지를 로컬에 다운로드할 때 사용
+    3. docker run : 이미지를 바탕으로 컨테이너를 실행
+
+```
+<div align="right"> 
+
+[목차로](#home1) 
+</div><br><br>
+
+<a id="6"></a>
+
+# 이미지
+
+이미지는 읽기 전용인 컨테이너의 템플릿을 말한다.(컨테이너를 기동하기 위한 실행 파링과 설정 파일의 묶음)
+컨테이너를 실행하면 이미지에 담긴 미들웨어나 애플리케이션이 설정에 따라 기동한다.
+
+예시 ) Jenkins 컨테이너
+
+<div align="center">
+<img src="https://user-images.githubusercontent.com/45858414/128120835-f87d1327-72a4-4f07-9e64-6a4bc97b3727.png" width="70%" height="70%"/>
+<br>
+<div align="left">
+
+* 대부분의 이미지는 다른 이미지에 기반하여 만들어진다. (웹 서버인 Nginx의 컨테이너는 리눅스 배포판 중 하나인 데이안에 기반하여 만들어 짐)
+* 이미지를 만들 때는 기반 이미지와 설치 스크립트 등을 Dockerfile에 기재하여 빌드한다.
+
+</div>
+
+<br>
 
 
+</div>
+
+<br>
 

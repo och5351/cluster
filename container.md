@@ -37,8 +37,9 @@
     </table>
 </thead>
 
-
-<img src="https://user-images.githubusercontent.com/45858414/128109064-84d5312a-7640-4d85-9e60-9d674785ba56.png" width="70%" height="70%"/>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/45858414/128109064-84d5312a-7640-4d85-9e60-9d674785ba56.png" width="70%" height="70%"/>
+</div>
 
 <span>Windows나 Mac에서 컨테이너를 돌리려면 리눅스 커널을 위해 가상 서버 필요(Hyper-V[windows10], HyperKit[Mac] 위에서 LinuxKit 기동).</span>
 <span>LinuxKit 은 컨테이너를 실행하기 위한 경량의 리눅스 서브 시스템으로 도커(Docker), IBM, 리눅스 파운데이션(Linux Foundation), 마이크로소프트(Microsoft), ARM, 휴렛 패커드(Hewlett Packard), 인텔(Intel)과 같은 회사가 만듬</span>

@@ -4,18 +4,21 @@
 
 # 쿠버네티스 아키텍처
 
+<br>
+<div align="center">
 <img src="https://user-images.githubusercontent.com/45858414/128103567-af756b41-4566-4ebd-a43a-e733890f81ba.png"  width="70%" height="70%"/>
+</div>
 
-<span>SRE : Site Reliability Engineer (사이트 신뢰성 엔지니어)의 약어로, 운영 업무만이 아닌 운영의 신뢰성 향상, 자동화를 목적으로 하는 프로그램 개발 담당 엔지니어</span>
-<span>마스터는 k8s 클러스터의 단일 장애점이 되지 않도록 다중화 할 수 있다.</span>
-<span>쿠버네티스에 연결 가능한 노드의 개수는 버전 1.11 기준으로 5,000대 가능.</span>
+* SRE : Site Reliability Engineer (사이트 신뢰성 엔지니어)의 약어로, 운영 업무만이 아닌 운영의 신뢰성 향상, 자동화를 목적으로 하는 프로그램 개발 담당 엔지니어
+* 마스터는 k8s 클러스터의 단일 장애점이 되지 않도록 다중화 할 수 있다.
+* 쿠버네티스에 연결 가능한 노드의 개수는 버전 1.11 기준으로 5,000대 가능.
 
 <br><br>
 
 ## 목차
 
 - [Kubernetes 의 장점](#1)
-- 
+- [](#2)
 
 
 <br><br>
@@ -141,7 +144,14 @@ CPU 사용률이 낮은 서버가 많은 것은 퍼블릭 클라우드에서도 
 [목차로](#home1) 
 </div><br><br>
 
+<br><br>
+<a id="2"></a> 
 
+# Kubernetes 세부 아키텍처
+
+<br>
+
+Kubernetes는 Master와 Node로 구성 된다.
 
 
 ### 출처: 15단계로 배우는 도커와 쿠버네티스

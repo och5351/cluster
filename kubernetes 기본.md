@@ -8,6 +8,7 @@
 <div align="center">
 <img src="https://user-images.githubusercontent.com/45858414/128103567-af756b41-4566-4ebd-a43a-e733890f81ba.png"  width="70%" height="70%"/>
 </div>
+<br><br>
 
 * SRE : Site Reliability Engineer (사이트 신뢰성 엔지니어)의 약어로, 운영 업무만이 아닌 운영의 신뢰성 향상, 자동화를 목적으로 하는 프로그램 개발 담당 엔지니어
 * 마스터는 k8s 클러스터의 단일 장애점이 되지 않도록 다중화 할 수 있다.
@@ -18,7 +19,8 @@
 ## 목차
 
 - [Kubernetes 의 장점](#1)
-- [](#2)
+- [Kubernetes 세부 아키텍처](#2)
+- [쿠버네티스를 구성하는 기본 컴포넌트와 플러그인](#3)
 
 
 <br><br>
@@ -153,5 +155,94 @@ CPU 사용률이 낮은 서버가 많은 것은 퍼블릭 클라우드에서도 
 
 Kubernetes는 Master와 Node로 구성 된다.
 
+<br>
+<div align="center">
+<img src="https://user-images.githubusercontent.com/45858414/128174332-28867e33-561c-44f5-a860-f76da00cda23.png" width="70%" height="70%"/>
+</div>
+<br><br>
 
+<div align="center">
+<table>
+    <thead>
+        <tr>
+            <th colspan="1">이름</th>
+            <th colspan="1">설명</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>NODE</td>
+            <td>각 노드의 역할을 의미, 제어를 담당하는 master와 실행을 담당하는 node1과 node2가 존재</td>
+        </tr>
+        <tr>
+            <td>NAME</td>
+            <td>컨테이너의 실행 단위인 파드의 이름. 네임스페이스(Namespace) 내에서 유일한 이름이 되도록 해시 문자열이 추가로 붙기도 함.</td>
+        </tr>
+        <tr>
+            <td>IMAGE</td>
+            <td>컨테이너의 이미지와 태그</td>
+        </tr>
+    </table>
+</thead>
+</div>
+
+<br>
+<div align="right"> 
+
+[목차로](#home1) 
+</div><br><br>
+
+<a id="3"></a>
+
+# 쿠버네티스를 구성하는 기본 컴포넌트와 플러그인 
+
+<div align="center">
+<table>
+    <thead>
+        <tr>
+            <th colspan="1">구성 요소</th>
+            <th colspan="1">개요</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>kubectl</td>
+            <td>k8s 클러스터를 조작하기 위한 도구로 가장 빈번하게 이용되는 커맨드 라인 인터페이스.</td>
+        </tr>
+        <tr>
+            <td>kube-apiserver</td>
+            <td>kubectl 등의 API 클라이언트로부터 오는 REST 요청을 검증하고, API 오브젝트를 구성하고 상태를 보고한다.</td>
+        </tr>
+        <tr>
+            <td>kube-scheduler</td>
+            <td>쿠버네티스의 기본 스케줄러이며, 새로 생성된 모든 파드에 대해 실행할 최적의 노드를 선택한다. 스케줄러는 파드가 실행 가능한 노드를 찾은 다음 점수를 계산하여 가장 점수가 높은 노드를 선택한다.</td>
+        </tr>
+        <tr>
+            <td>kube-controller-manager</td>
+            <td>컨트롤러를 구동하는 마스터상의 컴포넌트</td>
+        </tr>
+        <tr>
+            <td>cloud-controller-manager</td>
+            <td>API를 통해서 클라우드 서비스와 연계하는 컨트롤러로, 클라우드 업체에서 개발한다.</td>
+        </tr>
+        <tr>
+            <td>etcd</td>
+            <td>k8s 클러스터의 모든 관리 데이터는 etcd에 저장된다. 이 etcd는 CoreOS가 개발한 분산 키/값 저장소로 신뢰성이 요구되는 핵심 데이터의 저장 및 접근을 위해 설계 되었다.</td>
+        </tr>
+        <tr>
+            <td>kubelet</td>
+            <td>
+
+<p>kubelet은 각 노드에서 다음과 같은 역할을 수행한다.</p>
+
+* 파드와 컨테이너의 실행
+* 파드와 노드의 상태를 API 서버에 보고
+* 컨테이너의 동작을 확인하는 프로브 실행
+* 내장된 cAdvisor를 통해 메트릭 수집 및 공개           
+            
+            </td>
+        </tr>
+    </table>
+</thead>
+</div>
 ### 출처: 15단계로 배우는 도커와 쿠버네티스

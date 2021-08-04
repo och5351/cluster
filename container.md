@@ -14,6 +14,8 @@
 - [도커 데몬](#4)
 - [도커 클라이언트](#5)
 - [이미지](#6)
+- [컨테이너](#7)
+- [도커 레지스트리](#8)
 
 
 <br><br>
@@ -138,10 +140,8 @@
 
 # 도커 데몬
 
-<div align="center">
 * 클라이언트인 도커 커맨드의 명령을 받아들여서 도커 오브젝트인 이미지, 컨테이너, 볼륨, 네트워크 등을 관리
 * 네트워크 너머에 있는 원격 클라이언트로부터 요청을 받는 것 가능
-</div>
 
 <div align="right"> 
 
@@ -177,18 +177,126 @@
 
 <div align="center">
 <img src="https://user-images.githubusercontent.com/45858414/128120835-f87d1327-72a4-4f07-9e64-6a4bc97b3727.png" width="70%" height="70%"/>
-<br>
-<div align="left">
+</div>
+<br><br>
+
 
 * 대부분의 이미지는 다른 이미지에 기반하여 만들어진다. (웹 서버인 Nginx의 컨테이너는 리눅스 배포판 중 하나인 데이안에 기반하여 만들어 짐)
 * 이미지를 만들 때는 기반 이미지와 설치 스크립트 등을 Dockerfile에 기재하여 빌드한다.
+<br>
 
+예시 ) Nginx 컨테이너
+
+<div align="center">
+<img src="https://user-images.githubusercontent.com/45858414/128124729-89f1a80f-ad42-4b76-8e46-b0e19aeb8bec.png" width="70%" height="70%"/>
 </div>
+<br>
+1. docker build 명령어를 통해 읽기
+2. 기반이 되는 데비안 이미지가 로컬에 없으면 레지스트리로 부터 다운
+3. 데비안 이미지를 컨테이너로 기동
+4. Nginx 패키지를 설치하고 설정 파일을 추가
+5. 새로운 이미지 Nginx로 로컬 리포지터리에 저장
 
 <br>
 
+<div align="right"> 
 
+[목차로](#home1) 
+</div><br><br>
+
+<a id="7"></a>
+
+# 컨테이너
+
+컨테이너는 하나의 프로세스라고 불 수 있다.
+리눅스의 네임스페이스나 컨트롤 그룹(cgroups)을 통해 다른 프로세스들과 완전히 분리되어 실행되는 프로세스이다.
+그러나 컨테이너는 정지된 상태로도 관리되기 때문에 보다 명확하게 표현하자면 '실행 가능한 이미지의 인스턴스' 라고 할 수 있다.
+
+* 'docker run' 명령어를 통해 이미지는 컨테이너로 변환되어 하나의 인스턴스가 된다. (하나의 IP 주소를 가지는 독립된 서버처럼 동작)
+* 'docker stop' 혹은 'docker kill' 명령어를 통해 정상 종료 혹은 강제 종료를 할 수 있다. 정지 상태는 삭제된 상태가 아니다.
+* 'docker rm' 에 의해 지워지기 전까지 기동했을 때의 샐행 옵션과 로그들을 간직한다.
+* 'docker start' 명령어를 사용하여 정지된 컨테이너를 다시 사용할 수 있지만 정지 전 할당된 IP 주소는 유지되지 않는다.
+<br>
+<div align="center">
+<img src="https://user-images.githubusercontent.com/45858414/128132916-7e1abfe0-ae50-458d-9729-e43c654a0770.png" width="70%" height="70%"/>
 </div>
+<br>
+
+<div align="right"> 
+
+[목차로](#home1) 
+</div><br><br>
+
+<a id="8"></a>
+
+# 도커 레지스트리
 
 <br>
 
+* 도커 레지스트리는 컨테이너의 이미지가 보관 되는 곳이다. 도커는 기본으로 도커 허브에 있는 이미지를 찾도록 설정되어 있다.
+* 레지스트리 : 리포지터리를 여러개 가지는 보관 서비스
+* 리포지터리 : 하나의 이미지에 대해 태그를 사용하여 다양한 출시 버전을 보관
+
+
+## 퍼블릭 레지스트리
+
+<br>
+
+누구나 이용할 수 있도록 공개된 레지스트리. 도커 허브의 경우 무료로 사용 가능.(비공개는 과금)
+
+git에 있는 Dockerfile이나 소스 코드를 편집하여 push 하면 자동으로 이미지를 빌드하고 repository에 등록해 주고, container의 취약성을 검사하고 보고 해주는 registry 도 있다.
+
+* Docker Hub
+* Quay
+
+<br><br>
+
+## 클라우드 레지스트리
+
+<br>
+
+퍼블릭 클라우드가 제공하는 Registry 서비스. 접근 가능한 계정을 제한하여 비공개로 운영할 수 있다.
+
+* Amazon Elastic Container Registry
+* Azure Container Registry
+* Google Container Registry
+* IBM Colud Container Registry
+
+<br><br>
+
+## 비공개 레지스트리
+
+<br>
+
+회사나 팀 전용으로 Registry를 구축하여 운영하는 경우에 해당. 오픈 소스로 이용할 수 있는 Registry software는 아래와 같다.
+
+* Harbor
+* GitLab Container Registry
+* registry
+
+쿠버네티스를 코어로 하는 소프트웨어 제품들 중에는 레지스트리 기능이 포함된 경우도 있다.
+
+<div align="right"> 
+
+[목차로](#home1) 
+</div><br><br>
+
+<a id="9"></a>
+
+# Registry 와 Kubernetes 의 관계
+
+<br>
+
+쿠버네티스에서도 Registry에서 이미지를 다운로드 받아 컨테이너를 실행함.
+
+1. docker build로 이미지 빌드
+2. docker push로 이미지를 Registry에 등록
+3. kubectl 커맨드로 매니페스트에 기재한 오브젝트들의 생성 요청
+4. 매니페스트에 기재된 Repository로 부터 컨테이너의 이미지를 다운
+5. Container 를 Pod 위에서 기동
+
+예시) 
+
+<div align="center">
+<img src="https://user-images.githubusercontent.com/45858414/128136339-cda2870d-b611-46de-ba92-9d3869dc582b.png" width="70%" height="70%"/>
+</div>

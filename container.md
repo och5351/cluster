@@ -16,6 +16,8 @@
 - [이미지](#6)
 - [컨테이너](#7)
 - [도커 레지스트리](#8)
+- [Registry 와 Kubernetes 의 관계](#9)
+- [도커와 쿠버네티스의 연동](#10)
 
 
 <br><br>
@@ -85,16 +87,15 @@
 
 <br><br>
 
-인프라의 사용률 향상
----
+### 인프라의 사용률 향상
+
 
 * 하나의 물리서버나 가상 서버 위에서 여러 개의 컨테이너를 돌릴 수 있다.
 * CPU와 메모리 사용률을 높여 하드웨어를 효율적을 이용할 수 있다.
 
 <br><br>
 
-빠른 기동 시간
----
+### 빠른 기동 시간
 
 * 컨테이너의 기동 시간은 가상 서버나 물리 서버의 기동 시간보다 훨씬 빠르다.
 * 운영체제, 애플리케이션, 미들웨어 등 다양한 이미지를 쉽게 얻을 수 있다.
@@ -103,8 +104,7 @@
 
 <br><br>
 
-불변 실행 환경(Immutable Infrastructure)
----
+### 불변 실행 환경(Immutable Infrastructure)
 
 * 애플리케이션 실행에 필요한 소프트웨어를 모두 포함하여 컨테이너를 작성할 수 있다.
 * 컨테이너를 조합하여 시스템을 구성함으로써 특징 서버 환경에 대한 종속성을 배제할 수 있따.
@@ -191,6 +191,7 @@
 <img src="https://user-images.githubusercontent.com/45858414/128124729-89f1a80f-ad42-4b76-8e46-b0e19aeb8bec.png" width="70%" height="70%"/>
 </div>
 <br>
+
 1. docker build 명령어를 통해 읽기
 2. 기반이 되는 데비안 이미지가 로컬에 없으면 레지스트리로 부터 다운
 3. 데비안 이미지를 컨테이너로 기동
@@ -216,6 +217,7 @@
 * 'docker stop' 혹은 'docker kill' 명령어를 통해 정상 종료 혹은 강제 종료를 할 수 있다. 정지 상태는 삭제된 상태가 아니다.
 * 'docker rm' 에 의해 지워지기 전까지 기동했을 때의 샐행 옵션과 로그들을 간직한다.
 * 'docker start' 명령어를 사용하여 정지된 컨테이너를 다시 사용할 수 있지만 정지 전 할당된 IP 주소는 유지되지 않는다.
+
 <br>
 <div align="center">
 <img src="https://user-images.githubusercontent.com/45858414/128132916-7e1abfe0-ae50-458d-9729-e43c654a0770.png" width="70%" height="70%"/>
@@ -237,8 +239,9 @@
 * 레지스트리 : 리포지터리를 여러개 가지는 보관 서비스
 * 리포지터리 : 하나의 이미지에 대해 태그를 사용하여 다양한 출시 버전을 보관
 
+<br><br>
 
-## 퍼블릭 레지스트리
+### 퍼블릭 레지스트리
 
 <br>
 
@@ -251,7 +254,7 @@ git에 있는 Dockerfile이나 소스 코드를 편집하여 push 하면 자동�
 
 <br><br>
 
-## 클라우드 레지스트리
+### 클라우드 레지스트리
 
 <br>
 
@@ -264,7 +267,7 @@ git에 있는 Dockerfile이나 소스 코드를 편집하여 push 하면 자동�
 
 <br><br>
 
-## 비공개 레지스트리
+### 비공개 레지스트리
 
 <br>
 
@@ -289,6 +292,7 @@ git에 있는 Dockerfile이나 소스 코드를 편집하여 push 하면 자동�
 
 쿠버네티스에서도 Registry에서 이미지를 다운로드 받아 컨테이너를 실행함.
 
+
 1. docker build로 이미지 빌드
 2. docker push로 이미지를 Registry에 등록
 3. kubectl 커맨드로 매니페스트에 기재한 오브젝트들의 생성 요청
@@ -300,3 +304,129 @@ git에 있는 Dockerfile이나 소스 코드를 편집하여 push 하면 자동�
 <div align="center">
 <img src="https://user-images.githubusercontent.com/45858414/128136339-cda2870d-b611-46de-ba92-9d3869dc582b.png" width="70%" height="70%"/>
 </div>
+
+<div align="right"> 
+
+[목차로](#home1) 
+</div><br><br>
+
+<a id="10"></a>
+
+# 도커와 쿠버네티스의 연동
+
+<br>
+
+쿠버네티스는 도커를 컨테이너의 런타임 환경으로 사용. 
+
+* 도커 데몬 프로세스인 dockerd 와 연동하여 동작하는 containerd 프로세스는 도커 기업이 개발하다가 CNCF(Cloud Native Computing Foundation)로 기증
+* containerd는 이미지 보관 및 전송, 컨테이너 실행, 볼륨과 네트워크 연결과 같은 컨테이너의 라이프 사이클을 호스트에서 완전히 관리할 수 있게 됨
+* containerd의 버전 1.1 부터는 CRI(Container Runtime Interface)에 대응하여 네이티브 kubelet 도 연동 가능
+* conteinerd는 OCI(Open Container Initiative)의 표준 사양에 준하는 컨테이너 런타임 runC를 사용
+* CRI를 통해 컨테이너 실행 요청을 받으면 containerd는 containerd-shim을 만든다. runC는 컨테이너를 띄운 후 바로 종료하며, containerd-shim 이 프로세르로 남음.
+* 향후 쿠버네티스의 컨테이너 실행 환경은 도커 설치를 필수로 하지 않게 되어, 보다 심플, 경량화 된 방향으로 개발 진행 중. (public cloud 의 쿠버네티스도 kublet이 containerd와 직접 연계하는 방향으로 진행)
+
+<br><br>
+<div align="center">
+<img src="https://user-images.githubusercontent.com/45858414/128138268-437c318f-60eb-4415-b74e-224097ae7549.png" width="70%" height="70%"/>
+</div>
+
+<div align="right"> 
+
+[목차로](#home1) 
+</div><br><br>
+
+<a id="11"></a>
+
+# 리눅스 표준 규격과 리눅스 ABI
+
+<br>
+
+리눅스 배포판과 커널 버전이 달라도 동작하는 이유는
+
+1. LBS(Linux Base Standard)는 소스 코드를 컴파일한 시점에서 호환성 있는 머신 코드를 생성하도록 ISO 규격으로 표준화되어 있다.
+2. 리눅스 ABI(Application Binary Interface)로 인해 리눅스 커널의 버전이 올라가도 유저 공간에서 동작하는 바이너리 레벨의 호환성은 유지된다.
+
+<br>
+
+### 리눅스 커널 기술
+
+<br>
+
+##### 1. Namespace
+
+<br>
+
+네임스페이스는 리눅스 커널에 사용된 기술로 컨테이너가 하나의 독립된 서버와 같이 동작할 수 있게 한다. 네임스페이스를 사용하면 특정 프로세스를 다른 프로세스로부터 분리시켜 같은 네임스페이스 내에서만 접근할 수 있도록 제한할 수 있다.
+
+<div align="center">
+<table>
+    <thead>
+        <tr>
+            <th colspan="1">네임스페이스</th>
+            <th colspan="1">의미</th>
+            <th colspan="1">역할</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>pid</td>
+            <td>PID: Process ID</td>
+            <td>리눅스 커널의 프로세스 ID 분리</td>
+        </tr>
+        <tr>
+            <td>net</td>
+            <td>NET: Networking</td>
+            <td>네트워크 인터페이스(NET) 관리</td>
+        </tr>
+        <tr>
+            <td>ipc</td>
+            <td>IPC: Inter Process Communication</td>
+            <td>프로세스 간 통신(IPC) 접근 관리</td>
+        </tr>
+        <tr>
+            <td>mnt</td>
+            <td>MNT: Mount</td>
+            <td>파일 시스템의 마운트 관리</td>
+        </tr>
+        <tr>
+            <td>uts</td>
+            <td>UTS: Unix Timesharing System</td>
+            <td>커널과 버전 식별자 분리</td>
+        </tr>
+    </table>
+</thead>
+</div>
+
+<br><br>
+
+##### 2. 컨트롤 그룹(cgroup)
+
+<br>
+
+도커는 리눅스 커널의 cgroup을 사용한다. cgroup은 프로세스별로 CPU 시간이나 메모리 사용량과 같은 자원을 감시하고 제한한다.
+
+<br><br>
+
+##### 3. 유니온 파일 시스템(UnionFS)
+
+<br>
+
+UnionFS는 다른 파일 시스템에서 파일이나 디렉터리를 투과적으로 겹쳐서, 하나의 일관적인 파일 시스템으로 사용할 수 있게 한다. 도커에서는 UnionFS의 여러 구현체(aufs, vtrfs, overlay2) 중 하나를 선택할 수 있다.
+예전에는 aufs가 사용되었으나, Docker CE 버전 17.12 에서는 보다 빠르게 동작하고 구조가 간단한 overlay2가 사용된다.
+
+<br><br>
+
+##### 4. OCI(Open Container Initiative)
+
+<br>
+
+컨테이너의 표준 사양을 책정하기 위해 2015년 6월에 만들어진 단체.
+
+설립 초기에는 도커가 사실상 컨테이너의 표준이었으나, CoreOS가 또 다른 표준화를 진행하고 있어 업계 표준이 필요해짐에 따라, 2017년 7월에 발표한 OCI v1.0은 컨테이너 런타임의 표준 사양인 Runtime Specification v1.0과 이미지 포맷의 표준 사양인 Format Specification v1.0 으로 구성된다.
+
+이에 맞춘 도커의 runC가 있으며, CoreOS의 컨테이너 런타임 rkt도 진행중.
+
+<div align="right"> 
+
+[목차로](#home1) 
+</div><br><br>

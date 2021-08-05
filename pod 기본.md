@@ -40,5 +40,5 @@
 
 1. 파드 내부의 컨테이너들은 파드의 IP 주소와 포트번호를 공유한다.
 2. 파드의 내부 컨테이너들은 localhost로 서로 통신할 수 있다.
-3. 파드의 내부 컨테이너들은 [System V 프로세스 통신](#https://wiki.kldp.org/HOWTO/html/Secure-Programs-HOWTO/sysv-ipc.html)이나 POSIX 공유 메모리를 사용하여 서로 통신할 수 있다.
+3. 파드의 내부 컨테이너들은 <a href="https://wiki.kldp.org/HOWTO/html/Secure-Programs-HOWTO/sysv-ipc.html">System V 프로세스 통신]</a>이나 POSIX 공유 메모리를 사용하여 서로 통신할 수 있다.
 4. 파드의 내부 컨테이너들은 파등의 볼륨을 마운트하여 파일 시스템을 공유할 수 있다.

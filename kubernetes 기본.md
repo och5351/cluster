@@ -479,7 +479,7 @@ k8s를 조작하는 사람으로는 애플리케이션 개발자, SRE(Site Relia
 <br>
 
 파드나 컨테이너는 실행 시에만 존재하는 일시적인 존재이기 때문에 중요한 데이터를 컨테이너의 파일 시스템에 저장 하지 않는다.
-데이터를 잃지 않기 위해서는 <a src="https://kubernetes.io/ko/docs/concepts/storage/persistent-volumes/">퍼시스턴트 볼륨(Persistent Volume)</a>을 사용하여 전원이 꺼져도 데이터가 유지되는 스토리지 시스템에 데이터를 저장해야 한다.
+데이터를 잃지 않기 위해서는 퍼시스턴트 볼륨(Persistent Volume)(1) 을 사용하여 전원이 꺼져도 데이터가 유지되는 스토리지 시스템에 데이터를 저장해야 한다.
 
 복수의 노드에서 접속 가능한 Persistent Volume 은 쿠버네티스의 범위에 포함되지 않으므로 외부 스토리지 시스템을 연동해야 한다.
 쿠버네티스는 스토리지를 계층적으로 추상화한 오브젝트를 제공한다.
@@ -490,6 +490,7 @@ k8s를 조작하는 사람으로는 애플리케이션 개발자, SRE(Site Relia
 [목차로](#home1) 
 </div><br><br>
 
+(1) [퍼시스턴트 볼륨(Persistent Volume)](#https://kubernetes.io/ko/docs/concepts/storage/persistent-volumes/")
 
 
 ### 출처: 15단계로 배우는 도커와 쿠버네티스

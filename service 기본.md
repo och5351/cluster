@@ -17,8 +17,8 @@
 - [서비스 역할](#1)
 - [대표 IP 주소](#2)
 - [부하 분산](#3)
-- [Pod의 종료 처리 흐름](#4)
-- [클러스터 네트워크](#5)
+- [이름 해결](#4)
+- [환경 변수](#5)
 
 <br><br>
 
@@ -72,5 +72,80 @@
 
 <br>
 
-서비스의 대표 IP 주소에 도착한 요청은 Selector의 라벨과 일치하는 파드에 전송된다. 이를 위한 모듈인 kube-proxy는 초창기에는 커널의 유저 공간에서 동작하는 프록시 서버였지만, 지금은 [iptables](#https://itwiki.kr/w/리눅스_iptables) 나 ipvs를 관리하는 프로그램으로 바뀌었다.
+서비스의 대표 IP 주소에 도착한 요청은 Selector의 라벨과 일치하는 파드에 전송된다. 이를 위한 모듈인 kube-proxy는 초창기에는 커널의 유저 공간에서 동작하는 프록시 서버였지만, 지금은 <a href="https://itwiki.kr/w/리눅스_iptables">iptables</a> 나 <a href="https://kubernetes.io/blog/2018/07/09/ipvs-based-in-cluster-load-balancing-deep-dive/">ipvs</a>를 관리하는 프로그램으로 바뀌었다.
 
+<br>
+<div align="right"> 
+
+[목차로](#home1) 
+</div><br><br>
+
+<a id="4"></a>
+
+# 이름 해결
+
+<br>
+
+서비스는 IP 주소와 서비스명을 k8s 클러스터의 내부 DNS에 등록한다. 그래서 k8s 클러스터 내의 파드에서는 서비스 이름으로 접근하는 것이 가능한다.
+
+<br>
+<div align="right"> 
+
+[목차로](#home1) 
+</div><br><br>
+
+<a id="5"></a>
+
+# 환경 변수
+
+<br>
+
+서비스가 만들어지고 나서 생성되는 파드의 컨테이너에는 환경 변수가 설정되어 있다. 커넽이너 안의 애플리케이션 코드에서는 환경 변수를 이용해서 서비스의 대표 IP 주소를 얻을 수 있다.
+
+<br>
+<div align="right"> 
+
+[목차로](#home1) 
+</div><br><br>
+
+<a id="6"></a>
+
+# 서비스 타입 
+
+<br>
+
+서비스를 설정할 때는 해당 서비스를 이용하는 클라이언트를 고려하여 서비스 타입을 지어한다. 예를 들면, k8s 클러스터 내부 파드를 대상으로 하는 경우와 k8s 클러스터 외부에서 접근하는 경우를 고려하여 지정한다.
+
+<br>
+<div align="right"> 
+
+[목차로](#home1) 
+</div><br><br>
+
+<a id="7"></a>
+
+# 어피니티
+
+<br>
+
+기본적으로 부하분산에 사용되는 알고리즘은 랜덤이다. 클라이언트에 따라 전송되는 파드를 고정하고 싶은 경우에는 sessionAffinity 항목에 ClientIP를 설정한다. 그리고 HTTP 헤드 안의 쿠키(Cookie) 값에 따라 전송되는 파드를 고정하고 싶은 경우에는 뒤에서 설명할 인그레스를 이용해야 한다.
+
+<br>
+<div align="right"> 
+
+[목차로](#home1) 
+</div><br><br>
+
+<a id="8"></a>
+
+# 실릭터와 라벨
+
+<br>
+
+서비스에 도달한 요청 트래픽이 파드에 전송될 때는 Selector와 라벨을 참조한다. 라벨은 파드 등의 오브젝트에 부여하는 키값 쌍이다. 서비스에 도착한 요청은 Selector에 설정된 조건에 일치하는 라벨을 가지는 파드에 전송한다. Selector 의 라벨 조건이나 파드에 부여되는 라벨은 운영 중에도 바꿀 수 있어 유연하게 운영할 수 있다.
+
+<br>
+
+### 출처: 15단계로 배우는 도커와 쿠버네티스
+### 출처: kubernetes document
+<a href="https://kubernetes.io/ko/docs/concepts/services-networking/service/">서비스</a>

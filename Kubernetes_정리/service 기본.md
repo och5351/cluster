@@ -8,7 +8,7 @@
 쿠버네티스의 서비스는 클라이언트의 요청을 파드에 전달하는 역할을 담당한다. 이러한 서비스가 필요한 이유는 파드의 IP 주소가 기동할 때마다 바뀌기 때문. 그래서 파드에 접속해야하는 클라이언트는 서비스가 가지는 대표 IP를 사용해서 접속해야 한다.
 
 <br>
-
+<a href="https://kubernetes.io/ko/docs/concepts/services-networking/service/">서비스</a>
 
 <br><br>
 
@@ -131,7 +131,7 @@
 
 <br>
 
-기본적으로 부하분산에 사용되는 알고리즘은 랜덤이다. 클라이언트에 따라 전송되는 파드를 고정하고 싶은 경우에는 sessionAffinity 항목에 ClientIP를 설정한다. 그리고 HTTP 헤드 안의 쿠키(Cookie) 값에 따라 전송되는 파드를 고정하고 싶은 경우에는 뒤에서 설명할 인그레스를 이용해야 한다.
+기본적으로 부하분산에 사용되는 알고리즘은 랜덤이다. 클라이언트에 따라 전송되는 파드를 고정하고 싶은 경우에는 sessionAffinity 항목에 ClientIP를 설정한다. 그리고 HTTP 헤드 안의 쿠키(Cookie) 값에 따라 전송되는 파드를 고정하고 싶은 경우에는 인그레스를 이용해야 한다.
 
 <br>
 <div align="right"> 
@@ -151,4 +151,4 @@
 
 ### 출처: 15단계로 배우는 도커와 쿠버네티스
 ### 출처: kubernetes document
-<a href="https://kubernetes.io/ko/docs/concepts/services-networking/service/">서비스</a>
+

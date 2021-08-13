@@ -21,6 +21,7 @@
 - [Registry 와 Kubernetes 의 관계](#9)
 - [도커와 쿠버네티스의 연동](#10)
 - [리눅스 표준 규격과 리눅스 ABI](#11)
+- [docker command](#12)
 
 
 <br><br>
@@ -434,13 +435,12 @@ UnionFS는 다른 파일 시스템에서 파일이나 디렉터리를 투과적�
 [목차로](#home1) 
 </div><br><br>
 
-
+<a id="12"></a>
 # 도커 커맨드
 <br>
 
 ##### 컨테이너 환경 표시
 <br>
-<div align="center">
 <table>
     <thead>
         <tr>
@@ -455,7 +455,6 @@ UnionFS는 다른 파일 시스템에서 파일이나 디렉터리를 투과적�
         </tr>
     </tbody>
 </table>
-</div>
 <br>
 
 ##### 컨테이너의 3대 기능
@@ -463,7 +462,6 @@ UnionFS는 다른 파일 시스템에서 파일이나 디렉터리를 투과적�
 
 ##### 1. 컨테이너 이미지 빌드 
 <br>
-<div align="center">
 <table>
     <thead>
         <tr>
@@ -473,7 +471,7 @@ UnionFS는 다른 파일 시스템에서 파일이나 디렉터리를 투과적�
     </thead>
     <tbody>
         <tr>
-            <td>docker build -t 리포지터리:태그 <br> docker image build -t 리포지터리:태그</td>
+            <td>docker build -t 리포지터리:[태그] <br> docker image build -t 리포지터리:[태그]</td>
             <td>현 디렉터리에 있는 Dockerfile을 바탕으로 이미지를 빌드</td>
         </tr>
         <tr>
@@ -490,12 +488,14 @@ UnionFS는 다른 파일 시스템에서 파일이나 디렉터리를 투과적�
         </tr>
     </tbody>
 </table>
-</div>
 <br>
+<div align="right"> 
+
+[목차로](#home1) 
+</div><br><br>
 
 ##### 2. 이미지의 이동과 공유
 <br>
-<div align="center">
 <table>
     <thead>
         <tr>
@@ -505,11 +505,11 @@ UnionFS는 다른 파일 시스템에서 파일이나 디렉터리를 투과적�
     </thead>
     <tbody>
         <tr>
-            <td>docker pull 원격_리포지터리[:태그] <br> docker image pull 원격_리포지터리[:태그]</td>
+            <td>docker pull 원격_리포지터리:[태그] <br> docker image pull 원격_리포지터리:[태그]</td>
             <td>원격 리포지터리의 이미지를 다운로드</td>
         </tr>
         <tr>
-            <td>docker tag 이미지[:태그] 원격_리포지터리[:태그] <br> docker image tag 이미지[:태그] 원격_리포지터리[:태그]</td>
+            <td>docker tag 이미지:[태그] 원격_리포지터리:[태그] <br> docker image tag 이미지:[태그] 원격_리포지터리:[태그]</td>
             <td>로컬 이미지에 태그 부여</td>
         </tr>
         <tr>
@@ -517,7 +517,7 @@ UnionFS는 다른 파일 시스템에서 파일이나 디렉터리를 투과적�
             <td>레지스트리 서비스에 로그인</td>
         </tr>
         <tr>
-            <td>docker push 원격_리포지터리[:태그]<br>docker image push 원격_리포지터리[:태그]</td>
+            <td>docker push 원격_리포지터리:[태그]<br>docker image push 원격_리포지터리:[태그]</td>
             <td>로컬 이미지를 레지스트리 서비스에 등록</td>
         </tr>
         <tr>
@@ -529,21 +529,23 @@ UnionFS는 다른 파일 시스템에서 파일이나 디렉터리를 투과적�
             <td>아카이브 형식 파일을 리포지터리에 등록</td>
         </tr>
         <tr>
-            <td>docker export &gt 컨테이너명 | 컨테이너ID &lt -o 파일명 <br>docker container export &gt 컨테이너명 | 컨테이너ID &lt -o 파일명 </td>
+            <td>docker export &lt 컨테이너명 | 컨테이너ID &gt -o 파일명 <br>docker container export &lt 컨테이너명 | 컨테이너ID &gt -o 파일명 </td>
             <td>컨테이너명 또는 컨테이너ID로 컨테이너를 지정해서 tar 형식 파일로 기록</td>
         </tr>
         <tr>
-            <td>docker import 파일명 리포지터리[:태그]<br>docker image import 파일명 리포지터리[:태그]</td>
+            <td>docker import 파일명 리포지터리:[태그]<br>docker image import 파일명 리포지터리:[태그]</td>
             <td>파일로 저장된 이미지를 리포지터리에 입력</td>
         </tr>
     </tbody>
 </table>
-</div>
 <br>
+<div align="right"> 
+
+[목차로](#home1) 
+</div><br><br>
 
 ##### 3. 컨테이너 실행
 <br>
-<div align="center">
 <table>
     <thead>
         <tr>
@@ -569,7 +571,7 @@ UnionFS는 다른 파일 시스템에서 파일이나 디렉터리를 투과적�
             <td>컨테이너에 파일 시스템에 디렉터리를 마운트하면서 실행. '-v'는 '로컬_절대_경로:컨테이너_내_경로'</td>
         </tr>
         <tr>
-            <td>docker exec -it &gt 컨테이너명 | 컨테이너 ID &lt sh<br>docker container exec -it &gt 컨테이너명 | 컨테이너 ID &lt sh</td>
+            <td>docker exec -it &lt 컨테이너명 | 컨테이너 ID &gt sh<br>docker container exec -it &lt 컨테이너명 | 컨테이너 ID &gt sh</td>
             <td>실행 중인 컨테이너에 대해서 대화형 셸을 실행</td>
         </tr>
         <tr>
@@ -581,11 +583,195 @@ UnionFS는 다른 파일 시스템에서 파일이나 디렉터리를 투과적�
             <td>정지된 컨테이너도 포함하여 출력</td>
         </tr>
         <tr>
-            <td>docker stop &gt 컨테이너명 | 컨테이너 ID &lt<br>docker container stop &gt 컨테이너명 | 컨테이너 ID &lt</td>
+            <td>docker stop &lt 컨테이너명 | 컨테이너 ID &gt<br>docker container stop &lt 컨테이너명 | 컨테이너 ID &gt</td>
             <td>컨테이너의 주 프로세스에 시그널 SIGTERM을 전송하여 종료 요청. 타임 아웃 시 강제 종료 진행</td>
+        </tr>
+        <tr>
+            <td>docker kill &lt 컨테이너명 | 컨테이너 ID &gt<br>docker container kill &lt 컨테이너명 | 컨테이너 ID &gt</td>
+            <td>컨테이너를 강제 종료</td>
+        </tr>
+        <tr>
+            <td>docker rm &gt 컨테이너명 | 컨테이너 ID &lt<br>docker container rm &gt 컨테이너명 | 컨테이너 ID &lt</td>
+            <td>종료한 컨테이너를 삭제</td>
+        </tr>
+        <tr>
+            <td>docker rm 'docker ps -a -q'<br>docker container rm 'docker ps -a -q'</td>
+            <td>종료한 컨테이너를 일괄 삭제</td>
+        </tr>
+        <tr>
+            <td>docker commit &gt 컨테이너명 | 컨테이너 ID &lt 리포지터리:[태그]<br>docker container commit  &gt 컨테이너명 | 컨테이너 ID &lt 리포지터리:[태그]</td>
+            <td>컨테이너를 이미지로서 리포지터리에 저장</td>
         </tr>
     </tbody>
 </table>
-</div>
+<br>
+<div align="right"> 
+
+[목차로](#home1) 
+</div><br><br>
+
+##### 디버그 관련 기능
+<br>
+
+<table>
+    <thead>
+        <tr>
+            <th colspan="1">커맨드 실행 예</th>
+            <th colspan="1">설명</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>docker logs &lt 컨테이너명 | 컨테이너 ID &gt <br>docker container logs &lt 컨테이너명 | 컨테이너 ID &gt</td>
+            <td>컨테이너 로그를 출력</td>
+        </tr>
+        <tr>
+            <td>docker logs -f &lt 컨테이너명 | 컨테이너 ID &gt<br>docker container logs -f &lt 컨테이너명 | 컨테이너 ID &gt</td>
+            <td>컨테이너 로그를 실시간으로 표시</td>
+        </tr>
+        <tr>
+            <td>docker ps -a<br>docker container ls -a</td>
+            <td>컨테이너 목록 표시</td>
+        </tr>
+        <tr>
+            <td>docker exec -it &lt 컨테이너명 | 컨테이너 ID &gt 커맨드<br>docker container exec -it &lt 컨테이너명 | 컨테이너 ID &gt 커맨드</td>
+            <td>실행 중인 컨테이너에 대해서 대화형으로 커맨드를 실행</td>
+        </tr>
+        <tr>
+            <td>docker inspect &lt 컨테이너명 | 컨테이너 ID &gt<br>docker container inspect &lt 컨테이너명 | 컨테이너 ID &gt</td>
+            <td>상세한 컨테이너의 정보를 표시</td>
+        </tr>
+        <tr>
+            <td>docker stats<br>docker container stats</td>
+            <td>컨테이너 실행 상태를 실시간으로 표시</td>
+        </tr>
+        <tr>
+            <td>docker attach --sig-proxy=false &lt 컨테이너명 | 컨테이너 ID &gt<br>docker container attach --sig-proxy=false &lt 컨테이너명 | 컨테이너 ID &gt</td>
+            <td>컨테이너 표준 출력을 화면에 표시</td>
+        </tr>
+        <tr>
+            <td>docker pause &lt 컨테이너명 | 컨테이너 ID &gt<br>docker container pause &lt 컨테이너명 | 컨테이너 ID &gt</td>
+            <td>컨테이너를 일시정지</td>
+        </tr>
+        <tr>
+            <td>docker unpause &lt 컨테이너명 | 컨테이너 ID &gt<br>docker container unpause &lt 컨테이너명 | 컨테이너 ID &gt</td>
+            <td>컨테이너 일시정지를 해제</td>
+        </tr>
+        <tr>
+            <td>docker start -a &lt 컨테이너명 | 컨테이너 ID &gt<br>docker container start -a &lt 컨테이너명 | 컨테이너 ID &gt</td>
+            <td>정지한 컨테이너를 실행. 이 때 표준 출력과 표준 에러 출력을 터미널에 출력</td>
+        </tr>
+    </tbody>
+</table>
+<br>
+<div align="right"> 
+
+[목차로](#home1) 
+</div><br><br>
+
+##### 쿠버네티스 중복 기능
+<br>
+
+##### 1. 네트워크 관련
+<br>
+<table>
+    <thead>
+        <tr>
+            <th colspan="1">커맨드 실행 예</th>
+            <th colspan="1">설명</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>docker network create 네트워크 명</td>
+            <td>컨테이너 네트워크를 작성</td>
+        </tr>
+        <tr>
+            <td>docker network ls</td>
+            <td>컨테이너 네트워크 목록 출력</td>
+        </tr>
+        <tr>
+            <td>docker network rm 네트워크명</td>
+            <td>컨테이너 네트워크 삭제</td>
+        </tr>
+        <tr>
+            <td>docker network prune</td>
+            <td>미사용 컨테이너 네트워크 삭제</td>
+        </tr>
+    </tbody>
+</table>
+<br>
+<div align="right"> 
+
+[목차로](#home1) 
+</div><br><br>
+
+##### 1. 퍼시스턴트 볼륨 관련
+<br>
+<table>
+    <thead>
+        <tr>
+            <th colspan="1">커맨드 실행 예</th>
+            <th colspan="1">설명</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>docker volume create 볼륨명</td>
+            <td>퍼시스턴트 볼륨 작성</td>
+        </tr>
+        <tr>
+            <td>docker volume ls</td>
+            <td>퍼시스턴트 볼륨 목록 출력</td>
+        </tr>
+        <tr>
+            <td>docker volume rm 볼륨명</td>
+            <td>퍼시스턴트 볼륨 목록 출력</td>
+        </tr>
+        <tr>
+            <td>docker volume prune</td>
+            <td>미사용 퍼시스턴트 볼륨 삭제</td>
+        </tr>
+    </tbody>
+</table>
+<br>
+<div align="right"> 
+
+[목차로](#home1) 
+</div><br><br>
+
+##### 2. docker compose 관련
+<br>
+<table>
+    <thead>
+        <tr>
+            <th colspan="1">커맨드 실행 예</th>
+            <th colspan="1">설명</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>docker-compose up -d</td>
+            <td>현 디렉터리의 docker-compose.yml을 사용해서 복수의 컨테이너를 기동</td>
+        </tr>
+        <tr>
+            <td>docker-compose ps</td>
+            <td>docker-compose 관리하에 실행 중인 컨테이너의 목록을 출력</td>
+        </tr>
+        <tr>
+            <td>docker-compose down</td>
+            <td>docker-compose 관리하의 컨테이너를 정지</td>
+        </tr>
+        <tr>
+            <td>docker-compose down --rmi all</td>
+            <td>docker-compose 관리하의 컨테이너를 정지하고, 이미지도 삭제</td>
+        </tr>
+    </tbody>
+</table>
+<br>
+<div align="right"> 
+
+[목차로](#home1) 
+</div><br><br>
 
 ### 출처: 15단계로 배우는 도커와 쿠버네티스

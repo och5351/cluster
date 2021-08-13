@@ -435,4 +435,157 @@ UnionFS는 다른 파일 시스템에서 파일이나 디렉터리를 투과적�
 </div><br><br>
 
 
+# 도커 커맨드
+<br>
+
+##### 컨테이너 환경 표시
+<br>
+<div align="center">
+<table>
+    <thead>
+        <tr>
+            <th colspan="1">커맨드 실행</th>
+            <th colspan="1">설명</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>docker version</td>
+            <td>도커 클라이언트와 서버 버전 표시</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<br>
+
+##### 컨테이너의 3대 기능
+<br>
+
+##### 1. 컨테이너 이미지 빌드 
+<br>
+<div align="center">
+<table>
+    <thead>
+        <tr>
+            <th colspan="1">커맨드 실행 예</th>
+            <th colspan="1">설명</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>docker build -t 리포지터리:태그 <br> docker image build -t 리포지터리:태그</td>
+            <td>현 디렉터리에 있는 Dockerfile을 바탕으로 이미지를 빌드</td>
+        </tr>
+        <tr>
+            <td>docker images <br> docker images ls</td>
+            <td>로컬 이미지 목록</td>
+        </tr>
+        <tr>
+            <td>docker rmi 이미지 <br> docker image rm 이미지</td>
+            <td>로컬 이미지 삭제</td>
+        </tr>
+        <tr>
+            <td>docker rmi -f 'docker images -aq' <br> docker image prune -a</td>
+            <td>로컬 이미지 일괄 삭제</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<br>
+
+##### 2. 이미지의 이동과 공유
+<br>
+<div align="center">
+<table>
+    <thead>
+        <tr>
+            <th colspan="1">커맨드 실행 예</th>
+            <th colspan="1">설명</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>docker pull 원격_리포지터리[:태그] <br> docker image pull 원격_리포지터리[:태그]</td>
+            <td>원격 리포지터리의 이미지를 다운로드</td>
+        </tr>
+        <tr>
+            <td>docker tag 이미지[:태그] 원격_리포지터리[:태그] <br> docker image tag 이미지[:태그] 원격_리포지터리[:태그]</td>
+            <td>로컬 이미지에 태그 부여</td>
+        </tr>
+        <tr>
+            <td>docker login 레지스트리_서버_URL</td>
+            <td>레지스트리 서비스에 로그인</td>
+        </tr>
+        <tr>
+            <td>docker push 원격_리포지터리[:태그]<br>docker image push 원격_리포지터리[:태그]</td>
+            <td>로컬 이미지를 레지스트리 서비스에 등록</td>
+        </tr>
+        <tr>
+            <td>docker save -o 파일명 이미지<br>docker image save -o 파일명 이미지</td>
+            <td>이미지를 아카이브 형식 파일로 기록</td>
+        </tr>
+        <tr>
+            <td>docker load -i 파일명<br>docker image load -i 파일명</td>
+            <td>아카이브 형식 파일을 리포지터리에 등록</td>
+        </tr>
+        <tr>
+            <td>docker export &gt 컨테이너명 | 컨테이너ID &lt -o 파일명 <br>docker container export &gt 컨테이너명 | 컨테이너ID &lt -o 파일명 </td>
+            <td>컨테이너명 또는 컨테이너ID로 컨테이너를 지정해서 tar 형식 파일로 기록</td>
+        </tr>
+        <tr>
+            <td>docker import 파일명 리포지터리[:태그]<br>docker image import 파일명 리포지터리[:태그]</td>
+            <td>파일로 저장된 이미지를 리포지터리에 입력</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<br>
+
+##### 3. 컨테이너 실행
+<br>
+<div align="center">
+<table>
+    <thead>
+        <tr>
+            <th colspan="1">커맨드 실행 예</th>
+            <th colspan="1">설명</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>docker run --rm -it 이미지 커맨드<br>docker run container --rm -it 이미지 커맨드</td>
+            <td>대화형으로 컨테이너를 기동해서 커맨드를 실행, 종료시에는 컨테이너를 삭제. 커맨드에 sh와 bash를 지정하면 대화형 셸로 리눅스 명령어 실행 가능</td>
+        </tr>
+        <tr>
+            <td>docker run -d -p 5000:80 이미지<br> docker container run -d -p 5000:80 이미지</td>
+            <td>백그라운드로 컨테이너를 실행. 컨테이너 내 프로세ㅅ의 표준 출력과 표준 에러 출력은 로그에 보존. 보존된 로그의 출력은 'docker logs' 참조. '-p'는 포트 포워딩으로 '호스트_포트:컨테이너_포트'로 지정</td>
+        </tr>
+        <tr>
+            <td>dockerrun -d --name 컨테이너명 -p 5000:80 이미지<br>dockerrun container -d --name 컨테이너명 -p 5000:80 이미지</td>
+            <td>컨테이너에 이름을 지정하여 실행</td>
+        </tr>
+        <tr>
+            <td>docker run -v 'pwd'/html:/usr/share/nginx/html -d -p 5000:80 nginx<br>docker container run -v 'pwd'/html:/usr/share/nginx/html -d -p 5000:80 nginx</td>
+            <td>컨테이너에 파일 시스템에 디렉터리를 마운트하면서 실행. '-v'는 '로컬_절대_경로:컨테이너_내_경로'</td>
+        </tr>
+        <tr>
+            <td>docker exec -it &gt 컨테이너명 | 컨테이너 ID &lt sh<br>docker container exec -it &gt 컨테이너명 | 컨테이너 ID &lt sh</td>
+            <td>실행 중인 컨테이너에 대해서 대화형 셸을 실행</td>
+        </tr>
+        <tr>
+            <td>docker ps<br>docker container ls</td>
+            <td>실행 중인 컨테이너 목록 출력</td>
+        </tr>
+        <tr>
+            <td>docker ps -a<br>docker container ls -a</td>
+            <td>정지된 컨테이너도 포함하여 출력</td>
+        </tr>
+        <tr>
+            <td>docker stop &gt 컨테이너명 | 컨테이너 ID &lt<br>docker container stop &gt 컨테이너명 | 컨테이너 ID &lt</td>
+            <td>컨테이너의 주 프로세스에 시그널 SIGTERM을 전송하여 종료 요청. 타임 아웃 시 강제 종료 진행</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
 ### 출처: 15단계로 배우는 도커와 쿠버네티스

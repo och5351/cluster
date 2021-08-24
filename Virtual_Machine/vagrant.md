@@ -376,7 +376,7 @@ $> vagrant plugin install vagrant-vbguest
 ```
 <br>
 
-11. ssh 접속 관련 설정 shell script 추가
+11. ssh 접속 관련 설정 shell script 추가 (vagrant/vagrant)
 
 ```ruby
 bridge_if = "eth0"

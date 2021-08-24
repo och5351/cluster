@@ -675,6 +675,10 @@ UnionFS는 다른 파일 시스템에서 파일이나 디렉터리를 투과적�
 
 ##### 1. 네트워크 관련
 <br>
+
+<img src="https://user-images.githubusercontent.com/45858414/129868581-529945d2-771a-428e-bf2c-be9d816684ae.png" width="70%" heigh="70%">
+
+<br>
 <table>
     <thead>
         <tr>
@@ -698,6 +702,18 @@ UnionFS는 다른 파일 시스템에서 파일이나 디렉터리를 투과적�
         <tr>
             <td>docker network prune</td>
             <td>미사용 컨테이너 네트워크 삭제</td>
+        </tr>
+        <tr>
+            <td>docker network inspect</td>
+            <td>네트워크명을 지정해서 자세한 내용을 표시</td>
+        </tr>
+        <tr>
+            <td>docker network connect</td>
+            <td>컨테이너를 컨테이너 네트워크에 접속</td>
+        </tr>
+        <tr>
+            <td>docker network disconnect</td>
+            <td>컨테이너를 컨테이너 네트워크에 분리</td>
         </tr>
     </tbody>
 </table>

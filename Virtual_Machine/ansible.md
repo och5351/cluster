@@ -32,6 +32,7 @@ IT 자동화 도구(IT automation tool).
 - [태스크(Task)](#6)
 - [플레이북(Playbook)](#7)
 - [설치](#8)
+- [Vagrant를 활용한 제어노드 만들기](#9)
 
 <br><br>
 
@@ -75,24 +76,6 @@ IT 자동화 도구(IT automation tool).
 
 [목차로](#home1) 
 </div><br><br>
-
-<a id="3"></a> 
-
-# 제어 노드(Control node)
-<br>
-
-앤서블을 실행하는 노드. 
-/usr/bin/ansible이나 /usr/bin/ansible-playbook 명령을 이용하여 제어 노드에서 관리 노드들을 관리. 
-앤서블이 설치 되어 있으면 노트북이나, 서버급 컴퓨터를 제어 노드로 이용할 수 있음.
-
-<br>
-
-<div align="right"> 
-
-[목차로](#home1) 
-</div><br><br>
-
-<a id="3"></a> 
 
 # 매니지드 노드(Managed node)
 <br>
@@ -212,4 +195,58 @@ $> brew install ansible
 
 <a id="9"></a>
 
-#
+# Vagrant를 활용한 제어노드 만들기
+<br>
+
+```ruby
+
+storage_size = 10240
+bridge_if = "eth0"
+vagrant_API_version = "2"
+cpu_core = 2
+memory_size = 2048
+vm_name = "ansible"
+os = "ubuntu/focal64"
+os_version = "20210819.0.0"
+
+Vagrant.configure(vagrant_API_version) do |config|
+
+  config.vm.define vm_name do |vm1|
+    vm1.vm.box = os
+    vm1.vm.box_version = os_version
+    vm1.vm.host_name = vm_name
+    vm1.vm.network :private_network, ip: "172.16.20.11"
+    vm1.vm.network :public_network,ip:  "192.168.0.5", bridge: bridge_if
+    vm1.vm.provider :virtualbox do |spec|
+      spec.gui = false
+      spec.cpus = cpu_core
+      spec.memory = memory_size 
+
+      vdisk = "vdisk/sdb-1.vdi" 
+      # CREATE DISK
+      if not File.exist?(vdisk) then
+        spec.customize [
+           'createmedium', 'disk',
+           '--filename', vdisk,
+           '--format', 'VDI',
+           '--size', storage_capa ]
+      end
+      # ATTACH DISK
+      spec.customize [
+        'storageattach', :id,
+        '--storagectl', 'SCSI',
+        '--port', 2,
+        '--device', 0,
+        '--type', 'hdd',
+        '--medium', vdisk]
+    end
+    vm1.vm.provision "shell", inline: <<-SHELL
+      sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config 
+      sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
+      systemctl restart sshd
+      apt install -y
+    SHELL
+  end
+end
+
+```

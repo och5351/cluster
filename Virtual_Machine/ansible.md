@@ -155,13 +155,13 @@ IT 자동화 도구(IT automation tool).
 # 설치
 <br>
 
-
 1. Python
 
 ```bash
 $> pip install ansible
 
 ```
+
 <br>
 
 2. CentOS

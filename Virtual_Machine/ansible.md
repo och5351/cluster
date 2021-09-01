@@ -32,7 +32,8 @@ IT 자동화 도구(IT automation tool).
 - [태스크(Task)](#6)
 - [플레이북(Playbook)](#7)
 - [설치](#8)
-- [Vagrant를 활용한 제어노드 만들기](#9)
+- [YAML 문법](#9)
+- [Vagrant를 활용한 제어노드 만들기](#10)
 
 <br><br>
 
@@ -194,6 +195,88 @@ $> brew install ansible
 </div><br><br>
 
 <a id="9"></a>
+
+# YAML 문법
+<br>
+
+* 파일 시작 : ---
+* 주석 : #
+* 문자열 : 공백이 있을 시에는 따옴표를 사용하지 않아도 되지만 없을 시 "문자열"
+* 불린 
+  * 진실 : true, True, TRUE, yes, YES, on, On ,ON, y, Y
+  * 거짓 : false, False, FALSE, no, No, NO, off, Off, OFF, n, N
+* 리스트
+  * ex) YAML 은 아래와 같이 리스트 작성
+  ``` YAML
+    - list[0]
+    - list[1]
+    - list[2]
+
+    or
+
+    ["list[0]", "list[1]", "list[2]"]
+
+  ```  
+  아래는 JSON
+  ``` JSON
+    [
+      "list[0]",
+      "list[1]",
+      "list[2]"
+    ]
+
+  ```
+* 딕셔너리 : JSON객체, 파이썬 딕셔너리, 루비의 해시와 비슷함. YAML에서는 매핑이라고 부르지만 ansible 문서는 딕셔너리라고 부름.
+  * ex) YAML 은 아래와 같이 딕셔너리 작성
+  ```YAML
+  mapping_1: 1
+  mapping_2: 2
+  mapping_3: 3 
+
+  or
+
+  {mapping_1: 1, mapping_2: 2, mapping_3: 3}
+  ```
+  아래는 JSON
+  
+  ```JSON
+  {
+    "mapping_1": 1,
+    "mapping_2": 2,
+    "mapping_3": 3 
+  }
+
+  ```
+* 라인 폴딩 : 앤서블은 여러 라인의 문자열을 한 라인으로 처리할 수 있다.
+  * ex) YAML 
+  ```YAML
+  mapping_1: 1,
+  2,
+  3
+  mapping_2: 2
+  mapping_3: 3 
+
+  or
+
+  {mapping_1: 1, mapping_2: 2, mapping_3: 3}
+  ```
+  아래는 JSON
+  
+  ```JSON
+  {
+    "mapping_1": "1, 2, 3",
+    "mapping_2": "2",
+    "mapping_3": "3" 
+  }
+
+<br>
+
+<div align="right"> 
+
+[목차로](#home1) 
+</div><br><br>
+
+<a id="10"></a>
 
 # Vagrant를 활용한 제어노드 만들기
 <br>

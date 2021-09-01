@@ -237,13 +237,13 @@ true인 경우 앤서블은 기본적으로 루트 사용자가 돼 모든 작�
 # 설치
 <br>
 
-
 1. Python
 
 ```bash
 $> pip install ansible
 
 ```
+
 <br>
 
 2. CentOS

@@ -30,7 +30,7 @@ IT 자동화 도구(IT automation tool).
 - [인벤토리(Inventory)](#4)
 - [모듈(Module)](#5)
 - [태스크(Task)](#6)
-- [플레이북(Playbook)](#7)
+- [플레이북(Playbook) & 플레이](#7)
 - [설치](#8)
 - [YAML 문법](#9)
 - [Vagrant를 활용한 제어노드 만들기](#10)
@@ -111,9 +111,36 @@ IT 자동화 도구(IT automation tool).
 # 모듈(Module)
 <br>
 
-앤서블이 실행하는 코드 단위. 
+앤서블이 실행하는 코드 단위. 액션을 수행하는 스크립트.
 각 모듈은 데이터베이스 처리, 사용자 관리, 네트워크 장치 관리 등 다양한 용도로 사용. 
 단일 모듈을 호출하거나 플레이북에서 여러 모듈을 호출 할 수도 있음.
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="1">명칭</th>
+      <th colspan="1">설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>apt</td>
+      <td>apt 패키지 관리자를 사용해 패키지를 설치하거나 제거함</td>
+    </tr>
+    <tr>
+      <td>copy</td>
+      <td>로컬 머신의 파일을 호스트에 복사함</td>
+    </tr>
+    <tr>
+      <td>file</td>
+      <td>파일, 심볼릭 링크, 디렉터리의 속성을 설정함</td>
+    </tr>
+    <tr>
+      <td>template</td>
+      <td>템플릿에서 파일을 생성하고 호스트에 복사</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -129,6 +156,26 @@ IT 자동화 도구(IT automation tool).
 
 앤서블의 작업 단위. 애드훅(ad-hoc)명령을 사용하여 단일 작업을 한 번 실행할 수 있음.
 
+플레이북에는 다섯 가지 태스크로 구성된 하나의 플레이가 포함된다.
+
+ex) 태스크 예시
+
+```yaml
+- name: install nginx
+  apt: >
+    name=nginx
+    update_cache=yes
+
+```
+
+ex) 태스크 이전 문법 예시
+
+```yaml
+- name: install nginx
+  action: apt name=nginx update_cache=yes
+
+```
+
 <br>
 
 <div align="right"> 
@@ -138,11 +185,45 @@ IT 자동화 도구(IT automation tool).
 
 <a id="7"></a> 
 
-# 플레이북(Playbook)
+# 플레이북(Playbook) & 플레이(Play)
 <br>
+
+<div align="center">
+<img src="https://user-images.githubusercontent.com/45858414/131465903-04b3b609-fc30-48f4-9dad-b3101279e82a.png" width="70%" height="70%" />
+</div>
+
+<div align="right"><p>플레이북 엔티티 관계</p></div>
+<br><br>
+
+* 플레이북(Playbook)
 
 순서가 지정된 태스크 목록이 저장되어 지정된 작업을 해당 순서로 반복적으로 실행할 수 있음.
 플레이 북에는 변수와 작업이 포함될 수 있고 YAML로 작성.
+
+<br>
+
+* 플레이(Play)
+
+단일 플레이북을 포함하는 리스트.
+모든 플레이는 1) 설정해야 할 호스트 집합, 2) 호스트에서 실행돼야 할 태스크 목록 들이 포함되어야 한다.
+
+<br>
+
+* * name
+
+플레이가 무엇인지 설명하는 주석. 플레이가 플레이를 시작하면 앤서블을 출력
+
+<br>
+
+* * become
+
+true인 경우 앤서블은 기본적으로 루트 사용자가 돼 모든 작업을 실행한다. 이는 우분투 서버를 관리할 때 유용한다. 기본적으로 루트 사용자로 SSH를 사용할 수 없기 때문
+
+<br>
+
+* * vars
+
+변수 및 값 리스트.
 
 <br>
 

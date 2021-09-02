@@ -33,7 +33,8 @@ IT 자동화 도구(IT automation tool).
 - [플레이북(Playbook) & 플레이](#7)
 - [설치](#8)
 - [YAML 문법](#9)
-- [Vagrant를 활용한 제어노드 만들기](#10)
+- [변수와 팩트](#10)
+- [Vagrant를 활용한 제어노드 만들기](#11)
 
 <br><br>
 
@@ -98,6 +99,86 @@ IT 자동화 도구(IT automation tool).
 
 매니지드 노드 목록. 
 인벤토리 파일은 호스트 파일이라고도 하며 각 매니지드 노드에 대한 IP 주소, 호스트 정보, 변수와 같은 정보를 지정할 수 있음.
+
+<br>
+
+  * 동작 인벤토리 매개변수
+
+<div align="center">
+<table>
+  <thead>
+    <tr>
+      <th colspan="1">이름</th>
+      <th colspan="1">기본값</th>
+      <th colspan="1">설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ansible_host</td>
+      <td>호스트 이름</td>
+      <td>SSH로 연결할 호스트 이름 또는 IP 주소</td>
+    </tr>
+    <tr>
+      <td>ansible_port</td>
+      <td>22</td>
+      <td>SSH로 연결할 포트</td>
+    </tr>
+    <tr>
+      <td>ansible_user</td>
+      <td>root</td>
+      <td>SSH로 연결할 사용자</td>
+    </tr>
+    <tr>
+      <td>ansible_password</td>
+      <td>(없음)</td>
+      <td>SSH 인증에 사용될 패스워드</td>
+    </tr>
+    <tr>
+      <td>ansible_connection</td>
+      <td>smart</td>
+      <td>앤서블이 호스트에 연결하는 방법</td>
+    </tr>
+    <tr>
+      <td>ansible_private_key_file</td>
+      <td>(없음)</td>
+      <td>SSH 인증에 사용될 SSH 비밀 키</td>
+    </tr>
+    <tr>
+      <td>ansible_shell_type</td>
+      <td>sh</td>
+      <td>커맨드가 사용될 셸</td>
+    </tr>
+    <tr>
+      <td>ansible_python_interpreter</td>
+      <td>/usr/bin/python</td>
+      <td>호스트의 파이썬 인터프리터 경로</td>
+    </tr>
+    <tr>
+      <td>ansible_*_interpreter</td>
+      <td>root</td>
+      <td>ansible_python_interpreter 처럼 다른 언어의 인터프리터 경로</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<br>
+
+* ansible_connection
+
+  앤서블은 여러 전송 방식을 지원하며, 기본 전송 방식인 smart는 로컬에 설치된 SSH 클라이언트가 Control Persist라고 하는 기능의 지원 여부를 확인한다. Control Persist를 지원하는 경우 앤서블은 로컬 SSH 클라이언트를 사용하지만 지원하지 않는 경우는 smart 전송 방식은 Paramiko라는 파이썬 기반 SSH 클라이언트 라이브러리를 사용한다.
+<br>
+
+* ansible_shell_type
+  원격 머신에 SSH 연결을 생성한 후 스크립트를 호출한다. 기본적으로 앤서블은 원격 셸이 bin/sh에 있는 Bourne 셸이라고 가정하고 Bourne 셸에서 동작하는 적절한 커맨드라인 매개변수를 생성한다.
+
+  앤서블은 csh, fish, powershell을 해당 매개변수의 유효한 값으로 받는다. 따라서 셸 타입을 변경할 필요가 없다.
+
+<br>
+
+* ansible_python_interpreter
+  앤서블과 함께 제공되는 모듈은 파이썬 2로 구현돼 있으므로 앤서블은 원격 시스템의 파이썬 인터프리터의 경로를 알아야 한다. 원격 호스트에 /usr/bin/python에 파이썬 2 인터프리터가 없는 경우에 이 값을 변경해야 한다. /usr/bin/python 에 파이썬 3를 설치했다면, 파이썬 3와 호환성이 없기 때문에 /usr/bin/python2로 변경해줘야 한다.
 
 <br>
 
@@ -209,19 +290,19 @@ ex) 태스크 이전 문법 예시
 
 <br>
 
-* * name
+* name
 
 플레이가 무엇인지 설명하는 주석. 플레이가 플레이를 시작하면 앤서블을 출력
 
 <br>
 
-* * become
+* become
 
 true인 경우 앤서블은 기본적으로 루트 사용자가 돼 모든 작업을 실행한다. 이는 우분투 서버를 관리할 때 유용한다. 기본적으로 루트 사용자로 SSH를 사용할 수 없기 때문
 
 <br>
 
-* * vars
+* vars
 
 변수 및 값 리스트.
 
@@ -241,7 +322,6 @@ true인 경우 앤서블은 기본적으로 루트 사용자가 돼 모든 작�
 
 ```bash
 $> pip install ansible
-
 ```
 
 <br>
@@ -250,7 +330,6 @@ $> pip install ansible
 
 ```bash
 $> yum install -y ansible 
-
 ```
 <br>
 
@@ -258,7 +337,6 @@ $> yum install -y ansible
 
 ```bash
 $> apt install ansible
-
 ```
 <br>
 
@@ -266,7 +344,6 @@ $> apt install ansible
 
 ```bash
 $> brew install ansible
-
 ```
 <br>
 
@@ -296,7 +373,6 @@ $> brew install ansible
     or
 
     ["list[0]", "list[1]", "list[2]"]
-
   ```  
   아래는 JSON
   ``` JSON
@@ -305,7 +381,6 @@ $> brew install ansible
       "list[1]",
       "list[2]"
     ]
-
   ```
 * 딕셔너리 : JSON객체, 파이썬 딕셔너리, 루비의 해시와 비슷함. YAML에서는 매핑이라고 부르지만 ansible 문서는 딕셔너리라고 부름.
   * ex) YAML 은 아래와 같이 딕셔너리 작성
@@ -326,7 +401,6 @@ $> brew install ansible
     "mapping_2": 2,
     "mapping_3": 3 
   }
-
   ```
 * 라인 폴딩 : 앤서블은 여러 라인의 문자열을 한 라인으로 처리할 수 있다.
   * ex) YAML 
@@ -349,7 +423,7 @@ $> brew install ansible
     "mapping_2": "2",
     "mapping_3": "3" 
   }
-
+  ```
 <br>
 
 <div align="right"> 
@@ -358,6 +432,88 @@ $> brew install ansible
 </div><br><br>
 
 <a id="10"></a>
+
+# 변수와 팩트
+
+### 변수
+
+ex) 변수를 정의 하는 방법(플레이북에 vars 섹션을 추가한다.)
+```yaml
+vars:
+  key_file: /etc/nginx/ssl/nginx.key
+  cert_fil: /etc/nginx/ssl/nginx.crt
+  conf_file: /etc/nmginx/sites-available/default
+  server_name: localhost
+```
+
+vars_files 라는 센션을 사용하여 하나 이상의 파일에 변수를 저장할 수 있다.
+
+ex)
+
+```yaml
+vars_files:
+ - nginx.yml
+```
+ex) nginx.yml
+```yaml
+key_file: /etc/nginx/ssl/nginx.key
+cert_fil: /etc/nginx/ssl/nginx.crt
+conf_file: /etc/nmginx/sites-available/default
+server_name: localhost
+```
+
+* 변수 등록하기
+
+태스크 결과에 따라 변수의 값을 설정해야 하는 경우
+
+ex) whoami
+
+```yaml
+- name: capture output of whoami coomand
+  command: whoami
+  register: login
+```
+
+debug 모듈을 만들어서 return 값을 확인하는 방법
+
+```yaml
+- name: show return value of command module
+  hosts: server1
+  tasks:
+    - name: capture output of whoami coomand
+      command: whoami
+      register: login
+    - debug: var=login
+```
+
+* Task에서 커맨드 출력 사용하기
+
+```yaml
+- name: capture output of id command
+  command: id -un
+  register: login
+- debug: msg="Logged in as user {{ login.stdout }}"
+```
+
+* 모듈이 에러를 리턴하면 무시하기
+
+```yaml
+- name: Run myprog
+  command: /opt/myprog
+  register: result
+  ignore_errors: True
+- debug: var=result
+```
+
+
+<br>
+
+<div align="right"> 
+
+[목차로](#home1) 
+</div><br><br>
+
+<a id="11"></a>
 
 # Vagrant를 활용한 제어노드 만들기
 <br>

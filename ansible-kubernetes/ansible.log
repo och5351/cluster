@@ -1,0 +1,815 @@
+2021-09-03 11:30:47,683 p=15351 u=och n=ansible | [WARNING]: Unable to parse /home/vagrant/playbook/hosts as an inventory source
+
+2021-09-03 11:30:47,683 p=15351 u=och n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2021-09-03 11:30:47,724 p=15351 u=och n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does
+not match 'all'
+
+2021-09-03 11:30:47,724 p=15351 u=och n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: master
+
+2021-09-03 11:34:18,641 p=15574 u=och n=ansible | master | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: Warning: Permanently added '[opyter.iptime.org]:60022,[117.20.252.102]:60022' (ECDSA) to the list of known hosts.\r\noch@opyter.iptime.org: Permission denied (publickey,password).",
+    "unreachable": true
+}
+2021-09-03 11:34:43,501 p=15595 u=root n=ansible | master | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: Warning: Permanently added '[opyter.iptime.org]:60022,[117.20.252.102]:60022' (ECDSA) to the list of known hosts.\r\nroot@opyter.iptime.org: Permission denied (publickey,password).",
+    "unreachable": true
+}
+2021-09-03 11:34:53,026 p=15611 u=root n=ansible | ansible [core 2.11.3] 
+  config file = /Users/och/Desktop/Git/cluster/ansible-kubernetes/ansible.cfg
+  configured module search path = ['/Users/och/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/local/Cellar/ansible/4.4.0/libexec/lib/python3.9/site-packages/ansible
+  ansible collection location = /Users/och/.ansible/collections:/usr/share/ansible/collections
+  executable location = /usr/local/bin/ansible
+  python version = 3.9.6 (default, Jun 29 2021, 05:25:02) [Clang 12.0.5 (clang-1205.0.22.9)]
+  jinja version = 3.0.1
+  libyaml = True
+2021-09-03 11:34:53,026 p=15611 u=root n=ansible | Using /Users/och/Desktop/Git/cluster/ansible-kubernetes/ansible.cfg as config file
+2021-09-03 11:34:53,026 p=15611 u=root n=ansible | setting up inventory plugins
+2021-09-03 11:34:53,033 p=15611 u=root n=ansible | host_list declined parsing /Users/och/Desktop/Git/cluster/ansible-kubernetes/hosts as it did not pass its verify_file() method
+2021-09-03 11:34:53,033 p=15611 u=root n=ansible | script declined parsing /Users/och/Desktop/Git/cluster/ansible-kubernetes/hosts as it did not pass its verify_file() method
+2021-09-03 11:34:53,034 p=15611 u=root n=ansible | auto declined parsing /Users/och/Desktop/Git/cluster/ansible-kubernetes/hosts as it did not pass its verify_file() method
+2021-09-03 11:34:53,038 p=15611 u=root n=ansible | Parsed /Users/och/Desktop/Git/cluster/ansible-kubernetes/hosts inventory source with ini plugin
+2021-09-03 11:34:53,055 p=15611 u=root n=ansible | Loading callback plugin minimal of type stdout, v2.0 from /usr/local/Cellar/ansible/4.4.0/libexec/lib/python3.9/site-packages/ansible/plugins/callback/minimal.py
+2021-09-03 11:34:53,065 p=15611 u=root n=ansible | Skipping callback 'default', as we already have a stdout callback.
+2021-09-03 11:34:53,066 p=15611 u=root n=ansible | Skipping callback 'minimal', as we already have a stdout callback.
+2021-09-03 11:34:53,066 p=15611 u=root n=ansible | Skipping callback 'oneline', as we already have a stdout callback.
+2021-09-03 11:34:53,131 p=15611 u=root n=ansible | META: ran handlers
+2021-09-03 11:34:53,183 p=15613 u=root n=ansible | <opyter.iptime.org> ESTABLISH SSH CONNECTION FOR USER: None
+2021-09-03 11:34:53,184 p=15613 u=root n=ansible | <opyter.iptime.org> SSH: EXEC ssh -vvv -o ControlMaster=auto -o ControlPersist=60s -o UserKnownHostsFile=/dev/null -o IdentitiesOnly=yes -o StrictHostKeyChecking=no -o Port=60022 -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o ConnectTimeout=10 -o ControlPath=/Users/och/.ansible/cp/ce9c2b4423 opyter.iptime.org '/bin/sh -c '"'"'echo ~ && sleep 0'"'"''
+2021-09-03 11:34:53,475 p=15613 u=root n=ansible | <opyter.iptime.org> (255, b'', b'OpenSSH_8.1p1, LibreSSL 2.7.3\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 47: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug1: Control socket "/Users/och/.ansible/cp/ce9c2b4423" does not exist\r\ndebug2: resolving "opyter.iptime.org" port 60022\r\ndebug2: ssh_connect_direct\r\ndebug1: Connecting to opyter.iptime.org [117.20.252.102] port 60022.\r\ndebug2: fd 5 setting O_NONBLOCK\r\ndebug1: fd 5 clearing O_NONBLOCK\r\ndebug1: Connection established.\r\ndebug3: timeout: 9947 ms remain after connect\r\ndebug1: identity file /var/root/.ssh/id_rsa type -1\r\ndebug1: identity file /var/root/.ssh/id_rsa-cert type -1\r\ndebug1: identity file /var/root/.ssh/id_dsa type -1\r\ndebug1: identity file /var/root/.ssh/id_dsa-cert type -1\r\ndebug1: identity file /var/root/.ssh/id_ecdsa type -1\r\ndebug1: identity file /var/root/.ssh/id_ecdsa-cert type -1\r\ndebug1: identity file /var/root/.ssh/id_ed25519 type -1\r\ndebug1: identity file /var/root/.ssh/id_ed25519-cert type -1\r\ndebug1: identity file /var/root/.ssh/id_xmss type -1\r\ndebug1: identity file /var/root/.ssh/id_xmss-cert type -1\r\ndebug1: Local version string SSH-2.0-OpenSSH_8.1\r\ndebug1: Remote protocol version 2.0, remote software version OpenSSH_8.2p1 Ubuntu-4ubuntu0.3\r\ndebug1: match: OpenSSH_8.2p1 Ubuntu-4ubuntu0.3 pat OpenSSH* compat 0x04000000\r\ndebug2: fd 5 setting O_NONBLOCK\r\ndebug1: Authenticating to opyter.iptime.org:60022 as \'root\'\r\ndebug3: put_host_port: [opyter.iptime.org]:60022\r\ndebug3: hostkeys_foreach: reading file "/dev/null"\r\ndebug3: send packet: type 20\r\ndebug1: SSH2_MSG_KEXINIT sent\r\ndebug3: receive packet: type 20\r\ndebug1: SSH2_MSG_KEXINIT received\r\ndebug2: local client KEXINIT proposal\r\ndebug2: KEX algorithms: curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512,diffie-hellman-group14-sha256,diffie-hellman-group14-sha1,ext-info-c\r\ndebug2: host key algorithms: ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521-cert-v01@openssh.com,ssh-ed25519-cert-v01@openssh.com,rsa-sha2-512-cert-v01@openssh.com,rsa-sha2-256-cert-v01@openssh.com,ssh-rsa-cert-v01@openssh.com,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,ssh-ed25519,rsa-sha2-512,rsa-sha2-256,ssh-rsa\r\ndebug2: ciphers ctos: chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com\r\ndebug2: ciphers stoc: chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com\r\ndebug2: MACs ctos: umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1\r\ndebug2: MACs stoc: umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1\r\ndebug2: compression ctos: none,zlib@openssh.com,zlib\r\ndebug2: compression stoc: none,zlib@openssh.com,zlib\r\ndebug2: languages ctos: \r\ndebug2: languages stoc: \r\ndebug2: first_kex_follows 0 \r\ndebug2: reserved 0 \r\ndebug2: peer server KEXINIT proposal\r\ndebug2: KEX algorithms: curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512,diffie-hellman-group14-sha256\r\ndebug2: host key algorithms: rsa-sha2-512,rsa-sha2-256,ssh-rsa,ecdsa-sha2-nistp256,ssh-ed25519\r\ndebug2: ciphers ctos: chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com\r\ndebug2: ciphers stoc: chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com\r\ndebug2: MACs ctos: umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1\r\ndebug2: MACs stoc: umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1\r\ndebug2: compression ctos: none,zlib@openssh.com\r\ndebug2: compression stoc: none,zlib@openssh.com\r\ndebug2: languages ctos: \r\ndebug2: languages stoc: \r\ndebug2: first_kex_follows 0 \r\ndebug2: reserved 0 \r\ndebug1: kex: algorithm: curve25519-sha256\r\ndebug1: kex: host key algorithm: ecdsa-sha2-nistp256\r\ndebug1: kex: server->client cipher: chacha20-poly1305@openssh.com MAC: <implicit> compression: none\r\ndebug1: kex: client->server cipher: chacha20-poly1305@openssh.com MAC: <implicit> compression: none\r\ndebug3: send packet: type 30\r\ndebug1: expecting SSH2_MSG_KEX_ECDH_REPLY\r\ndebug3: receive packet: type 31\r\ndebug1: Server host key: ecdsa-sha2-nistp256 SHA256:aHEyEHS0V2GYCwAEZetw7CU5AUi/lcrTly71VVYLQ+k\r\ndebug3: put_host_port: [117.20.252.102]:60022\r\ndebug3: put_host_port: [opyter.iptime.org]:60022\r\ndebug3: hostkeys_foreach: reading file "/dev/null"\r\ndebug3: hostkeys_foreach: reading file "/dev/null"\r\ndebug1: checking without port identifier\r\ndebug3: hostkeys_foreach: reading file "/dev/null"\r\ndebug3: hostkeys_foreach: reading file "/dev/null"\r\nWarning: Permanently added \'[opyter.iptime.org]:60022,[117.20.252.102]:60022\' (ECDSA) to the list of known hosts.\r\ndebug3: send packet: type 21\r\ndebug2: set_newkeys: mode 1\r\ndebug1: rekey out after 134217728 blocks\r\ndebug1: SSH2_MSG_NEWKEYS sent\r\ndebug1: expecting SSH2_MSG_NEWKEYS\r\ndebug3: receive packet: type 21\r\ndebug1: SSH2_MSG_NEWKEYS received\r\ndebug2: set_newkeys: mode 0\r\ndebug1: rekey in after 134217728 blocks\r\ndebug1: Will attempt key: /var/root/.ssh/id_rsa \r\ndebug1: Will attempt key: /var/root/.ssh/id_dsa \r\ndebug1: Will attempt key: /var/root/.ssh/id_ecdsa \r\ndebug1: Will attempt key: /var/root/.ssh/id_ed25519 \r\ndebug1: Will attempt key: /var/root/.ssh/id_xmss \r\ndebug2: pubkey_prepare: done\r\ndebug3: send packet: type 5\r\ndebug3: receive packet: type 7\r\ndebug1: SSH2_MSG_EXT_INFO received\r\ndebug1: kex_input_ext_info: server-sig-algs=<ssh-ed25519,sk-ssh-ed25519@openssh.com,ssh-rsa,rsa-sha2-256,rsa-sha2-512,ssh-dss,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ecdsa-sha2-nistp256@openssh.com>\r\ndebug3: receive packet: type 6\r\ndebug2: service_accept: ssh-userauth\r\ndebug1: SSH2_MSG_SERVICE_ACCEPT received\r\ndebug3: send packet: type 50\r\ndebug3: receive packet: type 51\r\ndebug1: Authentications that can continue: publickey,password\r\ndebug3: start over, passed a different list publickey,password\r\ndebug3: preferred gssapi-with-mic,gssapi-keyex,hostbased,publickey\r\ndebug3: authmethod_lookup publickey\r\ndebug3: remaining preferred: ,gssapi-keyex,hostbased,publickey\r\ndebug3: authmethod_is_enabled publickey\r\ndebug1: Next authentication method: publickey\r\ndebug1: Trying private key: /var/root/.ssh/id_rsa\r\ndebug3: no such identity: /var/root/.ssh/id_rsa: No such file or directory\r\ndebug1: Trying private key: /var/root/.ssh/id_dsa\r\ndebug3: no such identity: /var/root/.ssh/id_dsa: No such file or directory\r\ndebug1: Trying private key: /var/root/.ssh/id_ecdsa\r\ndebug3: no such identity: /var/root/.ssh/id_ecdsa: No such file or directory\r\ndebug1: Trying private key: /var/root/.ssh/id_ed25519\r\ndebug3: no such identity: /var/root/.ssh/id_ed25519: No such file or directory\r\ndebug1: Trying private key: /var/root/.ssh/id_xmss\r\ndebug3: no such identity: /var/root/.ssh/id_xmss: No such file or directory\r\ndebug2: we did not send a packet, disable method\r\ndebug1: No more authentication methods to try.\r\nroot@opyter.iptime.org: Permission denied (publickey,password).\r\n')
+2021-09-03 11:34:53,490 p=15611 u=root n=ansible | master | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: OpenSSH_8.1p1, LibreSSL 2.7.3\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 47: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug1: Control socket \"/Users/och/.ansible/cp/ce9c2b4423\" does not exist\r\ndebug2: resolving \"opyter.iptime.org\" port 60022\r\ndebug2: ssh_connect_direct\r\ndebug1: Connecting to opyter.iptime.org [117.20.252.102] port 60022.\r\ndebug2: fd 5 setting O_NONBLOCK\r\ndebug1: fd 5 clearing O_NONBLOCK\r\ndebug1: Connection established.\r\ndebug3: timeout: 9947 ms remain after connect\r\ndebug1: identity file /var/root/.ssh/id_rsa type -1\r\ndebug1: identity file /var/root/.ssh/id_rsa-cert type -1\r\ndebug1: identity file /var/root/.ssh/id_dsa type -1\r\ndebug1: identity file /var/root/.ssh/id_dsa-cert type -1\r\ndebug1: identity file /var/root/.ssh/id_ecdsa type -1\r\ndebug1: identity file /var/root/.ssh/id_ecdsa-cert type -1\r\ndebug1: identity file /var/root/.ssh/id_ed25519 type -1\r\ndebug1: identity file /var/root/.ssh/id_ed25519-cert type -1\r\ndebug1: identity file /var/root/.ssh/id_xmss type -1\r\ndebug1: identity file /var/root/.ssh/id_xmss-cert type -1\r\ndebug1: Local version string SSH-2.0-OpenSSH_8.1\r\ndebug1: Remote protocol version 2.0, remote software version OpenSSH_8.2p1 Ubuntu-4ubuntu0.3\r\ndebug1: match: OpenSSH_8.2p1 Ubuntu-4ubuntu0.3 pat OpenSSH* compat 0x04000000\r\ndebug2: fd 5 setting O_NONBLOCK\r\ndebug1: Authenticating to opyter.iptime.org:60022 as 'root'\r\ndebug3: put_host_port: [opyter.iptime.org]:60022\r\ndebug3: hostkeys_foreach: reading file \"/dev/null\"\r\ndebug3: send packet: type 20\r\ndebug1: SSH2_MSG_KEXINIT sent\r\ndebug3: receive packet: type 20\r\ndebug1: SSH2_MSG_KEXINIT received\r\ndebug2: local client KEXINIT proposal\r\ndebug2: KEX algorithms: curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512,diffie-hellman-group14-sha256,diffie-hellman-group14-sha1,ext-info-c\r\ndebug2: host key algorithms: ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521-cert-v01@openssh.com,ssh-ed25519-cert-v01@openssh.com,rsa-sha2-512-cert-v01@openssh.com,rsa-sha2-256-cert-v01@openssh.com,ssh-rsa-cert-v01@openssh.com,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,ssh-ed25519,rsa-sha2-512,rsa-sha2-256,ssh-rsa\r\ndebug2: ciphers ctos: chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com\r\ndebug2: ciphers stoc: chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com\r\ndebug2: MACs ctos: umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1\r\ndebug2: MACs stoc: umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1\r\ndebug2: compression ctos: none,zlib@openssh.com,zlib\r\ndebug2: compression stoc: none,zlib@openssh.com,zlib\r\ndebug2: languages ctos: \r\ndebug2: languages stoc: \r\ndebug2: first_kex_follows 0 \r\ndebug2: reserved 0 \r\ndebug2: peer server KEXINIT proposal\r\ndebug2: KEX algorithms: curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512,diffie-hellman-group14-sha256\r\ndebug2: host key algorithms: rsa-sha2-512,rsa-sha2-256,ssh-rsa,ecdsa-sha2-nistp256,ssh-ed25519\r\ndebug2: ciphers ctos: chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com\r\ndebug2: ciphers stoc: chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com\r\ndebug2: MACs ctos: umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1\r\ndebug2: MACs stoc: umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1\r\ndebug2: compression ctos: none,zlib@openssh.com\r\ndebug2: compression stoc: none,zlib@openssh.com\r\ndebug2: languages ctos: \r\ndebug2: languages stoc: \r\ndebug2: first_kex_follows 0 \r\ndebug2: reserved 0 \r\ndebug1: kex: algorithm: curve25519-sha256\r\ndebug1: kex: host key algorithm: ecdsa-sha2-nistp256\r\ndebug1: kex: server->client cipher: chacha20-poly1305@openssh.com MAC: <implicit> compression: none\r\ndebug1: kex: client->server cipher: chacha20-poly1305@openssh.com MAC: <implicit> compression: none\r\ndebug3: send packet: type 30\r\ndebug1: expecting SSH2_MSG_KEX_ECDH_REPLY\r\ndebug3: receive packet: type 31\r\ndebug1: Server host key: ecdsa-sha2-nistp256 SHA256:aHEyEHS0V2GYCwAEZetw7CU5AUi/lcrTly71VVYLQ+k\r\ndebug3: put_host_port: [117.20.252.102]:60022\r\ndebug3: put_host_port: [opyter.iptime.org]:60022\r\ndebug3: hostkeys_foreach: reading file \"/dev/null\"\r\ndebug3: hostkeys_foreach: reading file \"/dev/null\"\r\ndebug1: checking without port identifier\r\ndebug3: hostkeys_foreach: reading file \"/dev/null\"\r\ndebug3: hostkeys_foreach: reading file \"/dev/null\"\r\nWarning: Permanently added '[opyter.iptime.org]:60022,[117.20.252.102]:60022' (ECDSA) to the list of known hosts.\r\ndebug3: send packet: type 21\r\ndebug2: set_newkeys: mode 1\r\ndebug1: rekey out after 134217728 blocks\r\ndebug1: SSH2_MSG_NEWKEYS sent\r\ndebug1: expecting SSH2_MSG_NEWKEYS\r\ndebug3: receive packet: type 21\r\ndebug1: SSH2_MSG_NEWKEYS received\r\ndebug2: set_newkeys: mode 0\r\ndebug1: rekey in after 134217728 blocks\r\ndebug1: Will attempt key: /var/root/.ssh/id_rsa \r\ndebug1: Will attempt key: /var/root/.ssh/id_dsa \r\ndebug1: Will attempt key: /var/root/.ssh/id_ecdsa \r\ndebug1: Will attempt key: /var/root/.ssh/id_ed25519 \r\ndebug1: Will attempt key: /var/root/.ssh/id_xmss \r\ndebug2: pubkey_prepare: done\r\ndebug3: send packet: type 5\r\ndebug3: receive packet: type 7\r\ndebug1: SSH2_MSG_EXT_INFO received\r\ndebug1: kex_input_ext_info: server-sig-algs=<ssh-ed25519,sk-ssh-ed25519@openssh.com,ssh-rsa,rsa-sha2-256,rsa-sha2-512,ssh-dss,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ecdsa-sha2-nistp256@openssh.com>\r\ndebug3: receive packet: type 6\r\ndebug2: service_accept: ssh-userauth\r\ndebug1: SSH2_MSG_SERVICE_ACCEPT received\r\ndebug3: send packet: type 50\r\ndebug3: receive packet: type 51\r\ndebug1: Authentications that can continue: publickey,password\r\ndebug3: start over, passed a different list publickey,password\r\ndebug3: preferred gssapi-with-mic,gssapi-keyex,hostbased,publickey\r\ndebug3: authmethod_lookup publickey\r\ndebug3: remaining preferred: ,gssapi-keyex,hostbased,publickey\r\ndebug3: authmethod_is_enabled publickey\r\ndebug1: Next authentication method: publickey\r\ndebug1: Trying private key: /var/root/.ssh/id_rsa\r\ndebug3: no such identity: /var/root/.ssh/id_rsa: No such file or directory\r\ndebug1: Trying private key: /var/root/.ssh/id_dsa\r\ndebug3: no such identity: /var/root/.ssh/id_dsa: No such file or directory\r\ndebug1: Trying private key: /var/root/.ssh/id_ecdsa\r\ndebug3: no such identity: /var/root/.ssh/id_ecdsa: No such file or directory\r\ndebug1: Trying private key: /var/root/.ssh/id_ed25519\r\ndebug3: no such identity: /var/root/.ssh/id_ed25519: No such file or directory\r\ndebug1: Trying private key: /var/root/.ssh/id_xmss\r\ndebug3: no such identity: /var/root/.ssh/id_xmss: No such file or directory\r\ndebug2: we did not send a packet, disable method\r\ndebug1: No more authentication methods to try.\r\nroot@opyter.iptime.org: Permission denied (publickey,password).",
+    "unreachable": true
+}
+2021-09-03 11:35:47,073 p=15752 u=root n=ansible | ansible [core 2.11.3] 
+  config file = /Users/och/Desktop/Git/cluster/ansible-kubernetes/ansible.cfg
+  configured module search path = ['/Users/och/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/local/Cellar/ansible/4.4.0/libexec/lib/python3.9/site-packages/ansible
+  ansible collection location = /Users/och/.ansible/collections:/usr/share/ansible/collections
+  executable location = /usr/local/bin/ansible
+  python version = 3.9.6 (default, Jun 29 2021, 05:25:02) [Clang 12.0.5 (clang-1205.0.22.9)]
+  jinja version = 3.0.1
+  libyaml = True
+2021-09-03 11:35:47,073 p=15752 u=root n=ansible | Using /Users/och/Desktop/Git/cluster/ansible-kubernetes/ansible.cfg as config file
+2021-09-03 11:35:47,074 p=15752 u=root n=ansible | setting up inventory plugins
+2021-09-03 11:35:47,082 p=15752 u=root n=ansible | host_list declined parsing /Users/och/Desktop/Git/cluster/ansible-kubernetes/hosts as it did not pass its verify_file() method
+2021-09-03 11:35:47,083 p=15752 u=root n=ansible | script declined parsing /Users/och/Desktop/Git/cluster/ansible-kubernetes/hosts as it did not pass its verify_file() method
+2021-09-03 11:35:47,083 p=15752 u=root n=ansible | auto declined parsing /Users/och/Desktop/Git/cluster/ansible-kubernetes/hosts as it did not pass its verify_file() method
+2021-09-03 11:35:47,088 p=15752 u=root n=ansible | Parsed /Users/och/Desktop/Git/cluster/ansible-kubernetes/hosts inventory source with ini plugin
+2021-09-03 11:35:47,101 p=15752 u=root n=ansible | Loading callback plugin minimal of type stdout, v2.0 from /usr/local/Cellar/ansible/4.4.0/libexec/lib/python3.9/site-packages/ansible/plugins/callback/minimal.py
+2021-09-03 11:35:47,109 p=15752 u=root n=ansible | Skipping callback 'default', as we already have a stdout callback.
+2021-09-03 11:35:47,109 p=15752 u=root n=ansible | Skipping callback 'minimal', as we already have a stdout callback.
+2021-09-03 11:35:47,109 p=15752 u=root n=ansible | Skipping callback 'oneline', as we already have a stdout callback.
+2021-09-03 11:35:47,175 p=15752 u=root n=ansible | META: ran handlers
+2021-09-03 11:35:47,224 p=15754 u=root n=ansible | <opyter.iptime.org> ESTABLISH SSH CONNECTION FOR USER: None
+2021-09-03 11:35:47,225 p=15754 u=root n=ansible | <opyter.iptime.org> SSH: EXEC ssh -vvv -o ControlMaster=auto -o ControlPersist=60s -o UserKnownHostsFile=/dev/null -o IdentitiesOnly=yes -o StrictHostKeyChecking=no -o Port=60022 -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o ConnectTimeout=10 -o ControlPath=/Users/och/.ansible/cp/ce9c2b4423 opyter.iptime.org '/bin/sh -c '"'"'echo ~ && sleep 0'"'"''
+2021-09-03 11:35:47,528 p=15754 u=root n=ansible | <opyter.iptime.org> (255, b'', b'OpenSSH_8.1p1, LibreSSL 2.7.3\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 47: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug1: Control socket "/Users/och/.ansible/cp/ce9c2b4423" does not exist\r\ndebug2: resolving "opyter.iptime.org" port 60022\r\ndebug2: ssh_connect_direct\r\ndebug1: Connecting to opyter.iptime.org [117.20.252.102] port 60022.\r\ndebug2: fd 5 setting O_NONBLOCK\r\ndebug1: fd 5 clearing O_NONBLOCK\r\ndebug1: Connection established.\r\ndebug3: timeout: 9948 ms remain after connect\r\ndebug1: identity file /var/root/.ssh/id_rsa type -1\r\ndebug1: identity file /var/root/.ssh/id_rsa-cert type -1\r\ndebug1: identity file /var/root/.ssh/id_dsa type -1\r\ndebug1: identity file /var/root/.ssh/id_dsa-cert type -1\r\ndebug1: identity file /var/root/.ssh/id_ecdsa type -1\r\ndebug1: identity file /var/root/.ssh/id_ecdsa-cert type -1\r\ndebug1: identity file /var/root/.ssh/id_ed25519 type -1\r\ndebug1: identity file /var/root/.ssh/id_ed25519-cert type -1\r\ndebug1: identity file /var/root/.ssh/id_xmss type -1\r\ndebug1: identity file /var/root/.ssh/id_xmss-cert type -1\r\ndebug1: Local version string SSH-2.0-OpenSSH_8.1\r\ndebug1: Remote protocol version 2.0, remote software version OpenSSH_8.2p1 Ubuntu-4ubuntu0.3\r\ndebug1: match: OpenSSH_8.2p1 Ubuntu-4ubuntu0.3 pat OpenSSH* compat 0x04000000\r\ndebug2: fd 5 setting O_NONBLOCK\r\ndebug1: Authenticating to opyter.iptime.org:60022 as \'root\'\r\ndebug3: put_host_port: [opyter.iptime.org]:60022\r\ndebug3: hostkeys_foreach: reading file "/dev/null"\r\ndebug3: send packet: type 20\r\ndebug1: SSH2_MSG_KEXINIT sent\r\ndebug3: receive packet: type 20\r\ndebug1: SSH2_MSG_KEXINIT received\r\ndebug2: local client KEXINIT proposal\r\ndebug2: KEX algorithms: curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512,diffie-hellman-group14-sha256,diffie-hellman-group14-sha1,ext-info-c\r\ndebug2: host key algorithms: ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521-cert-v01@openssh.com,ssh-ed25519-cert-v01@openssh.com,rsa-sha2-512-cert-v01@openssh.com,rsa-sha2-256-cert-v01@openssh.com,ssh-rsa-cert-v01@openssh.com,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,ssh-ed25519,rsa-sha2-512,rsa-sha2-256,ssh-rsa\r\ndebug2: ciphers ctos: chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com\r\ndebug2: ciphers stoc: chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com\r\ndebug2: MACs ctos: umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1\r\ndebug2: MACs stoc: umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1\r\ndebug2: compression ctos: none,zlib@openssh.com,zlib\r\ndebug2: compression stoc: none,zlib@openssh.com,zlib\r\ndebug2: languages ctos: \r\ndebug2: languages stoc: \r\ndebug2: first_kex_follows 0 \r\ndebug2: reserved 0 \r\ndebug2: peer server KEXINIT proposal\r\ndebug2: KEX algorithms: curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512,diffie-hellman-group14-sha256\r\ndebug2: host key algorithms: rsa-sha2-512,rsa-sha2-256,ssh-rsa,ecdsa-sha2-nistp256,ssh-ed25519\r\ndebug2: ciphers ctos: chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com\r\ndebug2: ciphers stoc: chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com\r\ndebug2: MACs ctos: umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1\r\ndebug2: MACs stoc: umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1\r\ndebug2: compression ctos: none,zlib@openssh.com\r\ndebug2: compression stoc: none,zlib@openssh.com\r\ndebug2: languages ctos: \r\ndebug2: languages stoc: \r\ndebug2: first_kex_follows 0 \r\ndebug2: reserved 0 \r\ndebug1: kex: algorithm: curve25519-sha256\r\ndebug1: kex: host key algorithm: ecdsa-sha2-nistp256\r\ndebug1: kex: server->client cipher: chacha20-poly1305@openssh.com MAC: <implicit> compression: none\r\ndebug1: kex: client->server cipher: chacha20-poly1305@openssh.com MAC: <implicit> compression: none\r\ndebug3: send packet: type 30\r\ndebug1: expecting SSH2_MSG_KEX_ECDH_REPLY\r\ndebug3: receive packet: type 31\r\ndebug1: Server host key: ecdsa-sha2-nistp256 SHA256:aHEyEHS0V2GYCwAEZetw7CU5AUi/lcrTly71VVYLQ+k\r\ndebug3: put_host_port: [117.20.252.102]:60022\r\ndebug3: put_host_port: [opyter.iptime.org]:60022\r\ndebug3: hostkeys_foreach: reading file "/dev/null"\r\ndebug3: hostkeys_foreach: reading file "/dev/null"\r\ndebug1: checking without port identifier\r\ndebug3: hostkeys_foreach: reading file "/dev/null"\r\ndebug3: hostkeys_foreach: reading file "/dev/null"\r\nWarning: Permanently added \'[opyter.iptime.org]:60022,[117.20.252.102]:60022\' (ECDSA) to the list of known hosts.\r\ndebug3: send packet: type 21\r\ndebug2: set_newkeys: mode 1\r\ndebug1: rekey out after 134217728 blocks\r\ndebug1: SSH2_MSG_NEWKEYS sent\r\ndebug1: expecting SSH2_MSG_NEWKEYS\r\ndebug3: receive packet: type 21\r\ndebug1: SSH2_MSG_NEWKEYS received\r\ndebug2: set_newkeys: mode 0\r\ndebug1: rekey in after 134217728 blocks\r\ndebug1: Will attempt key: /var/root/.ssh/id_rsa \r\ndebug1: Will attempt key: /var/root/.ssh/id_dsa \r\ndebug1: Will attempt key: /var/root/.ssh/id_ecdsa \r\ndebug1: Will attempt key: /var/root/.ssh/id_ed25519 \r\ndebug1: Will attempt key: /var/root/.ssh/id_xmss \r\ndebug2: pubkey_prepare: done\r\ndebug3: send packet: type 5\r\ndebug3: receive packet: type 7\r\ndebug1: SSH2_MSG_EXT_INFO received\r\ndebug1: kex_input_ext_info: server-sig-algs=<ssh-ed25519,sk-ssh-ed25519@openssh.com,ssh-rsa,rsa-sha2-256,rsa-sha2-512,ssh-dss,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ecdsa-sha2-nistp256@openssh.com>\r\ndebug3: receive packet: type 6\r\ndebug2: service_accept: ssh-userauth\r\ndebug1: SSH2_MSG_SERVICE_ACCEPT received\r\ndebug3: send packet: type 50\r\ndebug3: receive packet: type 51\r\ndebug1: Authentications that can continue: publickey,password\r\ndebug3: start over, passed a different list publickey,password\r\ndebug3: preferred gssapi-with-mic,gssapi-keyex,hostbased,publickey\r\ndebug3: authmethod_lookup publickey\r\ndebug3: remaining preferred: ,gssapi-keyex,hostbased,publickey\r\ndebug3: authmethod_is_enabled publickey\r\ndebug1: Next authentication method: publickey\r\ndebug1: Trying private key: /var/root/.ssh/id_rsa\r\ndebug3: no such identity: /var/root/.ssh/id_rsa: No such file or directory\r\ndebug1: Trying private key: /var/root/.ssh/id_dsa\r\ndebug3: no such identity: /var/root/.ssh/id_dsa: No such file or directory\r\ndebug1: Trying private key: /var/root/.ssh/id_ecdsa\r\ndebug3: no such identity: /var/root/.ssh/id_ecdsa: No such file or directory\r\ndebug1: Trying private key: /var/root/.ssh/id_ed25519\r\ndebug3: no such identity: /var/root/.ssh/id_ed25519: No such file or directory\r\ndebug1: Trying private key: /var/root/.ssh/id_xmss\r\ndebug3: no such identity: /var/root/.ssh/id_xmss: No such file or directory\r\ndebug2: we did not send a packet, disable method\r\ndebug1: No more authentication methods to try.\r\nroot@opyter.iptime.org: Permission denied (publickey,password).\r\n')
+2021-09-03 11:35:47,543 p=15752 u=root n=ansible | master | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: OpenSSH_8.1p1, LibreSSL 2.7.3\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 47: Applying options for *\r\ndebug1: auto-mux: Trying existing master\r\ndebug1: Control socket \"/Users/och/.ansible/cp/ce9c2b4423\" does not exist\r\ndebug2: resolving \"opyter.iptime.org\" port 60022\r\ndebug2: ssh_connect_direct\r\ndebug1: Connecting to opyter.iptime.org [117.20.252.102] port 60022.\r\ndebug2: fd 5 setting O_NONBLOCK\r\ndebug1: fd 5 clearing O_NONBLOCK\r\ndebug1: Connection established.\r\ndebug3: timeout: 9948 ms remain after connect\r\ndebug1: identity file /var/root/.ssh/id_rsa type -1\r\ndebug1: identity file /var/root/.ssh/id_rsa-cert type -1\r\ndebug1: identity file /var/root/.ssh/id_dsa type -1\r\ndebug1: identity file /var/root/.ssh/id_dsa-cert type -1\r\ndebug1: identity file /var/root/.ssh/id_ecdsa type -1\r\ndebug1: identity file /var/root/.ssh/id_ecdsa-cert type -1\r\ndebug1: identity file /var/root/.ssh/id_ed25519 type -1\r\ndebug1: identity file /var/root/.ssh/id_ed25519-cert type -1\r\ndebug1: identity file /var/root/.ssh/id_xmss type -1\r\ndebug1: identity file /var/root/.ssh/id_xmss-cert type -1\r\ndebug1: Local version string SSH-2.0-OpenSSH_8.1\r\ndebug1: Remote protocol version 2.0, remote software version OpenSSH_8.2p1 Ubuntu-4ubuntu0.3\r\ndebug1: match: OpenSSH_8.2p1 Ubuntu-4ubuntu0.3 pat OpenSSH* compat 0x04000000\r\ndebug2: fd 5 setting O_NONBLOCK\r\ndebug1: Authenticating to opyter.iptime.org:60022 as 'root'\r\ndebug3: put_host_port: [opyter.iptime.org]:60022\r\ndebug3: hostkeys_foreach: reading file \"/dev/null\"\r\ndebug3: send packet: type 20\r\ndebug1: SSH2_MSG_KEXINIT sent\r\ndebug3: receive packet: type 20\r\ndebug1: SSH2_MSG_KEXINIT received\r\ndebug2: local client KEXINIT proposal\r\ndebug2: KEX algorithms: curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512,diffie-hellman-group14-sha256,diffie-hellman-group14-sha1,ext-info-c\r\ndebug2: host key algorithms: ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521-cert-v01@openssh.com,ssh-ed25519-cert-v01@openssh.com,rsa-sha2-512-cert-v01@openssh.com,rsa-sha2-256-cert-v01@openssh.com,ssh-rsa-cert-v01@openssh.com,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,ssh-ed25519,rsa-sha2-512,rsa-sha2-256,ssh-rsa\r\ndebug2: ciphers ctos: chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com\r\ndebug2: ciphers stoc: chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com\r\ndebug2: MACs ctos: umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1\r\ndebug2: MACs stoc: umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1\r\ndebug2: compression ctos: none,zlib@openssh.com,zlib\r\ndebug2: compression stoc: none,zlib@openssh.com,zlib\r\ndebug2: languages ctos: \r\ndebug2: languages stoc: \r\ndebug2: first_kex_follows 0 \r\ndebug2: reserved 0 \r\ndebug2: peer server KEXINIT proposal\r\ndebug2: KEX algorithms: curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512,diffie-hellman-group14-sha256\r\ndebug2: host key algorithms: rsa-sha2-512,rsa-sha2-256,ssh-rsa,ecdsa-sha2-nistp256,ssh-ed25519\r\ndebug2: ciphers ctos: chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com\r\ndebug2: ciphers stoc: chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com\r\ndebug2: MACs ctos: umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1\r\ndebug2: MACs stoc: umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1\r\ndebug2: compression ctos: none,zlib@openssh.com\r\ndebug2: compression stoc: none,zlib@openssh.com\r\ndebug2: languages ctos: \r\ndebug2: languages stoc: \r\ndebug2: first_kex_follows 0 \r\ndebug2: reserved 0 \r\ndebug1: kex: algorithm: curve25519-sha256\r\ndebug1: kex: host key algorithm: ecdsa-sha2-nistp256\r\ndebug1: kex: server->client cipher: chacha20-poly1305@openssh.com MAC: <implicit> compression: none\r\ndebug1: kex: client->server cipher: chacha20-poly1305@openssh.com MAC: <implicit> compression: none\r\ndebug3: send packet: type 30\r\ndebug1: expecting SSH2_MSG_KEX_ECDH_REPLY\r\ndebug3: receive packet: type 31\r\ndebug1: Server host key: ecdsa-sha2-nistp256 SHA256:aHEyEHS0V2GYCwAEZetw7CU5AUi/lcrTly71VVYLQ+k\r\ndebug3: put_host_port: [117.20.252.102]:60022\r\ndebug3: put_host_port: [opyter.iptime.org]:60022\r\ndebug3: hostkeys_foreach: reading file \"/dev/null\"\r\ndebug3: hostkeys_foreach: reading file \"/dev/null\"\r\ndebug1: checking without port identifier\r\ndebug3: hostkeys_foreach: reading file \"/dev/null\"\r\ndebug3: hostkeys_foreach: reading file \"/dev/null\"\r\nWarning: Permanently added '[opyter.iptime.org]:60022,[117.20.252.102]:60022' (ECDSA) to the list of known hosts.\r\ndebug3: send packet: type 21\r\ndebug2: set_newkeys: mode 1\r\ndebug1: rekey out after 134217728 blocks\r\ndebug1: SSH2_MSG_NEWKEYS sent\r\ndebug1: expecting SSH2_MSG_NEWKEYS\r\ndebug3: receive packet: type 21\r\ndebug1: SSH2_MSG_NEWKEYS received\r\ndebug2: set_newkeys: mode 0\r\ndebug1: rekey in after 134217728 blocks\r\ndebug1: Will attempt key: /var/root/.ssh/id_rsa \r\ndebug1: Will attempt key: /var/root/.ssh/id_dsa \r\ndebug1: Will attempt key: /var/root/.ssh/id_ecdsa \r\ndebug1: Will attempt key: /var/root/.ssh/id_ed25519 \r\ndebug1: Will attempt key: /var/root/.ssh/id_xmss \r\ndebug2: pubkey_prepare: done\r\ndebug3: send packet: type 5\r\ndebug3: receive packet: type 7\r\ndebug1: SSH2_MSG_EXT_INFO received\r\ndebug1: kex_input_ext_info: server-sig-algs=<ssh-ed25519,sk-ssh-ed25519@openssh.com,ssh-rsa,rsa-sha2-256,rsa-sha2-512,ssh-dss,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ecdsa-sha2-nistp256@openssh.com>\r\ndebug3: receive packet: type 6\r\ndebug2: service_accept: ssh-userauth\r\ndebug1: SSH2_MSG_SERVICE_ACCEPT received\r\ndebug3: send packet: type 50\r\ndebug3: receive packet: type 51\r\ndebug1: Authentications that can continue: publickey,password\r\ndebug3: start over, passed a different list publickey,password\r\ndebug3: preferred gssapi-with-mic,gssapi-keyex,hostbased,publickey\r\ndebug3: authmethod_lookup publickey\r\ndebug3: remaining preferred: ,gssapi-keyex,hostbased,publickey\r\ndebug3: authmethod_is_enabled publickey\r\ndebug1: Next authentication method: publickey\r\ndebug1: Trying private key: /var/root/.ssh/id_rsa\r\ndebug3: no such identity: /var/root/.ssh/id_rsa: No such file or directory\r\ndebug1: Trying private key: /var/root/.ssh/id_dsa\r\ndebug3: no such identity: /var/root/.ssh/id_dsa: No such file or directory\r\ndebug1: Trying private key: /var/root/.ssh/id_ecdsa\r\ndebug3: no such identity: /var/root/.ssh/id_ecdsa: No such file or directory\r\ndebug1: Trying private key: /var/root/.ssh/id_ed25519\r\ndebug3: no such identity: /var/root/.ssh/id_ed25519: No such file or directory\r\ndebug1: Trying private key: /var/root/.ssh/id_xmss\r\ndebug3: no such identity: /var/root/.ssh/id_xmss: No such file or directory\r\ndebug2: we did not send a packet, disable method\r\ndebug1: No more authentication methods to try.\r\nroot@opyter.iptime.org: Permission denied (publickey,password).",
+    "unreachable": true
+}
+2021-09-03 11:35:50,811 p=15767 u=root n=ansible | master | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: Warning: Permanently added '[opyter.iptime.org]:60022,[117.20.252.102]:60022' (ECDSA) to the list of known hosts.\r\nroot@opyter.iptime.org: Permission denied (publickey,password).",
+    "unreachable": true
+}
+2021-09-03 11:37:46,753 p=15856 u=root n=ansible | master | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: Warning: Permanently added '[opyter.iptime.org]:60022,[117.20.252.102]:60022' (ECDSA) to the list of known hosts.\r\nroot@opyter.iptime.org: Permission denied (publickey,password).",
+    "unreachable": true
+}
+2021-09-03 11:39:46,868 p=16043 u=root n=ansible | master | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: Warning: Permanently added '[opyter.iptime.org]:60022,[117.20.252.102]:60022' (ECDSA) to the list of known hosts.\r\nroot@opyter.iptime.org: Permission denied (publickey,password).",
+    "unreachable": true
+}
+2021-09-03 11:40:20,910 p=16072 u=root n=ansible | master | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: Warning: Permanently added '[opyter.iptime.org]:60022,[117.20.252.102]:60022' (ECDSA) to the list of known hosts.\r\nroot@opyter.iptime.org: Permission denied (publickey,password).",
+    "unreachable": true
+}
+2021-09-03 11:41:46,803 p=16216 u=root n=ansible | master | FAILED! => {
+    "msg": "to use the 'ssh' connection type with passwords, you must install the sshpass program"
+}
+2021-09-03 11:42:00,089 p=16253 u=root n=ansible | master | FAILED! => {
+    "msg": "to use the 'ssh' connection type with passwords, you must install the sshpass program"
+}
+2021-09-03 14:23:29,459 p=18712 u=root n=ansible | master | FAILED! => {
+    "msg": "to use the 'ssh' connection type with passwords, you must install the sshpass program"
+}
+2021-09-03 14:36:59,084 p=21804 u=root n=ansible | master | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+2021-09-03 14:37:11,377 p=21843 u=root n=ansible | node1 | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: Warning: Permanently added '[opyter.iptime.org]:10023,[117.20.252.102]:10023' (ECDSA) to the list of known hosts.\r\nLoad key \"/Users/och/Desktop/Git/cluster/ansible-kubernetes/key_file\": Is a directory\r\noch@opyter.iptime.org: Permission denied (publickey,password).",
+    "unreachable": true
+}
+2021-09-03 14:38:01,264 p=21875 u=root n=ansible | node1 | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: Warning: Permanently added '[opyter.iptime.org]:10023,[117.20.252.102]:10023' (ECDSA) to the list of known hosts.\r\nLoad key \"/Users/och/Desktop/Git/cluster/ansible-kubernetes/key_file\": Is a directory\r\noch@opyter.iptime.org: Permission denied (publickey,password).",
+    "unreachable": true
+}
+2021-09-03 14:38:49,072 p=22020 u=root n=ansible | node2 | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: Warning: Permanently added '[opyter.iptime.org]:10024,[117.20.252.102]:10024' (ECDSA) to the list of known hosts.\r\nLoad key \"/Users/och/Desktop/Git/cluster/ansible-kubernetes/key_file\": Is a directory\r\noch@opyter.iptime.org: Permission denied (publickey,password).",
+    "unreachable": true
+}
+2021-09-03 14:39:45,617 p=22048 u=root n=ansible | node2 | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: Warning: Permanently added '[opyter.iptime.org]:10024,[117.20.252.102]:10024' (ECDSA) to the list of known hosts.\r\noch@opyter.iptime.org: Permission denied (publickey,password).",
+    "unreachable": true
+}
+2021-09-03 14:40:00,907 p=22065 u=root n=ansible | master | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: Warning: Permanently added '[opyter.iptime.org]:60022,[117.20.252.102]:60022' (ECDSA) to the list of known hosts.\r\noch@opyter.iptime.org: Permission denied (publickey,password).",
+    "unreachable": true
+}
+2021-09-03 14:40:31,200 p=22088 u=root n=ansible | master | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: Warning: Permanently added '[opyter.iptime.org]:60022,[117.20.252.102]:60022' (ECDSA) to the list of known hosts.\r\nLoad key \"/Users/och/Desktop/Git/cluster/ansible-kubernetes/key_file\": Is a directory\r\noch@opyter.iptime.org: Permission denied (publickey,password).",
+    "unreachable": true
+}
+2021-09-03 14:41:50,700 p=22245 u=root n=ansible | master | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: Warning: Permanently added '[opyter.iptime.org]:60022,[117.20.252.102]:60022' (ECDSA) to the list of known hosts.\r\nLoad key \"/Users/och/Desktop/Git/cluster/ansible-kubernetes/key_file\": Is a directory\r\noch@opyter.iptime.org: Permission denied (publickey,password).",
+    "unreachable": true
+}
+2021-09-03 14:42:11,425 p=22268 u=root n=ansible | master | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+2021-09-03 14:42:45,731 p=22316 u=root n=ansible | master | FAILED! => {
+    "msg": "Missing sudo password"
+}
+2021-09-03 14:43:12,500 p=22355 u=root n=ansible | master | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+2021-09-03 14:43:19,805 p=22388 u=root n=ansible | node1 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+2021-09-03 14:43:26,462 p=22422 u=root n=ansible | node2 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+2021-09-03 14:51:01,067 p=22996 u=och n=ansible | [WARNING]: While constructing a mapping from /Users/och/Desktop/Git/cluster/ansible-kubernetes/playbook/master/tasks/main.yml, line 125, column 3, found a duplicate
+dict key (become_user). Using last defined value only.
+
+2021-09-03 14:51:01,095 p=22996 u=och n=ansible | PLAY [Kubernetes base] *************************************************************************************************************************************************
+2021-09-03 14:51:01,118 p=22996 u=och n=ansible | TASK [Gathering Facts] *************************************************************************************************************************************************
+2021-09-03 14:51:03,121 p=22996 u=och n=ansible | fatal: [master]: FAILED! => {"msg": "Missing sudo password"}
+2021-09-03 14:51:03,126 p=22996 u=och n=ansible | PLAY RECAP *************************************************************************************************************************************************************
+2021-09-03 14:51:03,126 p=22996 u=och n=ansible | master                     : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2021-09-03 14:51:55,703 p=23040 u=och n=ansible | [WARNING]: While constructing a mapping from /Users/och/Desktop/Git/cluster/ansible-kubernetes/playbook/master/tasks/main.yml, line 125, column 3, found a duplicate
+dict key (become_user). Using last defined value only.
+
+2021-09-03 14:51:55,731 p=23040 u=och n=ansible | PLAY [Kubernetes base] *************************************************************************************************************************************************
+2021-09-03 14:51:55,752 p=23040 u=och n=ansible | TASK [Gathering Facts] *************************************************************************************************************************************************
+2021-09-03 14:51:58,201 p=23040 u=och n=ansible | ok: [master]
+2021-09-03 14:51:58,244 p=23040 u=och n=ansible | TASK [kubernetes : Change selinux] *************************************************************************************************************************************
+2021-09-03 14:51:58,269 p=23040 u=och n=ansible | skipping: [master]
+2021-09-03 14:51:58,290 p=23040 u=och n=ansible | TASK [kubernetes : Stop firewalld] *************************************************************************************************************************************
+2021-09-03 14:51:58,316 p=23040 u=och n=ansible | skipping: [master]
+2021-09-03 14:51:58,335 p=23040 u=och n=ansible | TASK [kubernetes : Disable Swap area and delete] ***********************************************************************************************************************
+2021-09-03 14:51:58,362 p=23040 u=och n=ansible | skipping: [master]
+2021-09-03 14:51:58,374 p=23040 u=och n=ansible | TASK [kubernetes : Add Docker GPG key] *********************************************************************************************************************************
+2021-09-03 14:52:00,200 p=23040 u=och n=ansible | changed: [master]
+2021-09-03 14:52:00,229 p=23040 u=och n=ansible | TASK [kubernetes : Add Docker APT repository] **************************************************************************************************************************
+2021-09-03 14:52:06,404 p=23040 u=och n=ansible | changed: [master]
+2021-09-03 14:52:06,424 p=23040 u=och n=ansible | TASK [kubernetes : Install a list of packages] *************************************************************************************************************************
+2021-09-03 14:52:09,985 p=23040 u=och n=ansible | fatal: [master]: FAILED! => {"cache_update_time": 1630648328, "cache_updated": true, "changed": false, "msg": "'/usr/bin/apt-get -y -o \"Dpkg::Options::=--force-confdef\" -o \"Dpkg::Options::=--force-confold\"       install 'apt-transport-https' 'nfs-common' 'docker-ce=18.06.1~ce~3-0~ubuntu'' failed: E: Version '18.06.1~ce~3-0~ubuntu' for 'docker-ce' was not found\n", "rc": 100, "stderr": "E: Version '18.06.1~ce~3-0~ubuntu' for 'docker-ce' was not found\n", "stderr_lines": ["E: Version '18.06.1~ce~3-0~ubuntu' for 'docker-ce' was not found"], "stdout": "Reading package lists...\nBuilding dependency tree...\nReading state information...\n", "stdout_lines": ["Reading package lists...", "Building dependency tree...", "Reading state information..."]}
+2021-09-03 14:52:09,988 p=23040 u=och n=ansible | PLAY RECAP *************************************************************************************************************************************************************
+2021-09-03 14:52:09,989 p=23040 u=och n=ansible | master                     : ok=3    changed=2    unreachable=0    failed=1    skipped=3    rescued=0    ignored=0   
+2021-09-03 14:54:43,810 p=23276 u=och n=ansible | [WARNING]: While constructing a mapping from /Users/och/Desktop/Git/cluster/ansible-kubernetes/playbook/master/tasks/main.yml, line 125, column 3, found a duplicate
+dict key (become_user). Using last defined value only.
+
+2021-09-03 14:54:43,836 p=23276 u=och n=ansible | PLAY [Kubernetes base] *************************************************************************************************************************************************
+2021-09-03 14:54:43,861 p=23276 u=och n=ansible | TASK [Gathering Facts] *************************************************************************************************************************************************
+2021-09-03 14:54:48,154 p=23276 u=och n=ansible | fatal: [master]: FAILED! => {"msg": "Incorrect sudo password"}
+2021-09-03 14:54:48,158 p=23276 u=och n=ansible | PLAY RECAP *************************************************************************************************************************************************************
+2021-09-03 14:54:48,159 p=23276 u=och n=ansible | master                     : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2021-09-03 14:55:00,716 p=23322 u=och n=ansible | [WARNING]: While constructing a mapping from /Users/och/Desktop/Git/cluster/ansible-kubernetes/playbook/master/tasks/main.yml, line 125, column 3, found a duplicate
+dict key (become_user). Using last defined value only.
+
+2021-09-03 14:55:00,745 p=23322 u=och n=ansible | PLAY [Kubernetes base] *************************************************************************************************************************************************
+2021-09-03 14:55:00,764 p=23322 u=och n=ansible | TASK [Gathering Facts] *************************************************************************************************************************************************
+2021-09-03 14:55:03,268 p=23322 u=och n=ansible | ok: [master]
+2021-09-03 14:55:03,305 p=23322 u=och n=ansible | TASK [kubernetes : Change selinux] *************************************************************************************************************************************
+2021-09-03 14:55:03,334 p=23322 u=och n=ansible | skipping: [master]
+2021-09-03 14:55:03,350 p=23322 u=och n=ansible | TASK [kubernetes : Stop firewalld] *************************************************************************************************************************************
+2021-09-03 14:55:03,376 p=23322 u=och n=ansible | skipping: [master]
+2021-09-03 14:55:03,394 p=23322 u=och n=ansible | TASK [kubernetes : Disable Swap area and delete] ***********************************************************************************************************************
+2021-09-03 14:55:03,420 p=23322 u=och n=ansible | skipping: [master]
+2021-09-03 14:55:03,437 p=23322 u=och n=ansible | TASK [kubernetes : Add Docker GPG key] *********************************************************************************************************************************
+2021-09-03 14:55:04,966 p=23322 u=och n=ansible | ok: [master]
+2021-09-03 14:55:04,987 p=23322 u=och n=ansible | TASK [kubernetes : Add Docker APT repository] **************************************************************************************************************************
+2021-09-03 14:55:06,317 p=23322 u=och n=ansible | ok: [master]
+2021-09-03 14:55:06,337 p=23322 u=och n=ansible | TASK [kubernetes : Install a list of packages] *************************************************************************************************************************
+2021-09-03 14:55:10,399 p=23322 u=och n=ansible | fatal: [master]: FAILED! => {"cache_update_time": 1630648508, "cache_updated": true, "changed": false, "msg": "'/usr/bin/apt-get -y -o \"Dpkg::Options::=--force-confdef\" -o \"Dpkg::Options::=--force-confold\"       install 'apt-transport-https' 'nfs-common' 'docker-ce=18.06.1~ce~3-0~ubuntu'' failed: E: Version '18.06.1~ce~3-0~ubuntu' for 'docker-ce' was not found\n", "rc": 100, "stderr": "E: Version '18.06.1~ce~3-0~ubuntu' for 'docker-ce' was not found\n", "stderr_lines": ["E: Version '18.06.1~ce~3-0~ubuntu' for 'docker-ce' was not found"], "stdout": "Reading package lists...\nBuilding dependency tree...\nReading state information...\n", "stdout_lines": ["Reading package lists...", "Building dependency tree...", "Reading state information..."]}
+2021-09-03 14:55:10,402 p=23322 u=och n=ansible | PLAY RECAP *************************************************************************************************************************************************************
+2021-09-03 14:55:10,403 p=23322 u=och n=ansible | master                     : ok=3    changed=0    unreachable=0    failed=1    skipped=3    rescued=0    ignored=0   
+2021-09-03 14:59:18,734 p=23683 u=och n=ansible | [WARNING]: While constructing a mapping from /Users/och/Desktop/Git/cluster/ansible-kubernetes/playbook/master/tasks/main.yml, line 125, column 3, found a duplicate
+dict key (become_user). Using last defined value only.
+
+2021-09-03 14:59:18,758 p=23683 u=och n=ansible | PLAY [Kubernetes base] *************************************************************************************************************************************************
+2021-09-03 14:59:18,781 p=23683 u=och n=ansible | TASK [Gathering Facts] *************************************************************************************************************************************************
+2021-09-03 14:59:21,770 p=23683 u=och n=ansible | ok: [master]
+2021-09-03 14:59:21,808 p=23683 u=och n=ansible | TASK [kubernetes : Change selinux] *************************************************************************************************************************************
+2021-09-03 14:59:21,834 p=23683 u=och n=ansible | skipping: [master]
+2021-09-03 14:59:21,846 p=23683 u=och n=ansible | TASK [kubernetes : Stop firewalld] *************************************************************************************************************************************
+2021-09-03 14:59:21,869 p=23683 u=och n=ansible | skipping: [master]
+2021-09-03 14:59:21,883 p=23683 u=och n=ansible | TASK [kubernetes : Disable Swap area and delete] ***********************************************************************************************************************
+2021-09-03 14:59:21,908 p=23683 u=och n=ansible | skipping: [master]
+2021-09-03 14:59:21,920 p=23683 u=och n=ansible | TASK [kubernetes : Add Docker GPG key] *********************************************************************************************************************************
+2021-09-03 14:59:23,481 p=23683 u=och n=ansible | ok: [master]
+2021-09-03 14:59:23,503 p=23683 u=och n=ansible | TASK [kubernetes : Add Docker APT repository] **************************************************************************************************************************
+2021-09-03 14:59:24,783 p=23683 u=och n=ansible | ok: [master]
+2021-09-03 14:59:24,807 p=23683 u=och n=ansible | TASK [kubernetes : Install a list of packages] *************************************************************************************************************************
+2021-09-03 14:59:28,917 p=23683 u=och n=ansible | fatal: [master]: FAILED! => {"cache_update_time": 1630648767, "cache_updated": true, "changed": false, "msg": "'/usr/bin/apt-get -y -o \"Dpkg::Options::=--force-confdef\" -o \"Dpkg::Options::=--force-confold\"       install 'apt-transport-https' 'nfs-common' 'docker-ce=18.06.1~ce~3-0~ubuntu'' failed: E: Version '18.06.1~ce~3-0~ubuntu' for 'docker-ce' was not found\n", "rc": 100, "stderr": "E: Version '18.06.1~ce~3-0~ubuntu' for 'docker-ce' was not found\n", "stderr_lines": ["E: Version '18.06.1~ce~3-0~ubuntu' for 'docker-ce' was not found"], "stdout": "Reading package lists...\nBuilding dependency tree...\nReading state information...\n", "stdout_lines": ["Reading package lists...", "Building dependency tree...", "Reading state information..."]}
+2021-09-03 14:59:28,920 p=23683 u=och n=ansible | PLAY RECAP *************************************************************************************************************************************************************
+2021-09-03 14:59:28,920 p=23683 u=och n=ansible | master                     : ok=3    changed=0    unreachable=0    failed=1    skipped=3    rescued=0    ignored=0   
+2021-09-03 15:00:27,609 p=23791 u=och n=ansible | [WARNING]: While constructing a mapping from /Users/och/Desktop/Git/cluster/ansible-kubernetes/playbook/master/tasks/main.yml, line 125, column 3, found a duplicate
+dict key (become_user). Using last defined value only.
+
+2021-09-03 15:00:27,633 p=23791 u=och n=ansible | PLAY [Kubernetes base] *************************************************************************************************************************************************
+2021-09-03 15:00:27,654 p=23791 u=och n=ansible | TASK [Gathering Facts] *************************************************************************************************************************************************
+2021-09-03 15:00:30,170 p=23791 u=och n=ansible | ok: [master]
+2021-09-03 15:00:30,205 p=23791 u=och n=ansible | TASK [kubernetes : Change selinux] *************************************************************************************************************************************
+2021-09-03 15:00:30,238 p=23791 u=och n=ansible | skipping: [master]
+2021-09-03 15:00:30,251 p=23791 u=och n=ansible | TASK [kubernetes : Stop firewalld] *************************************************************************************************************************************
+2021-09-03 15:00:30,272 p=23791 u=och n=ansible | skipping: [master]
+2021-09-03 15:00:30,287 p=23791 u=och n=ansible | TASK [kubernetes : Disable Swap area and delete] ***********************************************************************************************************************
+2021-09-03 15:00:30,309 p=23791 u=och n=ansible | skipping: [master]
+2021-09-03 15:00:30,321 p=23791 u=och n=ansible | TASK [kubernetes : Add GlusterFS Repository] ***************************************************************************************************************************
+2021-09-03 15:00:40,480 p=23791 u=och n=ansible | changed: [master]
+2021-09-03 15:00:40,504 p=23791 u=och n=ansible | TASK [kubernetes : Install GlusterFS client] ***************************************************************************************************************************
+2021-09-03 15:01:01,773 p=23791 u=och n=ansible | changed: [master]
+2021-09-03 15:01:01,797 p=23791 u=och n=ansible | TASK [kubernetes : Set sysctl] *****************************************************************************************************************************************
+2021-09-03 15:01:02,918 p=23791 u=och n=ansible | changed: [master]
+2021-09-03 15:01:02,943 p=23791 u=och n=ansible | TASK [kubernetes : modprobe br_netfilter] ******************************************************************************************************************************
+2021-09-03 15:01:02,978 p=23791 u=och n=ansible | skipping: [master]
+2021-09-03 15:01:02,995 p=23791 u=och n=ansible | TASK [kubernetes : sysctl] *********************************************************************************************************************************************
+2021-09-03 15:01:03,020 p=23791 u=och n=ansible | skipping: [master]
+2021-09-03 15:01:03,035 p=23791 u=och n=ansible | TASK [kubernetes : add Kubernetes apt-key] *****************************************************************************************************************************
+2021-09-03 15:01:05,158 p=23791 u=och n=ansible | changed: [master]
+2021-09-03 15:01:05,182 p=23791 u=och n=ansible | TASK [kubernetes : add Kubernetes' APT repository] *********************************************************************************************************************
+2021-09-03 15:01:10,278 p=23791 u=och n=ansible | changed: [master]
+2021-09-03 15:01:10,302 p=23791 u=och n=ansible | TASK [kubernetes : Install kubectl] ************************************************************************************************************************************
+2021-09-03 15:01:16,780 p=23791 u=och n=ansible | changed: [master]
+2021-09-03 15:01:16,803 p=23791 u=och n=ansible | TASK [kubernetes : Install kubelet] ************************************************************************************************************************************
+2021-09-03 15:01:33,508 p=23791 u=och n=ansible | changed: [master]
+2021-09-03 15:01:33,531 p=23791 u=och n=ansible | TASK [kubernetes : Install kubeadm] ************************************************************************************************************************************
+2021-09-03 15:01:42,135 p=23791 u=och n=ansible | changed: [master]
+2021-09-03 15:01:42,158 p=23791 u=och n=ansible | TASK [kubernetes : check exisiting /etc/yum.repos.d/kubernetes.repo] ***************************************************************************************************
+2021-09-03 15:01:43,578 p=23791 u=och n=ansible | ok: [master]
+2021-09-03 15:01:43,604 p=23791 u=och n=ansible | TASK [kubernetes : install kubernetes.repo] ****************************************************************************************************************************
+2021-09-03 15:01:43,641 p=23791 u=och n=ansible | skipping: [master]
+2021-09-03 15:01:43,659 p=23791 u=och n=ansible | TASK [kubernetes : install kubelet kubeadm kubectl] ********************************************************************************************************************
+2021-09-03 15:01:43,684 p=23791 u=och n=ansible | skipping: [master]
+2021-09-03 15:01:43,695 p=23791 u=och n=ansible | TASK [kubernetes : enable kubelet] *************************************************************************************************************************************
+2021-09-03 15:01:45,367 p=23791 u=och n=ansible | fatal: [master]: FAILED! => {"changed": false, "msg": "Service is in unknown state", "status": {}}
+2021-09-03 15:01:45,371 p=23791 u=och n=ansible | PLAY RECAP *************************************************************************************************************************************************************
+2021-09-03 15:01:45,371 p=23791 u=och n=ansible | master                     : ok=10   changed=8    unreachable=0    failed=1    skipped=7    rescued=0    ignored=0   
+2021-09-03 15:06:20,127 p=24270 u=och n=ansible | [WARNING]: While constructing a mapping from /Users/och/Desktop/Git/cluster/ansible-kubernetes/playbook/master/tasks/main.yml, line 125, column 3, found a duplicate
+dict key (become_user). Using last defined value only.
+
+2021-09-03 15:06:20,155 p=24270 u=och n=ansible | PLAY [Kubernetes base] *************************************************************************************************************************************************
+2021-09-03 15:06:20,173 p=24270 u=och n=ansible | TASK [Gathering Facts] *************************************************************************************************************************************************
+2021-09-03 15:06:23,240 p=24270 u=och n=ansible | ok: [master]
+2021-09-03 15:06:23,276 p=24270 u=och n=ansible | TASK [kubernetes : Change selinux] *************************************************************************************************************************************
+2021-09-03 15:06:23,302 p=24270 u=och n=ansible | skipping: [master]
+2021-09-03 15:06:23,313 p=24270 u=och n=ansible | TASK [kubernetes : Stop firewalld] *************************************************************************************************************************************
+2021-09-03 15:06:23,338 p=24270 u=och n=ansible | skipping: [master]
+2021-09-03 15:06:23,352 p=24270 u=och n=ansible | TASK [kubernetes : Disable Swap area and delete] ***********************************************************************************************************************
+2021-09-03 15:06:23,373 p=24270 u=och n=ansible | skipping: [master]
+2021-09-03 15:06:23,386 p=24270 u=och n=ansible | TASK [kubernetes : Add GlusterFS Repository] ***************************************************************************************************************************
+2021-09-03 15:06:24,657 p=24270 u=och n=ansible | ok: [master]
+2021-09-03 15:06:24,683 p=24270 u=och n=ansible | TASK [kubernetes : Install GlusterFS client] ***************************************************************************************************************************
+2021-09-03 15:06:28,530 p=24270 u=och n=ansible | ok: [master]
+2021-09-03 15:06:28,550 p=24270 u=och n=ansible | TASK [kubernetes : Set sysctl] *****************************************************************************************************************************************
+2021-09-03 15:06:29,637 p=24270 u=och n=ansible | ok: [master]
+2021-09-03 15:06:29,662 p=24270 u=och n=ansible | TASK [kubernetes : modprobe br_netfilter] ******************************************************************************************************************************
+2021-09-03 15:06:29,697 p=24270 u=och n=ansible | skipping: [master]
+2021-09-03 15:06:29,712 p=24270 u=och n=ansible | TASK [kubernetes : sysctl] *********************************************************************************************************************************************
+2021-09-03 15:06:29,736 p=24270 u=och n=ansible | skipping: [master]
+2021-09-03 15:06:29,750 p=24270 u=och n=ansible | TASK [kubernetes : add Kubernetes apt-key] *****************************************************************************************************************************
+2021-09-03 15:06:31,396 p=24270 u=och n=ansible | ok: [master]
+2021-09-03 15:06:31,419 p=24270 u=och n=ansible | TASK [kubernetes : add Kubernetes' APT repository] *********************************************************************************************************************
+2021-09-03 15:06:32,517 p=24270 u=och n=ansible | ok: [master]
+2021-09-03 15:06:32,540 p=24270 u=och n=ansible | TASK [kubernetes : Install kubectl] ************************************************************************************************************************************
+2021-09-03 15:06:34,056 p=24270 u=och n=ansible | ok: [master]
+2021-09-03 15:06:34,078 p=24270 u=och n=ansible | TASK [kubernetes : Install kubelet] ************************************************************************************************************************************
+2021-09-03 15:06:35,588 p=24270 u=och n=ansible | ok: [master]
+2021-09-03 15:06:35,612 p=24270 u=och n=ansible | TASK [kubernetes : Install kubeadm] ************************************************************************************************************************************
+2021-09-03 15:06:37,126 p=24270 u=och n=ansible | ok: [master]
+2021-09-03 15:06:37,149 p=24270 u=och n=ansible | TASK [kubernetes : check exisiting /etc/yum.repos.d/kubernetes.repo] ***************************************************************************************************
+2021-09-03 15:06:38,277 p=24270 u=och n=ansible | ok: [master]
+2021-09-03 15:06:38,300 p=24270 u=och n=ansible | TASK [kubernetes : install kubernetes.repo] ****************************************************************************************************************************
+2021-09-03 15:06:38,335 p=24270 u=och n=ansible | skipping: [master]
+2021-09-03 15:06:38,350 p=24270 u=och n=ansible | TASK [kubernetes : install kubelet kubeadm kubectl] ********************************************************************************************************************
+2021-09-03 15:06:38,373 p=24270 u=och n=ansible | skipping: [master]
+2021-09-03 15:06:38,386 p=24270 u=och n=ansible | TASK [kubernetes : enable kubelet] *************************************************************************************************************************************
+2021-09-03 15:06:38,410 p=24270 u=och n=ansible | skipping: [master]
+2021-09-03 15:06:38,423 p=24270 u=och n=ansible | TASK [kubernetes : change 10-kubeadm.conf for v1.11 or later for Ubuntu] ***********************************************************************************************
+2021-09-03 15:06:38,452 p=24270 u=och n=ansible | fatal: [master]: FAILED! => {"msg": "The task includes an option with an undefined variable. The error was: 'dict object' has no attribute 'enp0s8'\n\nThe error appears to be in '/Users/och/Desktop/Git/cluster/ansible-kubernetes/playbook/kubernetes/tasks/main.yml': line 213, column 3, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n## Kubelet 기동 파라미터 변경\n- name: change 10-kubeadm.conf for v1.11 or later for Ubuntu\n  ^ here\n"}
+2021-09-03 15:06:38,454 p=24270 u=och n=ansible | PLAY RECAP *************************************************************************************************************************************************************
+2021-09-03 15:06:38,455 p=24270 u=och n=ansible | master                     : ok=10   changed=0    unreachable=0    failed=1    skipped=8    rescued=0    ignored=0   
+2021-09-03 15:15:31,473 p=24905 u=och n=ansible | [WARNING]: While constructing a mapping from /Users/och/Desktop/Git/cluster/ansible-kubernetes/playbook/master/tasks/main.yml, line 125, column 3, found a duplicate
+dict key (become_user). Using last defined value only.
+
+2021-09-03 15:15:31,502 p=24905 u=och n=ansible | PLAY [Kubernetes base] *************************************************************************************************************************************************
+2021-09-03 15:15:31,519 p=24905 u=och n=ansible | TASK [Gathering Facts] *************************************************************************************************************************************************
+2021-09-03 15:15:35,228 p=24905 u=och n=ansible | ok: [master]
+2021-09-03 15:15:35,264 p=24905 u=och n=ansible | TASK [kubernetes : Change selinux] *************************************************************************************************************************************
+2021-09-03 15:15:35,288 p=24905 u=och n=ansible | skipping: [master]
+2021-09-03 15:15:35,301 p=24905 u=och n=ansible | TASK [kubernetes : Stop firewalld] *************************************************************************************************************************************
+2021-09-03 15:15:35,323 p=24905 u=och n=ansible | skipping: [master]
+2021-09-03 15:15:35,335 p=24905 u=och n=ansible | TASK [kubernetes : Disable Swap area and delete] ***********************************************************************************************************************
+2021-09-03 15:15:35,356 p=24905 u=och n=ansible | skipping: [master]
+2021-09-03 15:15:35,367 p=24905 u=och n=ansible | TASK [kubernetes : Add GlusterFS Repository] ***************************************************************************************************************************
+2021-09-03 15:15:37,050 p=24905 u=och n=ansible | ok: [master]
+2021-09-03 15:15:37,071 p=24905 u=och n=ansible | TASK [kubernetes : Install GlusterFS client] ***************************************************************************************************************************
+2021-09-03 15:15:41,552 p=24905 u=och n=ansible | ok: [master]
+2021-09-03 15:15:41,574 p=24905 u=och n=ansible | TASK [kubernetes : Set sysctl] *****************************************************************************************************************************************
+2021-09-03 15:15:42,722 p=24905 u=och n=ansible | ok: [master]
+2021-09-03 15:15:42,747 p=24905 u=och n=ansible | TASK [kubernetes : modprobe br_netfilter] ******************************************************************************************************************************
+2021-09-03 15:15:42,785 p=24905 u=och n=ansible | skipping: [master]
+2021-09-03 15:15:42,802 p=24905 u=och n=ansible | TASK [kubernetes : sysctl] *********************************************************************************************************************************************
+2021-09-03 15:15:42,826 p=24905 u=och n=ansible | skipping: [master]
+2021-09-03 15:15:42,842 p=24905 u=och n=ansible | TASK [kubernetes : check exisiting /etc/yum.repos.d/kubernetes.repo] ***************************************************************************************************
+2021-09-03 15:15:42,867 p=24905 u=och n=ansible | skipping: [master]
+2021-09-03 15:15:42,880 p=24905 u=och n=ansible | TASK [kubernetes : install kubernetes.repo] ****************************************************************************************************************************
+2021-09-03 15:15:42,901 p=24905 u=och n=ansible | skipping: [master]
+2021-09-03 15:15:42,920 p=24905 u=och n=ansible | TASK [kubernetes : install kubelet kubeadm kubectl] ********************************************************************************************************************
+2021-09-03 15:15:42,943 p=24905 u=och n=ansible | skipping: [master]
+2021-09-03 15:15:42,955 p=24905 u=och n=ansible | TASK [kubernetes : enable kubelet] *************************************************************************************************************************************
+2021-09-03 15:15:42,978 p=24905 u=och n=ansible | skipping: [master]
+2021-09-03 15:15:42,994 p=24905 u=och n=ansible | TASK [kubernetes : change 10-kubeadm.conf for v1.11 or later for Ubuntu] ***********************************************************************************************
+2021-09-03 15:15:43,027 p=24905 u=och n=ansible | fatal: [master]: FAILED! => {"msg": "The task includes an option with an undefined variable. The error was: 'dict object' has no attribute 'enp0s8'\n\nThe error appears to be in '/Users/och/Desktop/Git/cluster/ansible-kubernetes/playbook/kubernetes/tasks/main.yml': line 215, column 3, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n## Kubelet 기동 파라미터 변경\n- name: change 10-kubeadm.conf for v1.11 or later for Ubuntu\n  ^ here\n"}
+2021-09-03 15:15:43,029 p=24905 u=och n=ansible | PLAY RECAP *************************************************************************************************************************************************************
+2021-09-03 15:15:43,029 p=24905 u=och n=ansible | master                     : ok=4    changed=0    unreachable=0    failed=1    skipped=9    rescued=0    ignored=0   
+2021-09-03 15:37:57,959 p=25989 u=och n=ansible | [WARNING]: While constructing a mapping from /Users/och/Desktop/Git/cluster/ansible-kubernetes/playbook/master/tasks/main.yml, line 125, column 3, found a duplicate
+dict key (become_user). Using last defined value only.
+
+2021-09-03 15:37:57,982 p=25989 u=och n=ansible | PLAY [Kubernetes base] *************************************************************************************************************************************************
+2021-09-03 15:37:58,002 p=25989 u=och n=ansible | TASK [Gathering Facts] *************************************************************************************************************************************************
+2021-09-03 15:38:01,549 p=25989 u=och n=ansible | ok: [master]
+2021-09-03 15:38:01,583 p=25989 u=och n=ansible | TASK [kubernetes : Change selinux] *************************************************************************************************************************************
+2021-09-03 15:38:01,605 p=25989 u=och n=ansible | skipping: [master]
+2021-09-03 15:38:01,617 p=25989 u=och n=ansible | TASK [kubernetes : Stop firewalld] *************************************************************************************************************************************
+2021-09-03 15:38:01,636 p=25989 u=och n=ansible | skipping: [master]
+2021-09-03 15:38:01,648 p=25989 u=och n=ansible | TASK [kubernetes : Disable Swap area and delete] ***********************************************************************************************************************
+2021-09-03 15:38:01,669 p=25989 u=och n=ansible | skipping: [master]
+2021-09-03 15:38:01,682 p=25989 u=och n=ansible | TASK [kubernetes : Add GlusterFS Repository] ***************************************************************************************************************************
+2021-09-03 15:38:03,060 p=25989 u=och n=ansible | ok: [master]
+2021-09-03 15:38:03,081 p=25989 u=och n=ansible | TASK [kubernetes : Install GlusterFS client] ***************************************************************************************************************************
+2021-09-03 15:38:10,813 p=25989 u=och n=ansible | ok: [master]
+2021-09-03 15:38:10,835 p=25989 u=och n=ansible | TASK [kubernetes : Set sysctl] *****************************************************************************************************************************************
+2021-09-03 15:38:13,094 p=25989 u=och n=ansible | ok: [master]
+2021-09-03 15:38:13,117 p=25989 u=och n=ansible | TASK [kubernetes : modprobe br_netfilter] ******************************************************************************************************************************
+2021-09-03 15:38:13,149 p=25989 u=och n=ansible | skipping: [master]
+2021-09-03 15:38:13,163 p=25989 u=och n=ansible | TASK [kubernetes : sysctl] *********************************************************************************************************************************************
+2021-09-03 15:38:13,184 p=25989 u=och n=ansible | skipping: [master]
+2021-09-03 15:38:13,197 p=25989 u=och n=ansible | TASK [kubernetes : check exisiting /etc/yum.repos.d/kubernetes.repo] ***************************************************************************************************
+2021-09-03 15:38:13,216 p=25989 u=och n=ansible | skipping: [master]
+2021-09-03 15:38:13,229 p=25989 u=och n=ansible | TASK [kubernetes : install kubernetes.repo] ****************************************************************************************************************************
+2021-09-03 15:38:13,250 p=25989 u=och n=ansible | skipping: [master]
+2021-09-03 15:38:13,263 p=25989 u=och n=ansible | TASK [kubernetes : install kubelet kubeadm kubectl] ********************************************************************************************************************
+2021-09-03 15:38:13,285 p=25989 u=och n=ansible | skipping: [master]
+2021-09-03 15:38:13,298 p=25989 u=och n=ansible | TASK [kubernetes : enable kubelet] *************************************************************************************************************************************
+2021-09-03 15:38:13,318 p=25989 u=och n=ansible | skipping: [master]
+2021-09-03 15:38:13,331 p=25989 u=och n=ansible | TASK [kubernetes : change 10-kubeadm.conf for v1.11 or later for Ubuntu] ***********************************************************************************************
+2021-09-03 15:38:14,497 p=25989 u=och n=ansible | changed: [master]
+2021-09-03 15:38:14,518 p=25989 u=och n=ansible | TASK [kubernetes : change kubelet.service for CentOS] ******************************************************************************************************************
+2021-09-03 15:38:14,550 p=25989 u=och n=ansible | skipping: [master]
+2021-09-03 15:38:14,564 p=25989 u=och n=ansible | TASK [kubernetes : daemon-reload and restart kubelet] ******************************************************************************************************************
+2021-09-03 15:38:15,953 p=25989 u=och n=ansible | fatal: [master]: FAILED! => {"changed": false, "msg": "failure 1 during daemon-reload: System has not been booted with systemd as init system (PID 1). Can't operate.\nFailed to connect to bus: Host is down\n"}
+2021-09-03 15:38:15,957 p=25989 u=och n=ansible | PLAY RECAP *************************************************************************************************************************************************************
+2021-09-03 15:38:15,957 p=25989 u=och n=ansible | master                     : ok=5    changed=1    unreachable=0    failed=1    skipped=10   rescued=0    ignored=0   
+2021-09-03 15:39:03,672 p=26271 u=och n=ansible | [WARNING]: While constructing a mapping from /Users/och/Desktop/Git/cluster/ansible-kubernetes/playbook/master/tasks/main.yml, line 125, column 3, found a duplicate
+dict key (become_user). Using last defined value only.
+
+2021-09-03 15:39:03,696 p=26271 u=och n=ansible | PLAY [Kubernetes base] *************************************************************************************************************************************************
+2021-09-03 15:39:03,714 p=26271 u=och n=ansible | TASK [Gathering Facts] *************************************************************************************************************************************************
+2021-09-03 15:39:06,449 p=26271 u=och n=ansible | ok: [master]
+2021-09-03 15:39:06,482 p=26271 u=och n=ansible | TASK [kubernetes : Change selinux] *************************************************************************************************************************************
+2021-09-03 15:39:06,503 p=26271 u=och n=ansible | skipping: [master]
+2021-09-03 15:39:06,516 p=26271 u=och n=ansible | TASK [kubernetes : Stop firewalld] *************************************************************************************************************************************
+2021-09-03 15:39:06,536 p=26271 u=och n=ansible | skipping: [master]
+2021-09-03 15:39:06,551 p=26271 u=och n=ansible | TASK [kubernetes : Disable Swap area and delete] ***********************************************************************************************************************
+2021-09-03 15:39:06,572 p=26271 u=och n=ansible | skipping: [master]
+2021-09-03 15:39:06,583 p=26271 u=och n=ansible | TASK [kubernetes : Add GlusterFS Repository] ***************************************************************************************************************************
+2021-09-03 15:39:08,079 p=26271 u=och n=ansible | ok: [master]
+2021-09-03 15:39:08,104 p=26271 u=och n=ansible | TASK [kubernetes : Install GlusterFS client] ***************************************************************************************************************************
+2021-09-03 15:39:14,122 p=26271 u=och n=ansible | ok: [master]
+2021-09-03 15:39:14,148 p=26271 u=och n=ansible | TASK [kubernetes : Set sysctl] *****************************************************************************************************************************************
+2021-09-03 15:39:15,300 p=26271 u=och n=ansible | ok: [master]
+2021-09-03 15:39:15,321 p=26271 u=och n=ansible | TASK [kubernetes : modprobe br_netfilter] ******************************************************************************************************************************
+2021-09-03 15:39:15,358 p=26271 u=och n=ansible | skipping: [master]
+2021-09-03 15:39:15,373 p=26271 u=och n=ansible | TASK [kubernetes : sysctl] *********************************************************************************************************************************************
+2021-09-03 15:39:15,396 p=26271 u=och n=ansible | skipping: [master]
+2021-09-03 15:39:15,409 p=26271 u=och n=ansible | TASK [kubernetes : check exisiting /etc/yum.repos.d/kubernetes.repo] ***************************************************************************************************
+2021-09-03 15:39:15,430 p=26271 u=och n=ansible | skipping: [master]
+2021-09-03 15:39:15,444 p=26271 u=och n=ansible | TASK [kubernetes : install kubernetes.repo] ****************************************************************************************************************************
+2021-09-03 15:39:15,467 p=26271 u=och n=ansible | skipping: [master]
+2021-09-03 15:39:15,481 p=26271 u=och n=ansible | TASK [kubernetes : install kubelet kubeadm kubectl] ********************************************************************************************************************
+2021-09-03 15:39:15,506 p=26271 u=och n=ansible | skipping: [master]
+2021-09-03 15:39:15,518 p=26271 u=och n=ansible | TASK [kubernetes : enable kubelet] *************************************************************************************************************************************
+2021-09-03 15:39:15,538 p=26271 u=och n=ansible | skipping: [master]
+2021-09-03 15:39:15,551 p=26271 u=och n=ansible | TASK [kubernetes : change 10-kubeadm.conf for v1.11 or later for Ubuntu] ***********************************************************************************************
+2021-09-03 15:39:16,658 p=26271 u=och n=ansible | ok: [master]
+2021-09-03 15:39:16,681 p=26271 u=och n=ansible | TASK [kubernetes : change kubelet.service for CentOS] ******************************************************************************************************************
+2021-09-03 15:39:16,712 p=26271 u=och n=ansible | skipping: [master]
+2021-09-03 15:39:16,737 p=26271 u=och n=ansible | TASK [master : kubeadm reset v1.11 or later] ***************************************************************************************************************************
+2021-09-03 15:39:19,020 p=26271 u=och n=ansible | changed: [master]
+2021-09-03 15:39:19,041 p=26271 u=och n=ansible | TASK [master : kubeadm init for Ubuntu] ********************************************************************************************************************************
+2021-09-03 15:39:31,612 p=26271 u=och n=ansible | fatal: [master]: FAILED! => {"changed": true, "cmd": ["kubeadm", "init", "--pod-network-cidr=10.244.0.0/16", "--apiserver-advertise-address=172.28.29.35", "--service-cidr=10.32.0.0/24"], "delta": "0:00:11.458304", "end": "2021-09-03 15:39:30.686626", "msg": "non-zero return code", "rc": 1, "start": "2021-09-03 15:39:19.228322", "stderr": "I0903 15:39:29.273788   13229 version.go:96] could not fetch a Kubernetes version from the internet: unable to get URL \"https://dl.k8s.io/release/stable-1.txt\": Get https://storage.googleapis.com/kubernetes-release/release/stable-1.txt: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)\nI0903 15:39:29.273971   13229 version.go:97] falling back to the local client version: v1.14.10\n\t[WARNING Service-Docker]: docker service is not enabled, please run 'systemctl enable docker.service'\n\t[WARNING IsDockerSystemdCheck]: detected \"cgroupfs\" as the Docker cgroup driver. The recommended driver is \"systemd\". Please follow the guide at https://kubernetes.io/docs/setup/cri/\n\t[WARNING SystemVerification]: this Docker version is not on the list of validated versions: 20.10.8. Latest validated version: 18.09\nerror execution phase preflight: [preflight] Some fatal errors occurred:\n\t[ERROR Port-6443]: Port 6443 is in use\n\t[ERROR Service-Docker]: docker service is not active, please run 'systemctl start docker.service'\n\t[ERROR Swap]: running with swap on is not supported. Please disable swap\n[preflight] If you know what you are doing, you can make a check non-fatal with `--ignore-preflight-errors=...`", "stderr_lines": ["I0903 15:39:29.273788   13229 version.go:96] could not fetch a Kubernetes version from the internet: unable to get URL \"https://dl.k8s.io/release/stable-1.txt\": Get https://storage.googleapis.com/kubernetes-release/release/stable-1.txt: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)", "I0903 15:39:29.273971   13229 version.go:97] falling back to the local client version: v1.14.10", "\t[WARNING Service-Docker]: docker service is not enabled, please run 'systemctl enable docker.service'", "\t[WARNING IsDockerSystemdCheck]: detected \"cgroupfs\" as the Docker cgroup driver. The recommended driver is \"systemd\". Please follow the guide at https://kubernetes.io/docs/setup/cri/", "\t[WARNING SystemVerification]: this Docker version is not on the list of validated versions: 20.10.8. Latest validated version: 18.09", "error execution phase preflight: [preflight] Some fatal errors occurred:", "\t[ERROR Port-6443]: Port 6443 is in use", "\t[ERROR Service-Docker]: docker service is not active, please run 'systemctl start docker.service'", "\t[ERROR Swap]: running with swap on is not supported. Please disable swap", "[preflight] If you know what you are doing, you can make a check non-fatal with `--ignore-preflight-errors=...`"], "stdout": "[init] Using Kubernetes version: v1.14.10\n[preflight] Running pre-flight checks", "stdout_lines": ["[init] Using Kubernetes version: v1.14.10", "[preflight] Running pre-flight checks"]}
+2021-09-03 15:39:31,615 p=26271 u=och n=ansible | PLAY RECAP *************************************************************************************************************************************************************
+2021-09-03 15:39:31,615 p=26271 u=och n=ansible | master                     : ok=6    changed=1    unreachable=0    failed=1    skipped=10   rescued=0    ignored=0   
+2021-09-03 15:44:41,862 p=26687 u=och n=ansible | PLAY [Kubernetes base] *************************************************************************************************************************************************
+2021-09-03 15:44:41,878 p=26687 u=och n=ansible | TASK [Gathering Facts] *************************************************************************************************************************************************
+2021-09-03 15:44:44,075 p=26687 u=och n=ansible | ok: [node2]
+2021-09-03 15:44:44,287 p=26687 u=och n=ansible | ok: [node1]
+2021-09-03 15:44:44,317 p=26687 u=och n=ansible | TASK [kubernetes : Change selinux] *************************************************************************************************************************************
+2021-09-03 15:44:44,348 p=26687 u=och n=ansible | skipping: [node1]
+2021-09-03 15:44:44,361 p=26687 u=och n=ansible | skipping: [node2]
+2021-09-03 15:44:44,373 p=26687 u=och n=ansible | TASK [kubernetes : Stop firewalld] *************************************************************************************************************************************
+2021-09-03 15:44:44,396 p=26687 u=och n=ansible | skipping: [node1]
+2021-09-03 15:44:44,407 p=26687 u=och n=ansible | skipping: [node2]
+2021-09-03 15:44:44,419 p=26687 u=och n=ansible | TASK [kubernetes : Disable Swap area and delete] ***********************************************************************************************************************
+2021-09-03 15:44:44,443 p=26687 u=och n=ansible | skipping: [node1]
+2021-09-03 15:44:44,455 p=26687 u=och n=ansible | skipping: [node2]
+2021-09-03 15:44:44,466 p=26687 u=och n=ansible | TASK [kubernetes : Add GlusterFS Repository] ***************************************************************************************************************************
+2021-09-03 15:44:58,869 p=26687 u=och n=ansible | changed: [node1]
+2021-09-03 15:45:01,637 p=26687 u=och n=ansible | changed: [node2]
+2021-09-03 15:45:01,660 p=26687 u=och n=ansible | TASK [kubernetes : Install GlusterFS client] ***************************************************************************************************************************
+2021-09-03 15:45:36,068 p=26687 u=och n=ansible | changed: [node1]
+2021-09-03 15:45:37,691 p=26687 u=och n=ansible | changed: [node2]
+2021-09-03 15:45:37,713 p=26687 u=och n=ansible | TASK [kubernetes : Set sysctl] *****************************************************************************************************************************************
+2021-09-03 15:45:38,660 p=26687 u=och n=ansible | changed: [node2]
+2021-09-03 15:45:38,827 p=26687 u=och n=ansible | changed: [node1]
+2021-09-03 15:45:38,849 p=26687 u=och n=ansible | TASK [kubernetes : modprobe br_netfilter] ******************************************************************************************************************************
+2021-09-03 15:45:38,889 p=26687 u=och n=ansible | skipping: [node1]
+2021-09-03 15:45:38,906 p=26687 u=och n=ansible | skipping: [node2]
+2021-09-03 15:45:38,918 p=26687 u=och n=ansible | TASK [kubernetes : sysctl] *********************************************************************************************************************************************
+2021-09-03 15:45:38,941 p=26687 u=och n=ansible | skipping: [node1]
+2021-09-03 15:45:38,954 p=26687 u=och n=ansible | skipping: [node2]
+2021-09-03 15:45:38,965 p=26687 u=och n=ansible | TASK [kubernetes : check exisiting /etc/yum.repos.d/kubernetes.repo] ***************************************************************************************************
+2021-09-03 15:45:38,991 p=26687 u=och n=ansible | skipping: [node1]
+2021-09-03 15:45:39,002 p=26687 u=och n=ansible | skipping: [node2]
+2021-09-03 15:45:39,014 p=26687 u=och n=ansible | TASK [kubernetes : install kubernetes.repo] ****************************************************************************************************************************
+2021-09-03 15:45:39,041 p=26687 u=och n=ansible | skipping: [node1]
+2021-09-03 15:45:39,055 p=26687 u=och n=ansible | skipping: [node2]
+2021-09-03 15:45:39,068 p=26687 u=och n=ansible | TASK [kubernetes : install kubelet kubeadm kubectl] ********************************************************************************************************************
+2021-09-03 15:45:39,093 p=26687 u=och n=ansible | skipping: [node1]
+2021-09-03 15:45:39,104 p=26687 u=och n=ansible | skipping: [node2]
+2021-09-03 15:45:39,116 p=26687 u=och n=ansible | TASK [kubernetes : enable kubelet] *************************************************************************************************************************************
+2021-09-03 15:45:39,141 p=26687 u=och n=ansible | skipping: [node1]
+2021-09-03 15:45:39,152 p=26687 u=och n=ansible | skipping: [node2]
+2021-09-03 15:45:39,164 p=26687 u=och n=ansible | TASK [kubernetes : change 10-kubeadm.conf for v1.11 or later for Ubuntu] ***********************************************************************************************
+2021-09-03 15:45:39,192 p=26687 u=och n=ansible | fatal: [node1]: FAILED! => {"msg": "The task includes an option with an undefined variable. The error was: 'dict object' has no attribute 'eth0'\n\nThe error appears to be in '/Users/och/Desktop/Git/cluster/ansible-kubernetes/playbook/kubernetes/tasks/main.yml': line 215, column 3, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n## Kubelet 기동 파라미터 변경\n- name: change 10-kubeadm.conf for v1.11 or later for Ubuntu\n  ^ here\n"}
+2021-09-03 15:45:39,208 p=26687 u=och n=ansible | fatal: [node2]: FAILED! => {"msg": "The task includes an option with an undefined variable. The error was: 'dict object' has no attribute 'eth0'\n\nThe error appears to be in '/Users/och/Desktop/Git/cluster/ansible-kubernetes/playbook/kubernetes/tasks/main.yml': line 215, column 3, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n## Kubelet 기동 파라미터 변경\n- name: change 10-kubeadm.conf for v1.11 or later for Ubuntu\n  ^ here\n"}
+2021-09-03 15:45:39,211 p=26687 u=och n=ansible | PLAY RECAP *************************************************************************************************************************************************************
+2021-09-03 15:45:39,211 p=26687 u=och n=ansible | node1                      : ok=4    changed=3    unreachable=0    failed=1    skipped=9    rescued=0    ignored=0   
+2021-09-03 15:45:39,211 p=26687 u=och n=ansible | node2                      : ok=4    changed=3    unreachable=0    failed=1    skipped=9    rescued=0    ignored=0   
+2021-09-03 16:59:26,574 p=27907 u=och n=ansible | PLAY [Kubernetes base] *************************************************************************************************************************************************
+2021-09-03 16:59:26,597 p=27907 u=och n=ansible | TASK [Gathering Facts] *************************************************************************************************************************************************
+2021-09-03 16:59:30,383 p=27907 u=och n=ansible | ok: [node1]
+2021-09-03 16:59:30,957 p=27907 u=och n=ansible | ok: [node2]
+2021-09-03 16:59:30,989 p=27907 u=och n=ansible | TASK [kubernetes : Change selinux] *************************************************************************************************************************************
+2021-09-03 16:59:31,018 p=27907 u=och n=ansible | skipping: [node1]
+2021-09-03 16:59:31,030 p=27907 u=och n=ansible | skipping: [node2]
+2021-09-03 16:59:31,043 p=27907 u=och n=ansible | TASK [kubernetes : Stop firewalld] *************************************************************************************************************************************
+2021-09-03 16:59:31,065 p=27907 u=och n=ansible | skipping: [node1]
+2021-09-03 16:59:31,079 p=27907 u=och n=ansible | skipping: [node2]
+2021-09-03 16:59:31,092 p=27907 u=och n=ansible | TASK [kubernetes : Disable Swap area and delete] ***********************************************************************************************************************
+2021-09-03 16:59:31,115 p=27907 u=och n=ansible | skipping: [node1]
+2021-09-03 16:59:31,128 p=27907 u=och n=ansible | skipping: [node2]
+2021-09-03 16:59:31,142 p=27907 u=och n=ansible | TASK [kubernetes : Add Docker GPG key] *********************************************************************************************************************************
+2021-09-03 16:59:32,547 p=27907 u=och n=ansible | ok: [node1]
+2021-09-03 16:59:32,584 p=27907 u=och n=ansible | ok: [node2]
+2021-09-03 16:59:32,597 p=27907 u=och n=ansible | TASK [kubernetes : Add Docker APT repository] **************************************************************************************************************************
+2021-09-03 16:59:33,688 p=27907 u=och n=ansible | ok: [node1]
+2021-09-03 16:59:33,750 p=27907 u=och n=ansible | ok: [node2]
+2021-09-03 16:59:33,770 p=27907 u=och n=ansible | TASK [kubernetes : Install a list of packages] *************************************************************************************************************************
+2021-09-03 16:59:37,894 p=27907 u=och n=ansible | fatal: [node2]: FAILED! => {"cache_update_time": 1630655976, "cache_updated": true, "changed": false, "msg": "'/usr/bin/apt-get -y -o \"Dpkg::Options::=--force-confdef\" -o \"Dpkg::Options::=--force-confold\"       install 'nfs-common' 'docker-ce=18.06.1~ce~3-0~ubuntu'' failed: E: Version '18.06.1~ce~3-0~ubuntu' for 'docker-ce' was not found\n", "rc": 100, "stderr": "E: Version '18.06.1~ce~3-0~ubuntu' for 'docker-ce' was not found\n", "stderr_lines": ["E: Version '18.06.1~ce~3-0~ubuntu' for 'docker-ce' was not found"], "stdout": "Reading package lists...\nBuilding dependency tree...\nReading state information...\n", "stdout_lines": ["Reading package lists...", "Building dependency tree...", "Reading state information..."]}
+2021-09-03 16:59:44,238 p=27907 u=och n=ansible | fatal: [node1]: FAILED! => {"cache_update_time": 1630655979, "cache_updated": true, "changed": false, "msg": "'/usr/bin/apt-get -y -o \"Dpkg::Options::=--force-confdef\" -o \"Dpkg::Options::=--force-confold\"       install 'nfs-common' 'docker-ce=18.06.1~ce~3-0~ubuntu'' failed: E: Version '18.06.1~ce~3-0~ubuntu' for 'docker-ce' was not found\n", "rc": 100, "stderr": "E: Version '18.06.1~ce~3-0~ubuntu' for 'docker-ce' was not found\n", "stderr_lines": ["E: Version '18.06.1~ce~3-0~ubuntu' for 'docker-ce' was not found"], "stdout": "Reading package lists...\nBuilding dependency tree...\nReading state information...\n", "stdout_lines": ["Reading package lists...", "Building dependency tree...", "Reading state information..."]}
+2021-09-03 16:59:44,243 p=27907 u=och n=ansible | PLAY RECAP *************************************************************************************************************************************************************
+2021-09-03 16:59:44,244 p=27907 u=och n=ansible | node1                      : ok=3    changed=0    unreachable=0    failed=1    skipped=3    rescued=0    ignored=0   
+2021-09-03 16:59:44,244 p=27907 u=och n=ansible | node2                      : ok=3    changed=0    unreachable=0    failed=1    skipped=3    rescued=0    ignored=0   
+2021-09-03 17:02:11,832 p=28225 u=och n=ansible | PLAY [Kubernetes base] *************************************************************************************************************************************************
+2021-09-03 17:02:11,852 p=28225 u=och n=ansible | TASK [Gathering Facts] *************************************************************************************************************************************************
+2021-09-03 17:02:13,970 p=28225 u=och n=ansible | ok: [node2]
+2021-09-03 17:02:14,169 p=28225 u=och n=ansible | ok: [node1]
+2021-09-03 17:02:14,200 p=28225 u=och n=ansible | TASK [kubernetes : Change selinux] *************************************************************************************************************************************
+2021-09-03 17:02:14,230 p=28225 u=och n=ansible | skipping: [node1]
+2021-09-03 17:02:14,240 p=28225 u=och n=ansible | skipping: [node2]
+2021-09-03 17:02:14,252 p=28225 u=och n=ansible | TASK [kubernetes : Stop firewalld] *************************************************************************************************************************************
+2021-09-03 17:02:14,276 p=28225 u=och n=ansible | skipping: [node1]
+2021-09-03 17:02:14,288 p=28225 u=och n=ansible | skipping: [node2]
+2021-09-03 17:02:14,301 p=28225 u=och n=ansible | TASK [kubernetes : Disable Swap area and delete] ***********************************************************************************************************************
+2021-09-03 17:02:14,324 p=28225 u=och n=ansible | skipping: [node1]
+2021-09-03 17:02:14,337 p=28225 u=och n=ansible | skipping: [node2]
+2021-09-03 17:02:14,350 p=28225 u=och n=ansible | TASK [kubernetes : Add Docker GPG key] *********************************************************************************************************************************
+2021-09-03 17:02:15,674 p=28225 u=och n=ansible | ok: [node1]
+2021-09-03 17:02:15,676 p=28225 u=och n=ansible | ok: [node2]
+2021-09-03 17:02:15,695 p=28225 u=och n=ansible | TASK [kubernetes : Add Docker APT repository] **************************************************************************************************************************
+2021-09-03 17:02:16,796 p=28225 u=och n=ansible | ok: [node2]
+2021-09-03 17:02:16,802 p=28225 u=och n=ansible | ok: [node1]
+2021-09-03 17:02:16,821 p=28225 u=och n=ansible | TASK [kubernetes : Install a list of packages] *************************************************************************************************************************
+2021-09-03 17:02:30,624 p=28225 u=och n=ansible | changed: [node1]
+2021-09-03 17:02:33,484 p=28225 u=och n=ansible | changed: [node2]
+2021-09-03 17:02:33,507 p=28225 u=och n=ansible | TASK [kubernetes : ensure a list of packages uninstalled] **************************************************************************************************************
+2021-09-03 17:02:33,549 p=28225 u=och n=ansible | skipping: [node1]
+2021-09-03 17:02:33,569 p=28225 u=och n=ansible | skipping: [node2]
+2021-09-03 17:02:33,581 p=28225 u=och n=ansible | TASK [kubernetes : Add Docker repository] ******************************************************************************************************************************
+2021-09-03 17:02:33,604 p=28225 u=och n=ansible | skipping: [node1]
+2021-09-03 17:02:33,616 p=28225 u=och n=ansible | skipping: [node2]
+2021-09-03 17:02:33,630 p=28225 u=och n=ansible | TASK [kubernetes : ensure a list of packages installed] ****************************************************************************************************************
+2021-09-03 17:02:33,652 p=28225 u=och n=ansible | skipping: [node1]
+2021-09-03 17:02:33,666 p=28225 u=och n=ansible | skipping: [node2]
+2021-09-03 17:02:33,678 p=28225 u=och n=ansible | TASK [kubernetes : Add the user 'vagrant' with a specific uid and a primary group of 'docker'] *************************************************************************
+2021-09-03 17:02:34,797 p=28225 u=och n=ansible | changed: [node2]
+2021-09-03 17:02:34,883 p=28225 u=och n=ansible | changed: [node1]
+2021-09-03 17:02:34,902 p=28225 u=och n=ansible | TASK [kubernetes : Start dockerd] **************************************************************************************************************************************
+2021-09-03 17:02:36,124 p=28225 u=och n=ansible | ok: [node2]
+2021-09-03 17:02:36,258 p=28225 u=och n=ansible | ok: [node1]
+2021-09-03 17:02:36,279 p=28225 u=och n=ansible | TASK [kubernetes : Add GlusterFS Repository] ***************************************************************************************************************************
+2021-09-03 17:02:37,203 p=28225 u=och n=ansible | ok: [node2]
+2021-09-03 17:02:37,250 p=28225 u=och n=ansible | ok: [node1]
+2021-09-03 17:02:37,270 p=28225 u=och n=ansible | TASK [kubernetes : Install GlusterFS client] ***************************************************************************************************************************
+2021-09-03 17:02:40,245 p=28225 u=och n=ansible | ok: [node1]
+2021-09-03 17:02:40,316 p=28225 u=och n=ansible | ok: [node2]
+2021-09-03 17:02:40,337 p=28225 u=och n=ansible | TASK [kubernetes : Set sysctl] *****************************************************************************************************************************************
+2021-09-03 17:02:41,272 p=28225 u=och n=ansible | ok: [node2]
+2021-09-03 17:02:41,281 p=28225 u=och n=ansible | ok: [node1]
+2021-09-03 17:02:41,304 p=28225 u=och n=ansible | TASK [kubernetes : modprobe br_netfilter] ******************************************************************************************************************************
+2021-09-03 17:02:41,343 p=28225 u=och n=ansible | skipping: [node1]
+2021-09-03 17:02:41,363 p=28225 u=och n=ansible | skipping: [node2]
+2021-09-03 17:02:41,377 p=28225 u=och n=ansible | TASK [kubernetes : sysctl] *********************************************************************************************************************************************
+2021-09-03 17:02:41,402 p=28225 u=och n=ansible | skipping: [node1]
+2021-09-03 17:02:41,414 p=28225 u=och n=ansible | skipping: [node2]
+2021-09-03 17:02:41,450 p=28225 u=och n=ansible | TASK [kubernetes : add Kubernetes apt-key] *****************************************************************************************************************************
+2021-09-03 17:02:43,187 p=28225 u=och n=ansible | changed: [node1]
+2021-09-03 17:02:43,322 p=28225 u=och n=ansible | changed: [node2]
+2021-09-03 17:02:43,343 p=28225 u=och n=ansible | TASK [kubernetes : add Kubernetes' APT repository] *********************************************************************************************************************
+2021-09-03 17:02:50,279 p=28225 u=och n=ansible | changed: [node1]
+2021-09-03 17:02:52,122 p=28225 u=och n=ansible | changed: [node2]
+2021-09-03 17:02:52,143 p=28225 u=och n=ansible | TASK [kubernetes : Install kubectl] ************************************************************************************************************************************
+2021-09-03 17:02:59,191 p=28225 u=och n=ansible | changed: [node1]
+2021-09-03 17:03:02,269 p=28225 u=och n=ansible | changed: [node2]
+2021-09-03 17:03:02,289 p=28225 u=och n=ansible | TASK [kubernetes : Install kubelet] ************************************************************************************************************************************
+2021-09-03 17:03:25,605 p=28225 u=och n=ansible | changed: [node2]
+2021-09-03 17:03:28,066 p=28225 u=och n=ansible | changed: [node1]
+2021-09-03 17:03:28,085 p=28225 u=och n=ansible | TASK [kubernetes : Install kubeadm] ************************************************************************************************************************************
+2021-09-03 17:03:36,773 p=28225 u=och n=ansible | changed: [node1]
+2021-09-03 17:03:41,170 p=28225 u=och n=ansible | changed: [node2]
+2021-09-03 17:03:41,190 p=28225 u=och n=ansible | TASK [kubernetes : check exisiting /etc/yum.repos.d/kubernetes.repo] ***************************************************************************************************
+2021-09-03 17:03:42,193 p=28225 u=och n=ansible | ok: [node2]
+2021-09-03 17:03:42,196 p=28225 u=och n=ansible | ok: [node1]
+2021-09-03 17:03:42,218 p=28225 u=och n=ansible | TASK [kubernetes : install kubernetes.repo] ****************************************************************************************************************************
+2021-09-03 17:03:42,255 p=28225 u=och n=ansible | skipping: [node1]
+2021-09-03 17:03:42,270 p=28225 u=och n=ansible | skipping: [node2]
+2021-09-03 17:03:42,282 p=28225 u=och n=ansible | TASK [kubernetes : install kubelet kubeadm kubectl] ********************************************************************************************************************
+2021-09-03 17:03:42,307 p=28225 u=och n=ansible | skipping: [node1]
+2021-09-03 17:03:42,319 p=28225 u=och n=ansible | skipping: [node2]
+2021-09-03 17:03:42,332 p=28225 u=och n=ansible | TASK [kubernetes : enable kubelet] *************************************************************************************************************************************
+2021-09-03 17:03:43,197 p=28225 u=och n=ansible | ok: [node2]
+2021-09-03 17:03:43,200 p=28225 u=och n=ansible | ok: [node1]
+2021-09-03 17:03:43,218 p=28225 u=och n=ansible | TASK [kubernetes : change 10-kubeadm.conf for v1.11 or later for Ubuntu] ***********************************************************************************************
+2021-09-03 17:03:44,139 p=28225 u=och n=ansible | changed: [node2]
+2021-09-03 17:03:44,146 p=28225 u=och n=ansible | changed: [node1]
+2021-09-03 17:03:44,166 p=28225 u=och n=ansible | TASK [kubernetes : change kubelet.service for CentOS] ******************************************************************************************************************
+2021-09-03 17:03:44,206 p=28225 u=och n=ansible | skipping: [node1]
+2021-09-03 17:03:44,217 p=28225 u=och n=ansible | skipping: [node2]
+2021-09-03 17:03:44,229 p=28225 u=och n=ansible | TASK [kubernetes : daemon-reload and restart kubelet] ******************************************************************************************************************
+2021-09-03 17:03:45,371 p=28225 u=och n=ansible | changed: [node2]
+2021-09-03 17:03:45,379 p=28225 u=och n=ansible | changed: [node1]
+2021-09-03 17:03:45,422 p=28225 u=och n=ansible | TASK [node : kubeadm reset] ********************************************************************************************************************************************
+2021-09-03 17:03:46,438 p=28225 u=och n=ansible | changed: [node1]
+2021-09-03 17:03:46,440 p=28225 u=och n=ansible | changed: [node2]
+2021-09-03 17:03:46,461 p=28225 u=och n=ansible | TASK [node : copy from home to local] **********************************************************************************************************************************
+2021-09-03 17:03:46,737 p=28225 u=och n=ansible | An exception occurred during task execution. To see the full traceback, use -vvv. The error was: If you are using a module and expect the file to exist on the remote, see the remote_src option
+2021-09-03 17:03:46,739 p=28225 u=och n=ansible | fatal: [node2]: FAILED! => {"changed": false, "msg": "Could not find or access '/vagrant/kubeadm-join.tmp' on the Ansible Controller.\nIf you are using a module and expect the file to exist on the remote, see the remote_src option"}
+2021-09-03 17:03:46,739 p=28225 u=och n=ansible | An exception occurred during task execution. To see the full traceback, use -vvv. The error was: If you are using a module and expect the file to exist on the remote, see the remote_src option
+2021-09-03 17:03:46,740 p=28225 u=och n=ansible | fatal: [node1]: FAILED! => {"changed": false, "msg": "Could not find or access '/vagrant/kubeadm-join.tmp' on the Ansible Controller.\nIf you are using a module and expect the file to exist on the remote, see the remote_src option"}
+2021-09-03 17:03:46,742 p=28225 u=och n=ansible | PLAY RECAP *************************************************************************************************************************************************************
+2021-09-03 17:03:46,743 p=28225 u=och n=ansible | node1                      : ok=19   changed=10   unreachable=0    failed=1    skipped=11   rescued=0    ignored=0   
+2021-09-03 17:03:46,743 p=28225 u=och n=ansible | node2                      : ok=19   changed=10   unreachable=0    failed=1    skipped=11   rescued=0    ignored=0   
+2021-09-06 08:34:48,684 p=34771 u=och n=ansible | ERROR! the playbook: ping could not be found
+2021-09-06 08:35:36,966 p=34805 u=och n=ansible | master | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+2021-09-06 08:35:50,518 p=34848 u=root n=ansible | master | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+2021-09-06 08:42:16,099 p=35062 u=och n=ansible | PLAY [Kubernetes base] **************************************************************************************
+2021-09-06 08:42:16,119 p=35062 u=och n=ansible | TASK [Gathering Facts] **************************************************************************************
+2021-09-06 08:42:18,497 p=35062 u=och n=ansible | ok: [node2]
+2021-09-06 08:42:18,605 p=35062 u=och n=ansible | ok: [node1]
+2021-09-06 08:42:18,659 p=35062 u=och n=ansible | TASK [kubernetes : Change selinux] **************************************************************************
+2021-09-06 08:42:18,783 p=35062 u=och n=ansible | skipping: [node1]
+2021-09-06 08:42:18,800 p=35062 u=och n=ansible | skipping: [node2]
+2021-09-06 08:42:18,830 p=35062 u=och n=ansible | TASK [kubernetes : Stop firewalld] **************************************************************************
+2021-09-06 08:42:18,864 p=35062 u=och n=ansible | skipping: [node1]
+2021-09-06 08:42:18,878 p=35062 u=och n=ansible | skipping: [node2]
+2021-09-06 08:42:18,892 p=35062 u=och n=ansible | TASK [kubernetes : Disable Swap area and delete] ************************************************************
+2021-09-06 08:42:18,923 p=35062 u=och n=ansible | skipping: [node1]
+2021-09-06 08:42:18,935 p=35062 u=och n=ansible | skipping: [node2]
+2021-09-06 08:42:18,948 p=35062 u=och n=ansible | TASK [kubernetes : Add Docker GPG key] **********************************************************************
+2021-09-06 08:42:20,347 p=35062 u=och n=ansible | ok: [node1]
+2021-09-06 08:42:20,414 p=35062 u=och n=ansible | ok: [node2]
+2021-09-06 08:42:20,434 p=35062 u=och n=ansible | TASK [kubernetes : Add Docker APT repository] ***************************************************************
+2021-09-06 08:42:21,555 p=35062 u=och n=ansible | ok: [node2]
+2021-09-06 08:42:21,593 p=35062 u=och n=ansible | ok: [node1]
+2021-09-06 08:42:21,619 p=35062 u=och n=ansible | TASK [kubernetes : Install a list of packages] **************************************************************
+2021-09-06 08:42:30,890 p=35062 u=och n=ansible | ok: [node1]
+2021-09-06 08:42:33,112 p=35062 u=och n=ansible | ok: [node2]
+2021-09-06 08:42:33,141 p=35062 u=och n=ansible | TASK [kubernetes : ensure a list of packages uninstalled] ***************************************************
+2021-09-06 08:42:33,189 p=35062 u=och n=ansible | skipping: [node1]
+2021-09-06 08:42:33,210 p=35062 u=och n=ansible | skipping: [node2]
+2021-09-06 08:42:33,223 p=35062 u=och n=ansible | TASK [kubernetes : Add Docker repository] *******************************************************************
+2021-09-06 08:42:33,251 p=35062 u=och n=ansible | skipping: [node1]
+2021-09-06 08:42:33,264 p=35062 u=och n=ansible | skipping: [node2]
+2021-09-06 08:42:33,278 p=35062 u=och n=ansible | TASK [kubernetes : ensure a list of packages installed] *****************************************************
+2021-09-06 08:42:33,305 p=35062 u=och n=ansible | skipping: [node1]
+2021-09-06 08:42:33,319 p=35062 u=och n=ansible | skipping: [node2]
+2021-09-06 08:42:33,334 p=35062 u=och n=ansible | TASK [kubernetes : Add the user 'vagrant' with a specific uid and a primary group of 'docker'] **************
+2021-09-06 08:42:34,342 p=35062 u=och n=ansible | ok: [node2]
+2021-09-06 08:42:34,344 p=35062 u=och n=ansible | ok: [node1]
+2021-09-06 08:42:34,367 p=35062 u=och n=ansible | TASK [kubernetes : Start dockerd] ***************************************************************************
+2021-09-06 08:42:35,621 p=35062 u=och n=ansible | ok: [node2]
+2021-09-06 08:42:35,623 p=35062 u=och n=ansible | ok: [node1]
+2021-09-06 08:42:35,647 p=35062 u=och n=ansible | TASK [kubernetes : Add GlusterFS Repository] ****************************************************************
+2021-09-06 08:42:36,626 p=35062 u=och n=ansible | ok: [node1]
+2021-09-06 08:42:36,637 p=35062 u=och n=ansible | ok: [node2]
+2021-09-06 08:42:36,665 p=35062 u=och n=ansible | TASK [kubernetes : Install GlusterFS client] ****************************************************************
+2021-09-06 08:42:39,492 p=35062 u=och n=ansible | ok: [node1]
+2021-09-06 08:42:39,825 p=35062 u=och n=ansible | ok: [node2]
+2021-09-06 08:42:39,859 p=35062 u=och n=ansible | TASK [kubernetes : Set sysctl] ******************************************************************************
+2021-09-06 08:42:40,827 p=35062 u=och n=ansible | ok: [node2]
+2021-09-06 08:42:40,828 p=35062 u=och n=ansible | ok: [node1]
+2021-09-06 08:42:40,852 p=35062 u=och n=ansible | TASK [kubernetes : modprobe br_netfilter] *******************************************************************
+2021-09-06 08:42:40,900 p=35062 u=och n=ansible | skipping: [node1]
+2021-09-06 08:42:40,918 p=35062 u=och n=ansible | skipping: [node2]
+2021-09-06 08:42:40,933 p=35062 u=och n=ansible | TASK [kubernetes : sysctl] **********************************************************************************
+2021-09-06 08:42:40,970 p=35062 u=och n=ansible | skipping: [node1]
+2021-09-06 08:42:40,989 p=35062 u=och n=ansible | skipping: [node2]
+2021-09-06 08:42:41,006 p=35062 u=och n=ansible | TASK [kubernetes : add Kubernetes apt-key] ******************************************************************
+2021-09-06 08:42:42,253 p=35062 u=och n=ansible | ok: [node1]
+2021-09-06 08:42:42,266 p=35062 u=och n=ansible | ok: [node2]
+2021-09-06 08:42:42,288 p=35062 u=och n=ansible | TASK [kubernetes : add Kubernetes' APT repository] **********************************************************
+2021-09-06 08:42:43,229 p=35062 u=och n=ansible | ok: [node1]
+2021-09-06 08:42:43,289 p=35062 u=och n=ansible | ok: [node2]
+2021-09-06 08:42:43,312 p=35062 u=och n=ansible | TASK [kubernetes : Install kubectl] *************************************************************************
+2021-09-06 08:42:44,709 p=35062 u=och n=ansible | ok: [node1]
+2021-09-06 08:42:44,764 p=35062 u=och n=ansible | ok: [node2]
+2021-09-06 08:42:44,779 p=35062 u=och n=ansible | TASK [kubernetes : Install kubelet] *************************************************************************
+2021-09-06 08:42:46,220 p=35062 u=och n=ansible | ok: [node2]
+2021-09-06 08:42:46,222 p=35062 u=och n=ansible | ok: [node1]
+2021-09-06 08:42:46,239 p=35062 u=och n=ansible | TASK [kubernetes : Install kubeadm] *************************************************************************
+2021-09-06 08:42:47,580 p=35062 u=och n=ansible | ok: [node1]
+2021-09-06 08:42:47,592 p=35062 u=och n=ansible | ok: [node2]
+2021-09-06 08:42:47,619 p=35062 u=och n=ansible | TASK [kubernetes : check exisiting /etc/yum.repos.d/kubernetes.repo] ****************************************
+2021-09-06 08:42:48,546 p=35062 u=och n=ansible | ok: [node2]
+2021-09-06 08:42:48,618 p=35062 u=och n=ansible | ok: [node1]
+2021-09-06 08:42:48,647 p=35062 u=och n=ansible | TASK [kubernetes : install kubernetes.repo] *****************************************************************
+2021-09-06 08:42:48,686 p=35062 u=och n=ansible | skipping: [node1]
+2021-09-06 08:42:48,703 p=35062 u=och n=ansible | skipping: [node2]
+2021-09-06 08:42:48,716 p=35062 u=och n=ansible | TASK [kubernetes : install kubelet kubeadm kubectl] *********************************************************
+2021-09-06 08:42:48,745 p=35062 u=och n=ansible | skipping: [node1]
+2021-09-06 08:42:48,760 p=35062 u=och n=ansible | skipping: [node2]
+2021-09-06 08:42:48,774 p=35062 u=och n=ansible | TASK [kubernetes : enable kubelet] **************************************************************************
+2021-09-06 08:42:49,692 p=35062 u=och n=ansible | changed: [node1]
+2021-09-06 08:42:49,695 p=35062 u=och n=ansible | changed: [node2]
+2021-09-06 08:42:49,716 p=35062 u=och n=ansible | TASK [kubernetes : change 10-kubeadm.conf for v1.11 or later for Ubuntu] ************************************
+2021-09-06 08:42:50,709 p=35062 u=och n=ansible | ok: [node2]
+2021-09-06 08:42:50,710 p=35062 u=och n=ansible | ok: [node1]
+2021-09-06 08:42:50,731 p=35062 u=och n=ansible | TASK [kubernetes : change kubelet.service for CentOS] *******************************************************
+2021-09-06 08:42:50,768 p=35062 u=och n=ansible | skipping: [node1]
+2021-09-06 08:42:50,781 p=35062 u=och n=ansible | skipping: [node2]
+2021-09-06 08:42:50,794 p=35062 u=och n=ansible | TASK [kubernetes : daemon-reload and restart kubelet] *******************************************************
+2021-09-06 08:42:51,993 p=35062 u=och n=ansible | changed: [node1]
+2021-09-06 08:42:51,997 p=35062 u=och n=ansible | changed: [node2]
+2021-09-06 08:42:52,055 p=35062 u=och n=ansible | TASK [node : kubeadm reset] *********************************************************************************
+2021-09-06 08:42:53,043 p=35062 u=och n=ansible | changed: [node1]
+2021-09-06 08:42:53,050 p=35062 u=och n=ansible | changed: [node2]
+2021-09-06 08:42:53,076 p=35062 u=och n=ansible | TASK [node : copy from home to local] ***********************************************************************
+2021-09-06 08:42:53,345 p=35062 u=och n=ansible | An exception occurred during task execution. To see the full traceback, use -vvv. The error was: If you are using a module and expect the file to exist on the remote, see the remote_src option
+2021-09-06 08:42:53,347 p=35062 u=och n=ansible | fatal: [node1]: FAILED! => {"changed": false, "msg": "Could not find or access '/vagrant/kubeadm-join.tmp' on the Ansible Controller.\nIf you are using a module and expect the file to exist on the remote, see the remote_src option"}
+2021-09-06 08:42:53,349 p=35062 u=och n=ansible | An exception occurred during task execution. To see the full traceback, use -vvv. The error was: If you are using a module and expect the file to exist on the remote, see the remote_src option
+2021-09-06 08:42:53,349 p=35062 u=och n=ansible | fatal: [node2]: FAILED! => {"changed": false, "msg": "Could not find or access '/vagrant/kubeadm-join.tmp' on the Ansible Controller.\nIf you are using a module and expect the file to exist on the remote, see the remote_src option"}
+2021-09-06 08:42:53,355 p=35062 u=och n=ansible | PLAY RECAP **************************************************************************************************
+2021-09-06 08:42:53,355 p=35062 u=och n=ansible | node1                      : ok=19   changed=3    unreachable=0    failed=1    skipped=11   rescued=0    ignored=0   
+2021-09-06 08:42:53,355 p=35062 u=och n=ansible | node2                      : ok=19   changed=3    unreachable=0    failed=1    skipped=11   rescued=0    ignored=0   
+2021-09-06 09:35:46,355 p=36874 u=root n=ansible | master | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: ssh: connect to host opyter.iptime.org port 60022: Operation timed out",
+    "unreachable": true
+}
+2021-09-06 09:59:07,435 p=37400 u=root n=ansible | master | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+2021-09-06 09:59:30,238 p=37438 u=och n=ansible | [WARNING]: While constructing a mapping from /Users/och/Desktop/Git/cluster/ansible-kubernetes/playbook/master/tasks/main.yml, line 125, column 3, found a duplicate
+dict key (become_user). Using last defined value only.
+
+2021-09-06 09:59:30,266 p=37438 u=och n=ansible | PLAY [Kubernetes base] *************************************************************************************************************************************************
+2021-09-06 09:59:30,288 p=37438 u=och n=ansible | TASK [Gathering Facts] *************************************************************************************************************************************************
+2021-09-06 09:59:34,930 p=37438 u=och n=ansible | ok: [master]
+2021-09-06 09:59:34,962 p=37438 u=och n=ansible | TASK [kubernetes : Change selinux] *************************************************************************************************************************************
+2021-09-06 09:59:34,985 p=37438 u=och n=ansible | skipping: [master]
+2021-09-06 09:59:34,997 p=37438 u=och n=ansible | TASK [kubernetes : Stop firewalld] *************************************************************************************************************************************
+2021-09-06 09:59:35,019 p=37438 u=och n=ansible | skipping: [master]
+2021-09-06 09:59:35,034 p=37438 u=och n=ansible | TASK [kubernetes : Disable Swap area and delete] ***********************************************************************************************************************
+2021-09-06 09:59:35,054 p=37438 u=och n=ansible | skipping: [master]
+2021-09-06 09:59:35,068 p=37438 u=och n=ansible | TASK [kubernetes : Add Docker GPG key] *********************************************************************************************************************************
+2021-09-06 09:59:38,258 p=37438 u=och n=ansible | ok: [master]
+2021-09-06 09:59:38,282 p=37438 u=och n=ansible | TASK [kubernetes : Add Docker APT repository] **************************************************************************************************************************
+2021-09-06 09:59:41,323 p=37438 u=och n=ansible | ok: [master]
+2021-09-06 09:59:41,347 p=37438 u=och n=ansible | TASK [kubernetes : Install a list of packages] *************************************************************************************************************************
+2021-09-06 09:59:47,505 p=37438 u=och n=ansible | ok: [master]
+2021-09-06 09:59:47,523 p=37438 u=och n=ansible | TASK [kubernetes : ensure a list of packages uninstalled] **************************************************************************************************************
+2021-09-06 09:59:47,546 p=37438 u=och n=ansible | skipping: [master]
+2021-09-06 09:59:47,561 p=37438 u=och n=ansible | TASK [kubernetes : Add Docker repository] ******************************************************************************************************************************
+2021-09-06 09:59:47,588 p=37438 u=och n=ansible | skipping: [master]
+2021-09-06 09:59:47,600 p=37438 u=och n=ansible | TASK [kubernetes : ensure a list of packages installed] ****************************************************************************************************************
+2021-09-06 09:59:47,627 p=37438 u=och n=ansible | skipping: [master]
+2021-09-06 09:59:47,641 p=37438 u=och n=ansible | TASK [kubernetes : Add the user 'vagrant' with a specific uid and a primary group of 'docker'] *************************************************************************
+2021-09-06 09:59:50,573 p=37438 u=och n=ansible | ok: [master]
+2021-09-06 09:59:50,595 p=37438 u=och n=ansible | TASK [kubernetes : Start dockerd] **************************************************************************************************************************************
+2021-09-06 09:59:53,786 p=37438 u=och n=ansible | ok: [master]
+2021-09-06 09:59:53,821 p=37438 u=och n=ansible | TASK [kubernetes : Add GlusterFS Repository] ***************************************************************************************************************************
+2021-09-06 09:59:56,689 p=37438 u=och n=ansible | ok: [master]
+2021-09-06 09:59:56,711 p=37438 u=och n=ansible | TASK [kubernetes : Install GlusterFS client] ***************************************************************************************************************************
+2021-09-06 10:00:02,627 p=37438 u=och n=ansible | ok: [master]
+2021-09-06 10:00:02,651 p=37438 u=och n=ansible | TASK [kubernetes : Set sysctl] *****************************************************************************************************************************************
+2021-09-06 10:00:05,525 p=37438 u=och n=ansible | ok: [master]
+2021-09-06 10:00:05,553 p=37438 u=och n=ansible | TASK [kubernetes : modprobe br_netfilter] ******************************************************************************************************************************
+2021-09-06 10:00:05,593 p=37438 u=och n=ansible | skipping: [master]
+2021-09-06 10:00:05,612 p=37438 u=och n=ansible | TASK [kubernetes : sysctl] *********************************************************************************************************************************************
+2021-09-06 10:00:05,637 p=37438 u=och n=ansible | skipping: [master]
+2021-09-06 10:00:05,651 p=37438 u=och n=ansible | TASK [kubernetes : add Kubernetes apt-key] *****************************************************************************************************************************
+2021-09-06 10:00:08,568 p=37438 u=och n=ansible | ok: [master]
+2021-09-06 10:00:08,589 p=37438 u=och n=ansible | TASK [kubernetes : add Kubernetes' APT repository] *********************************************************************************************************************
+2021-09-06 10:00:09,598 p=37438 u=och n=ansible | ok: [master]
+2021-09-06 10:00:09,624 p=37438 u=och n=ansible | TASK [kubernetes : Install kubectl] ************************************************************************************************************************************
+2021-09-06 10:00:11,024 p=37438 u=och n=ansible | ok: [master]
+2021-09-06 10:00:11,046 p=37438 u=och n=ansible | TASK [kubernetes : Install kubelet] ************************************************************************************************************************************
+2021-09-06 10:00:12,459 p=37438 u=och n=ansible | ok: [master]
+2021-09-06 10:00:12,482 p=37438 u=och n=ansible | TASK [kubernetes : Install kubeadm] ************************************************************************************************************************************
+2021-09-06 10:00:13,798 p=37438 u=och n=ansible | ok: [master]
+2021-09-06 10:00:13,819 p=37438 u=och n=ansible | TASK [kubernetes : check exisiting /etc/yum.repos.d/kubernetes.repo] ***************************************************************************************************
+2021-09-06 10:00:14,707 p=37438 u=och n=ansible | ok: [master]
+2021-09-06 10:00:14,732 p=37438 u=och n=ansible | TASK [kubernetes : install kubernetes.repo] ****************************************************************************************************************************
+2021-09-06 10:00:14,765 p=37438 u=och n=ansible | skipping: [master]
+2021-09-06 10:00:14,784 p=37438 u=och n=ansible | TASK [kubernetes : install kubelet kubeadm kubectl] ********************************************************************************************************************
+2021-09-06 10:00:14,808 p=37438 u=och n=ansible | skipping: [master]
+2021-09-06 10:00:14,821 p=37438 u=och n=ansible | TASK [kubernetes : enable kubelet] *************************************************************************************************************************************
+2021-09-06 10:00:15,708 p=37438 u=och n=ansible | changed: [master]
+2021-09-06 10:00:15,729 p=37438 u=och n=ansible | TASK [kubernetes : change 10-kubeadm.conf for v1.11 or later for Ubuntu] ***********************************************************************************************
+2021-09-06 10:00:16,717 p=37438 u=och n=ansible | ok: [master]
+2021-09-06 10:00:16,740 p=37438 u=och n=ansible | TASK [kubernetes : change kubelet.service for CentOS] ******************************************************************************************************************
+2021-09-06 10:00:16,772 p=37438 u=och n=ansible | skipping: [master]
+2021-09-06 10:00:16,788 p=37438 u=och n=ansible | TASK [kubernetes : daemon-reload and restart kubelet] ******************************************************************************************************************
+2021-09-06 10:00:17,868 p=37438 u=och n=ansible | changed: [master]
+2021-09-06 10:00:17,903 p=37438 u=och n=ansible | TASK [master : kubeadm reset v1.11 or later] ***************************************************************************************************************************
+2021-09-06 10:00:18,874 p=37438 u=och n=ansible | changed: [master]
+2021-09-06 10:00:18,897 p=37438 u=och n=ansible | TASK [master : kubeadm init for Ubuntu] ********************************************************************************************************************************
+2021-09-06 10:00:22,300 p=37438 u=och n=ansible | fatal: [master]: FAILED! => {"changed": true, "cmd": ["kubeadm", "init", "--pod-network-cidr=10.244.0.0/16", "--apiserver-advertise-address=192.168.0.3", "--service-cidr=10.32.0.0/24"], "delta": "0:00:02.604135", "end": "2021-09-06 10:00:22.296966", "msg": "non-zero return code", "rc": 1, "start": "2021-09-06 10:00:19.692831", "stderr": "I0906 10:00:20.332337   24734 version.go:240] remote version is much newer: v1.22.1; falling back to: stable-1.14\n\t[WARNING IsDockerSystemdCheck]: detected \"cgroupfs\" as the Docker cgroup driver. The recommended driver is \"systemd\". Please follow the guide at https://kubernetes.io/docs/setup/cri/\n\t[WARNING SystemVerification]: this Docker version is not on the list of validated versions: 20.10.8. Latest validated version: 18.09\nerror execution phase preflight: [preflight] Some fatal errors occurred:\n\t[ERROR Swap]: running with swap on is not supported. Please disable swap\n[preflight] If you know what you are doing, you can make a check non-fatal with `--ignore-preflight-errors=...`", "stderr_lines": ["I0906 10:00:20.332337   24734 version.go:240] remote version is much newer: v1.22.1; falling back to: stable-1.14", "\t[WARNING IsDockerSystemdCheck]: detected \"cgroupfs\" as the Docker cgroup driver. The recommended driver is \"systemd\". Please follow the guide at https://kubernetes.io/docs/setup/cri/", "\t[WARNING SystemVerification]: this Docker version is not on the list of validated versions: 20.10.8. Latest validated version: 18.09", "error execution phase preflight: [preflight] Some fatal errors occurred:", "\t[ERROR Swap]: running with swap on is not supported. Please disable swap", "[preflight] If you know what you are doing, you can make a check non-fatal with `--ignore-preflight-errors=...`"], "stdout": "[init] Using Kubernetes version: v1.14.10\n[preflight] Running pre-flight checks", "stdout_lines": ["[init] Using Kubernetes version: v1.14.10", "[preflight] Running pre-flight checks"]}
+2021-09-06 10:00:22,304 p=37438 u=och n=ansible | PLAY RECAP *************************************************************************************************************************************************************
+2021-09-06 10:00:22,305 p=37438 u=och n=ansible | master                     : ok=19   changed=3    unreachable=0    failed=1    skipped=11   rescued=0    ignored=0   

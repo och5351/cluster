@@ -1,0 +1,8 @@
+master     ansible_host=opyter.iptime.org ansible_user=och ansible_password='WEstart03@(' ansible_port=10023
+node1      ansible_host=opyter.iptime.org ansible_user=och ansible_password='WEstart03@(' ansible_port=10024
+
+[nodes]
+node1
+
+
+

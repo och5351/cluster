@@ -1,0 +1,162 @@
+## k8s 마스터 초기화
+#
+- name: "kubeadm reset v1.11 or later"
+  command: kubeadm reset -f
+
+## 클러스터 참가용 명령어 작성 Ubuntu
+- name: kubeadm init for Ubuntu
+  command: kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address={{ ansible_facts.eth0.ipv4.address }} --service-cidr=10.32.0.0/24
+  register: join_ubuntu
+  when:
+    - ansible_facts.distribution == "Ubuntu"
+## k8s 노드용 명령어 보존 Ubuntu
+- name: create kubeadm join command
+  shell: echo "join_command" ":" {{ join_ubuntu.stdout_lines[-2] }} {{ join_ubuntu.stdout_lines[-1] }} > /tmp/kubeadm-join.yaml
+  when:
+    - ansible_facts.distribution == "Ubuntu"
+  
+
+## クラスタ 참가 명령어 작성 CentOS
+- name: kubeadm init for CentOS
+  command: kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address={{ ansible_facts.eth1.ipv4.address }} --service-cidr=10.32.0.0/24
+  register: join_centos
+  when:
+    - ansible_facts.distribution == "CentOS"
+## k8s 노드용 명령어 보존 CentOS
+- name: create kubeadm join command
+  shell: echo "join_command" ":" {{ join_centos.stdout_lines[-2] }} {{ join_centos.stdout_lines[-1] }} > /tmp/kubeadm-join.yaml
+  when:
+    - ansible_facts.distribution == "CentOS"
+
+## vagrant 디렉터리에 복사
+## terraform을 사용하는 경우는 수정
+- name: copy /tmp/kubeadm-join.yaml -> home
+  copy:
+    src: /tmp/kubeadm-join.yaml
+    dest: /vagrant/kubeadm-join.tmp
+
+
+## kubeletのDNSのIPアドレスを変更
+#
+- name: change config.yaml
+  replace:
+    dest: /var/lib/kubelet/config.yaml
+    regexp: '10.96.0.10'
+    replace: 10.32.0.10
+
+## kubelet를 재시작해 변경을 반영
+#
+- name: daemon-reload and restart kubelet
+  systemd:
+    state: restarted
+    daemon_reload: yes
+    name: kubelet
+    
+## kubeconfig 디렉터리 작성
+#
+- name: mkdir kubeconfig
+  file:
+    path:  /home/vagrant/.kube
+    state: directory
+    owner: vagrant
+    group: vagrant
+    mode:  '0755'
+
+- name: mkdir /vagrant/kubeconfig
+  file:
+    path:  /vagrant/kubeconfig
+    state: directory
+    owner: vagrant
+    group: vagrant
+    mode:  '0755'
+
+##  config 파일 복사
+#
+- name: chmod admin.conf
+  file:
+    path:  /etc/kubernetes/admin.conf
+    owner: vagrant
+    group: vagrant
+    mode:  '0600'
+    
+- name: copy config to home dir
+  copy:
+    src:  /etc/kubernetes/admin.conf
+    dest: /home/vagrant/.kube/config
+    owner: vagrant
+    group: vagrant
+    mode:  '0600'
+
+## flannel 매니페스트 다운로드
+#
+- name: Download a manifest of Flannel for k8s ver > 11
+  template:
+    src:  kube-flannel.yml
+    dest: /home/vagrant/kube-flannel.yml
+    mode: 0644
+    owner: vagrant
+    group: vagrant
+
+## Flannel 배포
+#
+- name: Deploy Flannel 
+  become_user: vagrant
+  command: kubectl apply -f /home/vagrant/kube-flannel.yml
+
+
+## Metrics Server 설치
+- name: Install Metrics Server
+  get_url:
+    url: https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.3.6/components.yaml
+    dest: /home/vagrant/metrics-server-deployment.yaml
+    mode: '0644'
+  become_user: vagrant    
+
+- name: add a new line
+  blockinfile:
+    path: /home/vagrant/metrics-server-deployment.yaml
+    insertafter: '        args:'
+    block: |
+           # added lines
+                     - --kubelet-insecure-tls
+                     - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
+  become_user: vagrant
+
+- name: Deploy Metrics Server
+  command: kubectl apply -f /home/vagrant/metrics-server-deployment.yaml
+  become_user: vagrant
+  args:
+    chdir: /home/vagrant
+  become_user: vagrant
+
+
+## Dashboard UI 설치 
+#
+- name: Download Dashboard Manifest
+  get_url:
+    url: https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-beta6/aio/deploy/recommended.yaml
+    dest: /home/vagrant/
+    mode: '0644'
+    owner: vagrant
+    group: vagrant
+- name: Change Dashboard RBAC
+  replace:
+    path: /home/vagrant/recommended.yaml
+    after: '  kind: ClusterRole'
+    regexp: '^  name: kubernetes-dashboard'
+    replace: '  name: cluster-admin'
+- name: Deploy Dashboard UI
+  become_user: vagrant
+  command: kubectl apply -f /home/vagrant/recommended.yaml
+- name: setup kubeconfig
+  become_user: vagrant    
+  shell: |
+        TOKEN=$(kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret |grep kubernetes-dashboard-token-* | awk '{print $1}') |awk '$1=="token:"{print $2}')
+        kubectl config set-credentials kubernetes-admin --token="${TOKEN}"
+- name: copy config to host dir
+  copy:
+    src:  /home/vagrant/.kube/config
+    dest: /vagrant/kubeconfig/config
+    owner: vagrant
+    group: vagrant
+    mode:  '0600'

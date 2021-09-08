@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: vip-configmap
+  namespace: tkr-system
+data:
+  opyter.iptime.org: tkr-system/nginx-ingress-svc

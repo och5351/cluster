@@ -8,6 +8,11 @@ metadata:
     ingress.kubernetes.io/rewrite-target: /
     #ingress.bluemix.net/rewrite-path: "serviceName=app-service rewrite=/"
 spec:
+  defaultBackend:
+    service:
+      name: nginx
+      port:
+        number: 80
   rules:
   - host: opyter.iptime.org
     http:

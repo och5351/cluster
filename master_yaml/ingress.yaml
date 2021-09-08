@@ -13,6 +13,7 @@ spec:
     http:
       paths:
       - path: /jenkins
+        pathType: Prefix
         backend:
           service:
             name: jenkins-master

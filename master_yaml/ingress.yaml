@@ -9,7 +9,7 @@ metadata:
     #ingress.bluemix.net/rewrite-path: "serviceName=app-service rewrite=/"
 spec:
   rules:
-  - host: opyter.iptime.org
+  - host: abc.sample.com
     http:
       paths:
       - path: /jenkins

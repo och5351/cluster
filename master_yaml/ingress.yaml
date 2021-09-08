@@ -9,10 +9,10 @@ metadata:
     #ingress.bluemix.net/rewrite-path: "serviceName=app-service rewrite=/"
 spec:
   rules:
-  - host: abc.sample.com
+  - host: opyter.iptime.org
     http:
       paths:
       - path: /jenkins
         backend:
-          serviceName: batch-visualizer-backend-provider-service
-          servicePort: 30000
+          serviceName: jenkins-master
+          servicePort: 80

@@ -16,6 +16,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: jenkins-master
+            name: jenkins-leader-svc
             port: 
               number: 30000

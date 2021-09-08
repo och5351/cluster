@@ -14,5 +14,7 @@ spec:
       paths:
       - path: /jenkins
         backend:
-          serviceName: jenkins-master
-          servicePort: 80
+          service:
+            name: jenkins-master
+            port: 
+              number: 30000

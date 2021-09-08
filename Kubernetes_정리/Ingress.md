@@ -58,7 +58,7 @@ On-premise 에서의 k8s 클러스터는 Public IP 주소를 노드 간에 공�
 
 <div align="center">
 
-<img src="https://user-images.githubusercontent.com/45858414/132308805-37ca0e2b-bf8e-484d-af97-a44ddbd4402f.png" />
+<img src="https://user-images.githubusercontent.com/45858414/132308805-37ca0e2b-bf8e-484d-af97-a44ddbd4402f.png" width="70%" height="70%"/>
 
 인그레스에 의한 가상 호스트 작성 예
 </div>
@@ -119,3 +119,163 @@ metadata:
                 serviceName: java-svc
                 servicePort: 9080
 ```
+<br>
+
+표 1.인그레스 API(Ingress v1beta1 extensions)
+<a href="https://kubernetes.io/docs/reference/kubernetes-api/service-resources/ingress-v1/">v.1.22 기준 Ingress reference</a>
+<table>
+  <thead>
+    <tr>
+      <th colspan="1">주요 항목</th>
+      <th colspan="1">설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>apiVersion</td>
+      <td>extensions/v1beta1 설정</td>
+    </tr>
+    <tr>
+      <td>kind</td>
+      <td>Ingress 설정</td>
+    </tr>
+    <tr>
+      <td>metadata.name</td>
+      <td>인그레스 오브젝트의 이름</td>
+    </tr>
+    <tr>
+      <td>metadata.annotations</td>
+      <td>인그레스 컨트롤러 설정에 사용. <br> <a href="https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/">v.1.22 기준 Annotation 참고 자료</a></td>
+    </tr>
+    <tr>
+      <td>spec</td>
+      <td>표 2 참고</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+표 2. 인그레스 사양(IngressSpec v1beta1 extensions)
+<a href="https://kubernetes.io/docs/reference/kubernetes-api/service-resources/ingress-v1/#IngressSpec">v.1.22 기준 인그레스 샤앙 참조</a>
+<table>
+  <thead>
+    <tr>
+      <th colspan="1">주요항목</th>
+      <th colspan="1">설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>rules</td>
+      <td>DNS명과 백엔드 서비스를 대응시키는 규치 목록. 자세한 내용은 표3 참고. 이 규칙에 맞지 않는 요청은 디폴트 백엔드라는 파드에 전송됨</td>
+    </tr>
+    <tr>
+      <td>tls</td>
+      <td>표 7 참고</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+표 3. 인그레스 규칙(IngressRule v1beta1 extensions)
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="1">주요항목</th>
+      <th colspan="1">설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>host</td>
+      <td>FQDN(Fully Qualified Domain Name) 설정</td>
+    </tr>
+    <tr>
+      <td>http</td>
+      <td>자세한 내용은 표 4 참고</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+표 4. URL 경로와 백엔드 서비스의 대응 배열(HTTPIngressRuleValue v1beta1 extensions)
+<a href="https://kubernetes.io/docs/reference/kubernetes-api/service-resources/ingress-v1/#IngressBackend">v.1.22 기준 backend 참조</a>
+<table>
+  <thead
+    <tr>
+      <th colspan="1">주요항목</th>
+      <th colspan="1">설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>paths</td>
+      <td>URL의 경로와 백엔드 서비스를 대응시키는 목록을 기술. 표 5 참고</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+표 5. URL 경로와 백엔드 서비스의 대응(HTTPIngressPath v1beta1 extensions)
+<table>
+  <thead>
+    <tr>
+      <th colspan="1">주요항목</th>
+      <th colspan="1">설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>path</td>
+      <td>URL 주소의 경로 부분을 기재</td>
+    </tr>
+    <tr>
+      <td>backend</td>
+      <td>요청이 전달될 서비스와 포트번호 기재. 표 6 참고</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+표 6. 전송될 서비스의 이름과 포트번호(IngressBackend v1beta1 extensions)
+<table>
+  <thead>
+    <tr>
+      <th colspan="1">주요항목</th>
+      <th colspan="1">설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>serviceName</td>
+      <td>서비스 이름</td>
+    </tr>
+    <tr>
+      <td>servicePort</td>
+      <td>서비스의 포트번호</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+표 7. TLS 인증서와 도메인(IngressTLS v1beta1 extensions)
+<table>
+  <thead>
+    <tr>
+      <th colspan="1">주요항목</th>
+      <th colspan="1">설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>hosts</td>
+      <td>도메인명 목록</td>
+    </tr>
+    <tr>
+      <td>serviceName</td>
+      <td>서버 인증서 시크릿의 이름. 시크릿은 네임스페이스 내에 보안이 필요한 데이터를 보존하는 오브젝트로 컨테이너에서 볼륨으로 마운트 가능</td>
+    </tr>
+  </tbody>
+</table>

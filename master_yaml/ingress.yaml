@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: batch-visualizer-ingress
+  namespace: ns-project
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    #ingress.kubernetes.io/rewrite-target: /
+    #ingress.bluemix.net/rewrite-path: "serviceName=app-service rewrite=/"
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /auth/
+        backend:
+          serviceName: batch-visualizer-auth-service
+          servicePort: 8082
+      - path: /
+        backend:
+          serviceName: batch-visualizer-backend-provider-service
+          servicePort: 8084
+      - path: /batch/
+        backend:
+          serviceName: batch-visualizer-backend-migrator-service
+          servicePort: 8081

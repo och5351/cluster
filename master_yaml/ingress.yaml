@@ -2,7 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: jenkins-ingress
-  namespace: ns-jenkins
+  #namespace: ns-jenkins
   annotations:
     kubernetes.io/ingress.class: nginx
     ingress.kubernetes.io/rewrite-target: /

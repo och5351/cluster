@@ -21,6 +21,8 @@
 - [인그레스 기능과 개요](#1)
 - [공개 URL과 Application 매핑](#2)
 - [가상 호스트와 서비스를 매핑하는 매니페스트 기술](#3)
+- [kube-keepalibed-vip에 의한 VIP 획득과 HA 구성](#4)
+- [고가용성 Ingress 환경 구축](#5)
 
 <br><br>
 <a id="1"></a>
@@ -99,11 +101,25 @@ metadata:
         kubernetes.io/ingress.class: 'nginx'
         nginx.ingress.kubernetes.io/rewrite-target: /
     spec:
+        # v1.21 부터 추가 사항
+        # defaultBackend:
+        #   service:
+        #     name: nginx
+        #     port:
+        #       number: 80
         rules:
         - host: abc.sample.com
           http:
             paths:
             - path: /
+              # v1.21 부터 변경 사항
+              # path: /
+              # pathType: Prefix
+              # backend:
+              #   service:
+              #     name: helloworld-svc
+              #     port:
+              #       number: 8080
               backend:
                 serviceName: helloworld-svc
                 servicePort: 8080
@@ -279,3 +295,64 @@ metadata:
     </tr>
   </tbody>
 </table>
+
+<br>
+<div align="right"> 
+
+[목차로](#home1) 
+</div><br><br>
+
+<a id="4"></a>
+
+# 4. kube-keepalived-vip에 의한 VIP 획득과 HA 구성
+<br>
+
+Nginx Ingress Cotroller 는 Virtual IP(VIP)를 노드 간 공유하는 기능을 가지고 있지 않다.
+그래서 복수의 노드로 구성된 학습 관경 2인 멀티 노드 k8s에서는 keepalived를 사용해야 한다.
+Public Cloud에서는 Ingress와 VIP를 연결하는 기능이 있어 그대로 사용하면 된다.
+하지만 On-premise 환경에서는 Ingress에 VIP를 더하기 위한 작업이 필요하다.
+<br>
+
+<div align="center">
+
+<img src="https://user-images.githubusercontent.com/45858414/132448403-ce6b5bae-b14d-496c-81ba-23242f94ef92.png" width="70%" height="70%">
+
+Ingress와 kube-keepalived-vip 구성
+
+<br><br>
+
+<img src="https://user-images.githubusercontent.com/45858414/132450289-2e907b73-2c84-4ca5-b645-9eb28272fa91.png" width="70%" heigh="70%">
+
+요청이 VIP를 통해 파드에 전달되는 개념도
+</div>
+
+상세설명)
+1. kube-keepalived-vip는 외부에서 접근 가능한 IP 주소를 노드에 할당한다.
+2. nginx-ingress-svc와 인그레스 컨트롤러가 외부 네트워크 파드 네트워크를 중개한다.
+  인그레스 컨트롤러는 파드이기 때문에 서비스 nginx-ingress-svc를 통해 요청을 받는다.
+3. 그림 좌측의 인그레스는 URL과 Application을 Mapping한다.
+4. 이러한 동작에 의해 Application 은 k8s cluster 외부로부터 요청을 전달 받는다.
+
+<br>
+
+
+
+<br>
+<div align="right"> 
+
+[목차로](#home1) 
+</div><br><br>
+
+<a id="5"></a>
+
+# 5. 고가용성 Ingress 환경 구축
+<br>
+
+1. 전용 네임스페이스 작성
+2. Ingress configmap 작성
+3. Ingress service account 작성과 RBAC 설정
+4. Ingress default backend 배포
+5. Ingress controller qovh
+6. kube-keepalived-vip의 configmap 작성
+7. kube-keepalived-vip의 service account 작성과 RBAC 설정
+8. kube-keepalived-vip의 Daemonset 배포

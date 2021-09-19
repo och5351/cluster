@@ -12,7 +12,7 @@ spec:
       port:
         number: 80
   rules:
-  - host: abc.sample.com
+  - host: opyter.iptime.org
     http:
       paths:
       - path: /

@@ -14,7 +14,7 @@ spec:
       port:
         number: 80
   rules:
-  - host: abc.sample.com
+  - host: opyter.iptime.org
     http:
       paths:
       - path: /jenkins
@@ -23,7 +23,7 @@ spec:
           service:
             name: jenkins-leader-svc
             port: 
-              number: 80
+              number: 30000
 
 
 

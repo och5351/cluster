@@ -16,7 +16,7 @@ spec:
   - host: opyter.iptime.org
     http:
       paths:
-      - path: /jenkins
+      - path: /
         pathType: Prefix
         backend:
           service:

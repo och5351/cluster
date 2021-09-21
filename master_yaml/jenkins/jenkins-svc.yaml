@@ -34,7 +34,7 @@ spec:
             path: /home/admin/k8s/jenkins/jenkins-home/
             type: Directory
       nodeSelector:
-        kubernetes.io/hostname: och1
+        kubernetes.io/hostname: och2
 
 ---
 apiVersion: v1

@@ -69,4 +69,4 @@ metadata:
     app: jenkins-leader
 spec:
   type: ExternalName
-  externalName: updates.jenkins.io/update-center.json
+  externalName: updates.jenkins.io

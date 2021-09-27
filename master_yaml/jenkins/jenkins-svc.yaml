@@ -58,3 +58,15 @@ spec:
     nodePort: 30001
   selector:
     app: jenkins-leader
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jenkins-external
+  namespace: ns-jenkins
+  labels:
+    app: jenkins-leader
+spec:
+  type: ExternalName
+  externalName: updates.jenkins.io/update-center.json

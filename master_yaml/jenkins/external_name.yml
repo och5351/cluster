@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: jenkins-external
+  namespace: ns-jenkins
+spec:
+  type: ExternalName
+  extarnalName: updates.jenkins.io/update-center.json

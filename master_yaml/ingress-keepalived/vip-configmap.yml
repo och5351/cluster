@@ -4,4 +4,4 @@ metadata:
   name: vip-configmap
   namespace: tkr-system
 data:
-  opyter.iptime.org: tkr-system/nginx-ingress-svc
+  117.20.252.102: tkr-system/nginx-ingress-svc

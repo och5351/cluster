@@ -59,4 +59,4 @@ spec:
   selector:
     app: ingress-nginx
   externalIPs:
-    - opyter.iptime.org
+    - 117.20.252.102

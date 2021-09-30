@@ -4,4 +4,4 @@ metadata:
   name: vip-configmap
   namespace: tkr-system
 data:
-  192.168.0.3: tkr-system/nginx-ingress-svc
+  ["192.168.0.3","192.168.0.4"]: tkr-system/nginx-ingress-svc

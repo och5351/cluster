@@ -59,4 +59,4 @@ spec:
   selector:
     app: ingress-nginx
   externalIPs:
-    - 192.168.0.3
+    - 172.16.20.99

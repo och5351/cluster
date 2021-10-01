@@ -2,7 +2,7 @@ kind: ConfigMap
 apiVersion: v1
 metadata:
   name: nginx-configuration
-  namespace: tkr-system
+  namespace: ingress-system
   labels:
     app: ingress-nginx
 ---
@@ -10,11 +10,11 @@ kind: ConfigMap
 apiVersion: v1
 metadata:
   name: tcp-services
-  namespace: tkr-system
+  namespace: ingress-system
 ---
 kind: ConfigMap
 apiVersion: v1
 metadata:
   name: udp-services
-  namespace: tkr-system
+  namespace: ingress-system
 

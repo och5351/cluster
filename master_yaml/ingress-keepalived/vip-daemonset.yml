@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: kube-keepalived-vip
-  namespace: tkr-system
+  namespace: ingress-system
 spec:
   selector:
     matchLabels:

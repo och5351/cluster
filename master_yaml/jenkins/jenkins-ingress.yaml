@@ -5,7 +5,7 @@ metadata:
   namespace: ns-jenkins
   annotations:
     kubernetes.io/ingress.class: 'nginx'
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/rewrite-target: /jenkins
 
 spec:
   defaultBackend:

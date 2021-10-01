@@ -27,4 +27,4 @@ spec:
           service:
             name: jenkins-leader-svc
             port:
-              number: 60000
+              number: 80

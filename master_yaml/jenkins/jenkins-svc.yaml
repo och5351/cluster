@@ -50,7 +50,7 @@ metadata:
 spec:
   type: NodePort
   ports:
-  - port: 60000
+  - port: 80
     targetPort: 8080
     protocol: TCP
     name: http

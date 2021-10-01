@@ -48,4 +48,4 @@ spec:
           hostPath:
             path: /dev
       nodeSelector: 
-        type: och1
+        kubernetes.io/hostname: och1

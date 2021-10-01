@@ -47,3 +47,4 @@ spec:
         - name: dev
           hostPath:
             path: /dev
+      nodeSelector: och1

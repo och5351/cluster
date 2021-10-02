@@ -23,6 +23,8 @@ spec:
           volumeMounts:
           - name: jenkins-home
             mountPath: /var/jenkins_home
+          - name: jenkins-time
+            mountPath: /etc/localtime
           ports:
           - containerPort: 8080
           - containerPort: 50000
@@ -36,6 +38,10 @@ spec:
           hostPath:
             path: /home/admin/k8s/jenkins/jenkins-home/
             type: Directory
+        - name: jenkins-time
+            hostPath:
+              path: /etc/localtime
+              type: Directory
       nodeSelector:
         kubernetes.io/hostname: och1
 

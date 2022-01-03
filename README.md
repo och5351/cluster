@@ -1,14 +1,5 @@
-## spec
-- Azure
-- Ubuntu 18.04
-- Kubernetes v1.21.1
-- jenkins v2.297
+## Kubernetes & Container
 
-## 진행사항
-- Kubernetes cluster 구성
-- Jenkins M-W 구성 중
-
-## 참고사항
 - <a href="https://github.com/och5351/cluster/blob/main/Docker_정리/container.md">컨테이너 관련</a>
 - <a href="https://github.com/och5351/cluster/blob/main/Kubernetes_%EC%A0%95%EB%A6%AC/kubernetes%20%EA%B8%B0%EB%B3%B8.md">쿠버네티스 기본</a>
 - <a href="https://github.com/och5351/cluster/blob/main/Kubernetes_%EC%A0%95%EB%A6%AC/pod%20%EA%B8%B0%EB%B3%B8.md">Pod 기본</a>
@@ -17,3 +8,9 @@
 - <a href="https://github.com/och5351/cluster/blob/main/Kubernetes_%EC%A0%95%EB%A6%AC/kubectl%20%EC%BB%A4%EB%A7%A8%EB%93%9C.md">kubectl command</a>
 - <a href="https://github.com/och5351/cluster/blob/main/Docker_정리/dockerfile_정리.md">Dockerfile 정리</a>
 - <a href="https://github.com/och5351/cluster/blob/main/Virtual_Machine/vagrant.md">Vagrant 정리</a>
+
+<br><br>
+
+## Hadoop
+
+- <a href="https://github.com/och5351/cluster/blob/main/Hadoop/Hadoop.md">Hadoop 정리</a>

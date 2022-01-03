@@ -14,3 +14,4 @@
 ## Hadoop
 
 - <a href="https://github.com/och5351/cluster/blob/main/Hadoop/Hadoop.md">Hadoop 정리</a>
+- <a href="https://github.com/och5351/cluster/blob/main/Hadoop/cdp설치.md">CDP 설치</a>

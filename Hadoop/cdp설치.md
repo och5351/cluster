@@ -15,6 +15,7 @@
 - [Linux setting(CentOS 7)](#2)
 - [VirtualBox 하드디스크 용량 증설(CentOS7)](#3)
 - [CDP 설치](#4)
+- [Trouble Shooting](#5)
 
 <br><br>
 <a id="1"></a>
@@ -367,6 +368,32 @@ df -h
 <div align="center">
 <img src="https://user-images.githubusercontent.com/45858414/147918042-faad190b-3f84-4846-b12e-ea84c449439a.png" width="70%" height="70%" />
 </div>
+
+<br>
+
+[목차로](#home1)
+
+<br><br>
+<a id="5"></a>
+
+# Trouble Shooting
+
+<br>
+
+1. Java heap 영역 공간
+
+Service monitor를 실행시키는 도중
+
+```
+JAVA_HOME=/usr/java/jdk1.8.0_232-cloudera
+CONF_DIR=/var/run/cloudera-scm-agent/process/1546333941-cloudera-mgmt-SERVICEMONITOR
+CMF_CONF_DIR=
+Removing any leveldbjni library files left over from previous runs
+Executing: /usr/java/jdk1.8.0_232-cloudera/bin/java -server -XX:+UseConcMarkSweepGC -XX:+UseParNewGC -Dmgmt.log.file=mgmt-cmf-mgmt-SERVICEMONITOR-hadoop02.och.com.log.out -Djava.awt.headless=true -Djava.net.preferIPv4Stack=true -Dsun.security.krb5.disableReferrals=true -Djdk.tls.ephemeralDHKeySize=2048 -Dfirehose.schema.dir=/opt/cloudera/cm/schema -XX:PermSize=128m -Dsun.rmi.transport.tcp.handshakeTimeout=10000 -Dsun.rmi.transport.tcp.responseTimeout=10000 -Dlibrary.leveldbjni.path=/run/cloudera-scm-agent/process/1546333941-cloudera-mgmt-SERVICEMONITOR -Xms320864256 -Xmx320864256 -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/mgmt_mgmt-SERVICEMONITOR-e6fcf51707319d12dae18829ba0ac0b1_pid5441.hprof -XX:OnOutOfMemoryError=/opt/cloudera/cm-agent/service/common/killparent.sh -Dsun.security.krb5.disableReferrals=true -Djdk.tls.ephemeralDHKeySize=2048 -cp /run/cloudera-scm-agent/process/1546333941-cloudera-mgmt-SERVICEMONITOR:/usr/share/java/mysql-connector-java.jar:/opt/cloudera/cm/lib/postgresql-42.2.14.jre7.jar:/usr/share/java/oracle-connector-java.jar:/opt/cloudera/cm/lib/*: com.cloudera.cmon.firehose.Main --pipeline-type SERVICE_MONITORING --mgmt-home /opt/cloudera/cm
+java.lang.OutOfMemoryError: Java heap space
+Dumping heap to /tmp/mgmt_mgmt-SERVICEMONITOR-e6fcf51707319d12dae18829ba0ac0b1_pid5441.hprof ...
+Dump file is incomplete: 장치에 남은 공간이 없음
+```
 
 <br>
 

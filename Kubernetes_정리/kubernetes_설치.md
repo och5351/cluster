@@ -129,7 +129,7 @@ EOF
 8. kubeadm 초기화
 
 ```bash
- $ > sudo kubeadm init --pod-network-cidr=10.244.0.0/16
+ $ > sudo kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address='private IP'
 ```
 
 9. Kubernetes 클러스터에 로컬로 액세스 할 수 있도록, 사용할 OS 유저에 설정을 추가

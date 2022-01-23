@@ -65,6 +65,25 @@ kubeadm이란, kubernetes에서 제공하는 기본적인 도구이며, kubernet
 
 <br>
 
+2. -1 Docker 데몬 드라이버 교체
+
+```bash
+ $ > sudo cat > /etc/docker/daemon.json <<EOF
+{
+  "exec-opts": ["native.cgroupdriver=systemd"],
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "100m"
+  },
+  "storage-driver": "overlay2"
+}
+EOF
+
+ $ > sudo mkdir -p /etc/systemd/system/docker.service.d
+```
+
+<br>
+
 3. SELinux 설정을 permissive 모드로 변경
 
 ```bash

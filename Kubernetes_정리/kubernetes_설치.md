@@ -6,7 +6,7 @@
 
 <br>
 
-kubeadm이란, kubernetes에서 제공하는 기본적인 도구이며, kubernetes 클러스터를 가장 빨리 구축하기 위한 다양한 기능을 제공한다.
+kubeadm이란, kubernetes에서 제공하는 기본적인 도구이며, kubernetes 클러스터를 빨리 구축하기 위한 다양한 기능을 제공한다.
 
 <br><br>
 
@@ -68,14 +68,15 @@ kubeadm이란, kubernetes에서 제공하는 기본적인 도구이며, kubernet
 2. -1 Docker 데몬 드라이버 교체
 
 ```bash
- $ > sudo cat > /etc/docker/daemon.json <<EOF
+cat > /etc/docker/daemon.json <<EOF
 {
-  "exec-opts": ["native.cgroupdriver=systemd"],
-  "log-driver": "json-file",
-  "log-opts": {
-    "max-size": "100m"
-  },
-  "storage-driver": "overlay2"
+    "exec-opts": ["native.cgroupdriver=systemd"],
+    "log-driver": "json-file",
+    log-opts": {
+        "max-size": "100m"
+    },
+    "storage-driver": "overlay2",
+    "insecure-registries" : ["123.123.123.123:5000"]
 }
 EOF
 

@@ -23,7 +23,6 @@
 - [3. Spark 설치](#3)
 - [4. Spark 실행 설명](#4)
 - [5. 스파크 어플리케이션 구조](#5)
-- [6. SparkSession](#6)
 
 <br>
 
@@ -109,7 +108,7 @@
 </div><br><br>
 <a id="4"></a>
 
-### 4. Spark 실행 설명
+## 4. Spark 실행 설명
 
 <br>
 
@@ -206,35 +205,4 @@
 
 [목차로](#home1)
 
-</div><br><br>
-<a id="6"></a>
-
-## 6. SparkSession
-
-<br>
-
-1. SparkSession 불러오기
-
-```python
-from pyspark.sql import SparkSession
-```
-
-<br>
-
-2. SparkSession 초기화
-
-```python
-spark = SparkSession\
-        .builder\
-        .appName('Python Spark SQL basic example')\
-        .config('spark.some.config.option', 'some-value')\
-        .getOrCreate()
-```
-
-<br>
-
-3. 사용
-
-```python
-myRange = spark.range(1000).toDF('number')
-```
+</div>

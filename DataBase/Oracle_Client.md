@@ -12,7 +12,7 @@
 <br>
 <a id="1"></a>
 
-# Docker registry 설치
+## 1. Oracle Client 설치
 
 <br>
 

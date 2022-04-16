@@ -6,6 +6,9 @@
 - <a href="https://github.com/och5351/cluster/blob/main/Kubernetes_%EC%A0%95%EB%A6%AC/service%20기본.md">Service 기본</a>
 - <a href="https://github.com/och5351/cluster/blob/main/Kubernetes_%EC%A0%95%EB%A6%AC/controller.md">Controller 기본</a>
 - <a href="https://github.com/och5351/cluster/blob/main/Kubernetes_%EC%A0%95%EB%A6%AC/kubectl%20%EC%BB%A4%EB%A7%A8%EB%93%9C.md">kubectl command</a>
+- <a href='https://github.com/och5351/cluster/blob/main/Kubernetes_정리/Ingress.md'>Ingress 정리</a>
+- <a href='https://github.com/och5351/cluster/blob/main/Kubernetes_정리/Helm_정리.md'>Helm 정리</a>
+- <a href='https://github.com/och5351/cluster/blob/main/Kubernetes_정리/kubernetes_설치.md'>Kubernetes 설치</a>
 
 ## Docker
 

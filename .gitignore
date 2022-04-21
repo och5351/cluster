@@ -1,6 +1,9 @@
 # Spark 이미지 파일
 Spark/assets
 
+# Sqoop 이미지 파일
+Sqoop/assets
+
 # mac 
 .DS_Store
 Spark/.DS_Store

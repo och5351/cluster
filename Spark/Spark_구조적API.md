@@ -17,6 +17,8 @@
 - [3. 구조적 API의 실행 과정](#3)
 - [4. 스키마](#4)
 - [5. 컬럼과 표현식](#5)
+- [6. 레코드와 로우](#6)
+- [7. DataFrame의 트랜스포메이션](#7)
 
 <br><br>
 <a id="1"></a>
@@ -318,6 +320,78 @@ column('someColumnName')
 
    > expr('someCol') 은 col('someCol') 구문과 동일하게 동작
 
+<br><br>
+
+5. 4 표현식으로 컬럼 표현
+   <br>
+
+   컬럼은 표현식의 일부 기능을 제공한다. col() 함수를 호출해 컬럼에 트랜스포메이션을 수행하려면 반드시 컬럼 참조를 사용해야 한다. expr 함수의 인수로 표현식을 사용하면 표현식을 분석해 트랜스포메이션과 컬럼 참조를 알아낼 수 있으며, 다음 트랜스포메이션에 컬럼 참조를 전달할 수 있다.
+
+   <br>
+
+   - expr('someCol - 5')
+   - col('someCol') - 5
+   - expr('someCol') - 5
+
+   <br>
+
+   모두 같은 트랜스포메이션 과정을 거친다. 스파크가 연산 순서를 정하는 논리적 트리로 컴파일하기 때문.
+
+   <br>
+
+   - 컬럼은 단지 표현식일 뿐이다.
+   - 컬럼과 컬럼의 트랜스포메이션은 파싱된 표현식과 동일한 논리적 실행 계획으로 컴파일 된다.
+
+   <br>
+
+   ```python
+   # 예제
+   (((col('someCol') + 5) * 200) - 6) < col('otherCol')
+   ```
+
+   <br>
+
+   논리적 트리 구조
+
+   <div align='center'>
+      <img src='https://user-images.githubusercontent.com/45858414/163700625-89230c1f-0302-43a6-920f-bf4ed23bce9a.png' width='70%', height='70%' />
+   </div>
+
+   <br>
+
+   ```python
+   from pyspark.sql.functions import expr
+
+   expr('(((comeCol + 5) * 200) - 6) < otherCol')
+   ```
+
+   <br>
+
+   SQL의 SELECT 구문에 이전 표현식을 사용해도 잘 동작하며 동일한 결과를 생성. SQL 표현식과 위 예제의 DataFrame 코드는 실행 시점에 동일한 논리 트리로 컴파일 된다. 동일한 성능 발휘.
+
+<br><br>
+
+5. 5 DataFrame 컬럼에 접근하기
+
+<br>
+
+printschema 메소드로 DataFrame의 전체 컬럼 정보를 확인할 수 있다. 하지만 프로그래밍 방식으로 컬럼에 접근할 때는 DataFrame의 columns 속성을 사용.
+
+<br>
+
+```python
+spark.read.format('json').load('./data/flight-data/json/2015-summary.json').columns
+# 결과
+# ['DEST_COUNTRY_NAME', 'ORIGIN_COUNTRY_NAME', 'count']
+
+spark.read.format('json').load('./data/flight-data/json/2015-summary.json').printSchema()
+# 결과
+# root
+#  |-- DEST_COUNTRY_NAME: string (nullable = true)
+#  |-- ORIGIN_COUNTRY_NAME: string (nullable = true)
+#  |-- count: long (nullable = true)
+```
+
 <div align="right">
 
 [목차로](#home1)
@@ -325,4 +399,70 @@ column('someColumnName')
 </div><br><br>
 <a id="6"></a>
 
-## 6. 컬럼과 표현식
+## 6. 레코드와 로우
+
+<br>
+
+스파크에서 DataFrame의 각 로우는 하나의 레코드. 레코드를 Row 객체로 표현. Row 객체는 내부에 바이트 배열을 가짐. 바이트 배열은 컬럼 표현식으로만 다룰 수 있으며 사용자에 절대 노출 되지 않는다.
+
+<br><br>
+
+6. 1 로우 생성하기
+   <br>
+   Row 객체를 직접 생성할 수 있으며, Row 객체는 스키마 정보를 가지고 있지 않다. DataFrame만 유일하게 스키마를 갖는다.
+
+      <br>
+
+   ```python
+   from pyspark.sql import Row
+
+   myRow = Row('Hello', None, 1, False)
+   ```
+
+   스칼라나 자바에서는 헬퍼 메서드를 사용하거나 명시적으로 데이터 타입을 지정해야 합니다. 반면 파이썬이나 R에서는 올바른 데이터 타입으로 자동 변환된다.
+
+      <br>
+
+   ```python
+   myRow[0]
+   # 결과 : 'Hello'
+   myRow[1]
+   # 결과 : None
+   myRow[2]
+   # 결과 : 1
+   myRow[3]
+   # 결과 : False
+   ```
+
+<div align="right">
+
+[목차로](#home1)
+
+</div><br><br>
+<a id="7"></a>
+
+## 7. DataFrame의 트랜스포메이션
+
+<br>
+
+DataFrame을 다루는 방법은 몇 가지 주요 작업으로 나눌 수 있다.
+
+- Row나 Column 추가
+- Row나 Column 제거
+- Row나 Column으로 변환하거나, 그 반대로 변환
+- Column값을 기준으로 Row 순서 변경
+
+<br>
+
+<div align='center'>
+<img src='https://user-images.githubusercontent.com/45858414/163703241-15fa3607-2762-4d35-a926-8b474e1cb45d.png' width='70%' height='70%' />
+</div>
+
+<div align="right">
+
+[목차로](#home1)
+
+</div><br><br>
+<a id="8"></a>
+
+## 8. 그래그래
